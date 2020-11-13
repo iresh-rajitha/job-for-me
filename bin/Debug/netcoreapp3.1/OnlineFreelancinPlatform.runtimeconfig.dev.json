@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\BumbleBee\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\BumbleBee\\.nuget\\packages"
+    ]
+  }
+}
