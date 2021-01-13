@@ -5798,19 +5798,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BumbleBee\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BumbleBee\\source\\repos\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
+      "projectUniqueName": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
       "projectName": "OnlineFreelancinPlatform",
-      "projectPath": "C:\\Users\\BumbleBee\\source\\repos\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
-      "packagesPath": "C:\\Users\\BumbleBee\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BumbleBee\\source\\repos\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\obj\\",
+      "projectPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BumbleBee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5822,6 +5822,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5833,6 +5834,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -5867,7 +5869,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
