@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    public class AdminService
+    public class AdminService:IAdminService
     {
         private readonly FreelancingDBContext _freelancingDBContext;
         public AdminService(FreelancingDBContext datacontext)

@@ -124,3 +124,6 @@ E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\obj\Debug\netcoreap
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.RazorTargetAssemblyInfo.cache
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.csproj.CopyComplete
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.genruntimeconfig.cache
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\package-lock.json
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\package.json
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\public\manifest.json

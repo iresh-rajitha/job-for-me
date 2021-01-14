@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    interface IAdminService
+    interface IOrderDetailService
     {
-        List<Admin> GetAll();
-        void Add(Admin admin);
-        Admin Get(int id);
+        void Add(OrderDetail OrderDetail);
+        List<OrderDetail> GetAll();
+        OrderDetail GetOne(int id);
         void Delete(int id);
-        void Update(int id, Admin admin);
+        void Update(int id, OrderDetail OrderDetail);
     }
 }
