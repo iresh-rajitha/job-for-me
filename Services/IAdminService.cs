@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    interface IAdminService
+    public interface IAdminService
     {
         List<Admin> GetAll();
         void Add(Admin admin);

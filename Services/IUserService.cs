@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    interface IUserService
+    public interface IUserService
     {
         void Add(User User);
         List<User> GetAll();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    interface IOrderDetailService
+    public interface IOrderDetailService
     {
         void Add(OrderDetail OrderDetail);
         List<OrderDetail> GetAll();

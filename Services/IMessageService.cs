@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    interface IMessageService
+    public interface IMessageService
     {
         void Add(Message Message);
         List<Message> GetAll();

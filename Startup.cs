@@ -31,10 +31,10 @@ namespace OnlineFreelancinPlatform
             services.AddControllers();
 
             services.AddScoped<IAdminService, AdminService>();
-            //services.AddSingleton<IMessageService, MessageService>();
-            //services.AddSingleton<IOrderDetailService, OrderDetailService>();
-            //services.AddSingleton<IOrderService, OrderService>();
-            //services.AddSingleton<IUserService, UserService>();
+            services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IOrderDetailService, OrderDetailService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddDbContext<FreelancingDBContext>(
                 options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
