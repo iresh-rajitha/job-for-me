@@ -22,5 +22,6 @@ namespace OnlineFreelancinPlatform.Model
 
         public IList<Message> Messages { get; set; }
         public IList<Order> Orders { get; set; }
+
     }
 }

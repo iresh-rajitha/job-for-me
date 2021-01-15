@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj": {}
+    "H:\\Software Project\\job-for-me\\OnlineFreelancinPlatform.csproj": {}
   },
   "projects": {
-    "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj": {
+    "H:\\Software Project\\job-for-me\\OnlineFreelancinPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
+        "projectUniqueName": "H:\\Software Project\\job-for-me\\OnlineFreelancinPlatform.csproj",
         "projectName": "OnlineFreelancinPlatform",
-        "projectPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\obj\\",
+        "projectPath": "H:\\Software Project\\job-for-me\\OnlineFreelancinPlatform.csproj",
+        "packagesPath": "C:\\Users\\Haritha SG\\.nuget\\packages\\",
+        "outputPath": "H:\\Software Project\\job-for-me\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Haritha SG\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -77,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
