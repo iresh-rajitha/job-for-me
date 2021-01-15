@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace OnlineFreelancinPlatform.Model
     public class User
     {
         [Key]
+        //[DatabaseGenerated(DatabaseGenerationOption.Identity)]
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,5 +22,6 @@ namespace OnlineFreelancinPlatform.Model
 
         public IList<Message> Messages { get; set; }
         public IList<Order> Orders { get; set; }
+
     }
 }

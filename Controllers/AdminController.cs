@@ -14,9 +14,9 @@ namespace OnlineFreelancinPlatform.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private AdminService _adminService;
+        private IAdminService _adminService;
 
-        public AdminController(AdminService adminService)
+        public AdminController(IAdminService adminService)
         {
             _adminService = adminService;
         }

@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj": {}
+    "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj": {}
   },
   "projects": {
-    "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj": {
+    "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
+        "projectUniqueName": "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj",
         "projectName": "OnlineFreelancinPlatform",
-        "projectPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\obj\\",
+        "projectPath": "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj",
+        "packagesPath": "C:\\Users\\Win10-L\\.nuget\\packages\\",
+        "outputPath": "D:\\Semester 5\\Software Project\\Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Win10-L\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -26,7 +30,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,23 +41,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[5.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -65,15 +51,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
