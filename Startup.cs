@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OnlineFreelancinPlatform.Data;
+using OnlineFreelancinPlatform.Model;
 using OnlineFreelancinPlatform.Services;
 
 namespace OnlineFreelancinPlatform
@@ -39,6 +40,9 @@ namespace OnlineFreelancinPlatform
             services.AddDbContext<FreelancingDBContext>(
                 options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
                 ); ;
+
+            var jwtSection = Configuration.GetSection("JWTSettings");
+            services.Configure<JWTSettings>(jwtSection);
 
 
         }

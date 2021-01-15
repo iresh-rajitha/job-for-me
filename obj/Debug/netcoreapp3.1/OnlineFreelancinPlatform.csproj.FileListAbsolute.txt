@@ -127,3 +127,4 @@ E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\obj\Debug\netcoreap
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\package-lock.json
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\package.json
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\public\manifest.json
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
