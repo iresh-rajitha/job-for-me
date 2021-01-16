@@ -6,7 +6,7 @@ import SellerPage from "./components/pages/Seller";
 import OrderPage from "./components/pages/Order";
 import LoginPage from "./components/auth/Loginpage";
 import RegisterPage from "./components/auth/Registerpage";
-import Footer from "./components/layout/Footer";
+import Footer from "./components/layout/Footer"; 
 import "./App.css";
 
 const App = () => (
