@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { Login } from "../auth/Login"
 
 const Loginpage = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,8 @@ const Loginpage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("Success");
+    // console.log("Success");
+    Login(email, password);
   };
 
   return (
@@ -42,10 +44,10 @@ const Loginpage = () => {
               name="password"
               value={password}
               onChange={(e) => onChange(e)}
-              minLength="6"
+              minLength="3"
             />
           </div>
-          <input type="submit" className="btn btn-primary" value="Login" />
+          <input type="submit"  className="btn btn-primary" value="Login" />
         </form>
         <p className="my-1">
           Do not have an account? <Link to="/register">Sign Up</Link>

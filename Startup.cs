@@ -29,13 +29,16 @@ namespace OnlineFreelancinPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddCors();
             services.AddControllers();
+
 
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IOrderDetailService, OrderDetailService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             services.AddDbContext<FreelancingDBContext>(
                 options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
@@ -54,6 +57,8 @@ namespace OnlineFreelancinPlatform
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>options.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

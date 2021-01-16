@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using OnlineFreelancinPlatform.Model;
+using OnlineFreelancinPlatform.Services;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,50 +17,31 @@ namespace OnlineFreelancinPlatform.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[EnableCors(origins: "http://localhost:3000", headers: "*", methods: "get,post")]
     public class AccountController : ControllerBase
     {
         private readonly JWTSettings _jwtsettings;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IOptions<JWTSettings> jwtSettings)
+
+        public AccountController(IOptions<JWTSettings> jwtSettings, IAccountService accountService)
         {
             _jwtsettings = jwtSettings.Value;
+            _accountService = accountService;
         }
-        // GET: api/<AccountController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<AccountController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        [HttpGet("Login")]
-        public String Login()
-        {
-            // check valid use
-            return GenerateAccessToken(1);
-        }
+        
+        //[HttpGet("Login")]
+        //public String Login()
+        //{
+        //    // check valid use
+        //    return GenerateAccessToken(1);
+        //}
 
         // POST api/<AccountController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Login")]
+        public bool Post([FromBody] User User)
         {
-        }
-
-        // PUT api/<AccountController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return _accountService.isValidLogin(User);
         }
 
         private string GenerateAccessToken(int userId)

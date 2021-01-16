@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navigationbar = () => {
+  var islogged= false;
+
   return (
     <nav className="navbar ">
       <h1>
@@ -19,9 +21,14 @@ const Navigationbar = () => {
         <li>
           <Link to="/register">Register</Link>
         </li>
-        <li>
+        {
+          islogged &&
+          <li>
           <Link to="/login">Profile</Link>
         </li>
+        }
+          
+        
       </ul>
     </nav>
   );

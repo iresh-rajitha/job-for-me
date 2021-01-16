@@ -71,11 +71,9 @@ E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreap
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\OnlineFreelancinPlatform.runtimeconfig.dev.json
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\OnlineFreelancinPlatform.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\OnlineFreelancinPlatform.pdb
-E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Humanizer.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
-E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
