@@ -600,7 +600,7 @@ button {
   grid-column-end: 3;
 }
 
-
+<<<<<<< HEAD
 .column {
   float: right;
   width: 30%;
@@ -612,3 +612,5 @@ button {
   display: table;
   clear: both;
 }
+=======
+>>>>>>> front-grid
