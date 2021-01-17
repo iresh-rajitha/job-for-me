@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Login } from "../auth/Login"
+import { useHistory } from "react-router-dom";
 
 const Loginpage = () => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +19,20 @@ const Loginpage = () => {
     e.preventDefault();
     // console.log("Success");
     Login(email, password);
+
+
+    
+
+    // const { history } = this.props;
+    // history.push("../layout/Landingpage");
+    // this.props.history.push("../layout/Landingpage");
+    // return <Redirect to="../layout/Landingpage" push={true} />
   };
+
+  const MyComponent = () => {
+    history.push("../../App");
+  }
+
 
   return (
     <section className="container">
@@ -27,6 +42,7 @@ const Loginpage = () => {
           <i className="fas fa-user"></i> Sign Into Your Account
         </p>
         <form className="form" onSubmit={(e) => onSubmit(e)}>
+        {/* <form className="form" onSubmit={MyComponent}> */}
           <div className="form-group">
             <input
               type="email"

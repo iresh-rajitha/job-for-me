@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import {Register} from "../auth/Register"
 
 const Registerpage = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ const Registerpage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    Register(name, email, password);
+    console.log("Page");
 
     if (password !== password2) {
       console.log("Passwords do not match");
@@ -37,7 +40,7 @@ const Registerpage = () => {
       // } catch(err) {
       //   console.error(err.response.data);
       // }
-      console.log("Success");
+      
     }
   };
 
