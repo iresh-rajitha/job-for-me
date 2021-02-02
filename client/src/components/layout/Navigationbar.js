@@ -12,7 +12,7 @@ const Navigationbar = () => {
         </Link>
       </h1>
       <ul>
-      <li>
+        <li>
           <a href="/admin">Admin Panel</a>
         </li>
         <li>

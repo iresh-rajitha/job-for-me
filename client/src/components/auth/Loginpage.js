@@ -18,8 +18,8 @@ const Loginpage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     // console.log("Success");
-    Login(email, password);
-
+    // Login(email, password);
+    history.push("/buyer");
 
     
 

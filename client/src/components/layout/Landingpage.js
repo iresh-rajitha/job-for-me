@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <section className="landing">
-      <video
+      {/* <video
         src="/video/Person Working on an Apple MacBook.mp4"
         autoplay
         loop
         muted
-      ></video>
+      ></video> */}
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className="x-large">JobForMe</h1>

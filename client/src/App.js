@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavigationBar from "./components/layout/Navigationbar";
 import LandingPage from "./components/layout/Landingpage";
 import SellerPage from "./components/pages/Seller";
+import BuyerPage from "./components/pages/Buyer";
 import OrderPage from "./components/pages/Order";
 import AdminPage from "./components/pages/Admin";
 import LoginPage from "./components/auth/Loginpage";
@@ -21,6 +22,7 @@ const App = () => (
         <Route exact path="/seller" component={SellerPage} />
         <Route exact path="/order" component={OrderPage} />
         <Route exact path="/admin" component={AdminPage} />
+        <Route exact path="/buyer" component={BuyerPage} />
       </Switch>
       <Footer />
     </Fragment>

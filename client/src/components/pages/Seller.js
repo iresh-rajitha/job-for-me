@@ -23,7 +23,7 @@ const Seller = () => {
     <Fragment>
       <div>
         <div>
-          <video
+          {/* <video
             style={{
               alignItem: "center",
               justifyContent: "center",
@@ -35,7 +35,7 @@ const Seller = () => {
             loop
             muted
             src={Vid}
-          />
+          /> */}
         </div>
         <section className="container">
           <div>
