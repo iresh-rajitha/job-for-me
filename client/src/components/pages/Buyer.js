@@ -6,18 +6,14 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { green } from "@material-ui/core/colors";
-
+import {Dashboard, Menu,ShoppingCart, SupervisorAccount,Chat, Equalizer, Report } from '@material-ui/icons';
 const drawerWidth = 240;
  
 const useStyles = makeStyles((theme) => ({
@@ -63,24 +59,44 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const itemList =[
+    {
+      name:'Dashboard',
+      icon: <Dashboard/>
+    },
+    {
+      name:'Order',
+      icon: <ShoppingCart/>
+    },
+    {
+      name:'Message',
+      icon: <Chat/>
+    },
+    {
+      name:'Admin',
+      icon: <SupervisorAccount/>
+    },
+    {
+      name:'Stats',
+      icon: <Equalizer/>
+    },
+    {
+      name:'Report',
+      icon: <Report/>
+    }
+  ];
+
+  
+
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+        {itemList.map((item, index) => (
+          <ListItem button key={item.name}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.name} />
           </ListItem>
         ))}
       </List>
@@ -101,7 +117,7 @@ function ResponsiveDrawer(props) {
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
             Responsive drawer

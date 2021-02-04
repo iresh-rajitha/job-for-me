@@ -10,19 +10,39 @@ import LoginPage from "./components/auth/Loginpage";
 import RegisterPage from "./components/auth/Registerpage";
 import Footer from "./components/layout/Footer";
 import "./App.css";
+import Loginpage from "./components/auth/Loginpage";
 
+// const HandleSuccessFullAuth=(data)=>{
+//   console.log(data);
+// }
 const App = () => (
+
+
+
   <Router>
     <Fragment>
+
       <NavigationBar />
       <Route exact path="/" component={LandingPage} />
       <Switch>
-        <Route exact path="/register" component={RegisterPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/seller" component={SellerPage} />
-        <Route exact path="/order" component={OrderPage} />
-        <Route exact path="/admin" component={AdminPage} />
-        <Route exact path="/buyer" component={BuyerPage} />
+        <Route  path="/register" >
+          <RegisterPage/>
+        </Route>
+        <Route  path="/login"  >
+          <Loginpage />
+        </Route>
+        <Route  path="/seller"  >
+          <SellerPage/>
+        </Route>
+        <Route  path="/order" >
+          <OrderPage/>
+        </Route>
+        <Route  path="/admin" >
+          <AdminPage/>
+        </Route>
+        <Route  path="/buyer">
+          <BuyerPage/>
+        </Route>
       </Switch>
       <Footer />
     </Fragment>

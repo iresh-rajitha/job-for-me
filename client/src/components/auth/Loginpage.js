@@ -2,8 +2,21 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Login } from "../auth/Login"
 import { useHistory } from "react-router-dom";
+import axois from 'axios';
 
-const Loginpage = () => {
+const user= {
+  "FirstName": "Dhammika",
+  "LastName": "Piyumal",
+  "Address": "badulla",
+  "UserType": "Admin",
+  "Category": "Seller",
+  "Email": "dhammika.piyumal@gmail.com",
+  "Password": "dhammika123",
+  "Messages" : [],
+  "Orders":[]
+}
+
+const Loginpage = (props) => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
@@ -18,9 +31,44 @@ const Loginpage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     // console.log("Success");
-    // Login(email, password);
-    history.push("/buyer");
+    // const result=Login(email, password);
+    // console.log(result);
+    // history.push("/buyer");
+    // console.log("Test");
+    user.Email=email;
+    user.Password=password;
 
+    const body = JSON.stringify({ email, password });
+
+    try {
+         axois.post("https://localhost:44368/api/account/login", user)
+        .then(response=> {
+            if(response.data){
+                console.log(response);
+                if(response.data){
+                  history.push("/buyer");
+                  // this.props.HandleSuccessFullAuth(response.data);
+                }
+                console.log('Success');
+                // return 'success';
+            }else{
+                console.log('fail');
+                // alert("login failed");
+                // return 'fail';
+            }
+        });
+        // console.log(response);
+        // console.log("Success");
+        
+    
+        
+        //return res;
+
+    } catch (error) {
+        console.log(error);
+        console.log("errrrrrrrrrrrrrrrrrrr")
+        // return 'error';
+    }
     
 
     // const { history } = this.props;
@@ -28,11 +76,6 @@ const Loginpage = () => {
     // this.props.history.push("../layout/Landingpage");
     // return <Redirect to="../layout/Landingpage" push={true} />
   };
-
-  const MyComponent = () => {
-    history.push("../../App");
-  }
-
 
   return (
     <section className="container">

@@ -36,16 +36,17 @@ export const Login = async (email, password) => {
     const body = JSON.stringify({ email, password });
 
     try {
-        await axois.post("https://localhost:44368/api/account/login", user, config)
+        await axois.post("https://localhost:44368/api/account/login", user)
         .then(response=> {
             if(response.data){
-                // alert("logged In!");
-                // history.push("../pages/Seller");
-                // <Route exact path="/seller" component={SellerPage} />
-                // history.push("../pages/Seller");
+                console.log(response);
+                // history.push("/buyer");
                 console.log('Success');
+                // return 'success';
             }else{
-                alert("login failed");
+                console.log('fail');
+                // alert("login failed");
+                // return 'fail';
             }
         });
         // console.log(response);
@@ -58,6 +59,7 @@ export const Login = async (email, password) => {
     } catch (error) {
         console.log(error);
         console.log("errrrrrrrrrrrrrrrrrrr")
+        // return 'error';
     }
 
 };
