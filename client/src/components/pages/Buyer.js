@@ -14,9 +14,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {Dashboard, Menu,ShoppingCart, SupervisorAccount,Chat, Equalizer, Report } from '@material-ui/icons';
+import { Link, Route, Switch,useRouteMatch } from "react-router-dom";
+// import { Orderpage } from "./Buyer/Order-page";
 const drawerWidth = 240;
+
  
 const useStyles = makeStyles((theme) => ({
+  
   root: {
     display: 'flex',
   },
@@ -50,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResponsiveDrawer(props) {
+  let { path, url } = useRouteMatch();
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -62,27 +67,33 @@ function ResponsiveDrawer(props) {
   const itemList =[
     {
       name:'Dashboard',
-      icon: <Dashboard/>
+      icon: <Dashboard/>,
+      to: '/'
     },
     {
       name:'Order',
-      icon: <ShoppingCart/>
+      icon: <ShoppingCart/>,
+      to: `${url}/order`
     },
     {
       name:'Message',
-      icon: <Chat/>
+      icon: <Chat/>,
+      to: `${url}/message`
     },
     {
       name:'Admin',
-      icon: <SupervisorAccount/>
+      icon: <SupervisorAccount/>,
+      to: `${url}/admin`
     },
     {
       name:'Stats',
-      icon: <Equalizer/>
+      icon: <Equalizer/>,
+      to: `${url}/stats`
     },
     {
       name:'Report',
-      icon: <Report/>
+      icon: <Report/>,
+      to: `${url}/report`
     }
   ];
 
@@ -94,10 +105,13 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {itemList.map((item, index) => (
+          <Link to={item.to}>
           <ListItem button key={item.name}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
           </ListItem>
+          </Link>
+          
         ))}
       </List>
     </div>
@@ -120,7 +134,7 @@ function ResponsiveDrawer(props) {
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            You logged as Buyer
           </Typography>
         </Toolbar>
       </AppBar>
@@ -155,32 +169,30 @@ function ResponsiveDrawer(props) {
           </Drawer>
         </Hidden>
       </nav>
+      
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
-          Change Here by Routine <br></br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Switch>
+        <Route exact path={`${path}/`}>
+            Dashboard
+        </Route>
+        <Route exact path={`${path}/order`}>
+            {/* <Orderpage/> */}
+            Order
+        </Route>
+        <Route exact path={`${path}/message`}>
+            Message
+        </Route>
+        <Route exact path={`${path}/admin`}>
+            Admin
+        </Route>
+        <Route exact path={`${path}/stats`}>
+            Statics
+        </Route>
+        <Route exact path={`${path}/report`}>
+            Report
+        </Route>
+      </Switch>
       </main>
     </div>
   );

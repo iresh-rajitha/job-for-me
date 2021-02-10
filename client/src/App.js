@@ -40,7 +40,8 @@ const App = () => (
         <Route  path="/admin" >
           <AdminPage/>
         </Route>
-        <Route  path="/buyer">
+        <Route  path="/buyer"> 
+        {/* above component should be outside */}
           <BuyerPage/>
         </Route>
       </Switch>

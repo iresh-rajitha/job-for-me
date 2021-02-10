@@ -30,11 +30,6 @@ const Loginpage = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log("Success");
-    // const result=Login(email, password);
-    // console.log(result);
-    // history.push("/buyer");
-    // console.log("Test");
     user.Email=email;
     user.Password=password;
 
@@ -50,32 +45,18 @@ const Loginpage = (props) => {
                   // this.props.HandleSuccessFullAuth(response.data);
                 }
                 console.log('Success');
-                // return 'success';
             }else{
                 console.log('fail');
-                // alert("login failed");
-                // return 'fail';
             }
         });
-        // console.log(response);
-        // console.log("Success");
-        
-    
-        
-        //return res;
 
     } catch (error) {
         console.log(error);
-        console.log("errrrrrrrrrrrrrrrrrrr")
-        // return 'error';
+        console.log("errrrrrrrrrrrrrrrrrrr");
     }
-    
-
-    // const { history } = this.props;
-    // history.push("../layout/Landingpage");
-    // this.props.history.push("../layout/Landingpage");
-    // return <Redirect to="../layout/Landingpage" push={true} />
+    // history.push("/buyer");
   };
+  
 
   return (
     <section className="container">
