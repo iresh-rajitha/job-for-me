@@ -13,6 +13,9 @@ const Navigationbar = () => {
       </h1>
       <ul>
         <li>
+          <a href="/admin">Admin Panel</a>
+        </li>
+        <li>
           <a href="/order">Order a Service</a>
         </li>
         <li>

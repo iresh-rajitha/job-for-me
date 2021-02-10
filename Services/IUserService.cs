@@ -14,5 +14,6 @@ namespace OnlineFreelancinPlatform.Services
         void Delete(int id);
         void Update(int id, User User);
         public string GetHashString(string inputString);
+
     }
 }
