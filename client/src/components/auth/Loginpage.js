@@ -36,13 +36,13 @@ const Loginpage = (props) => {
     const body = JSON.stringify({ email, password });
 
     try {
-         axois.post("https://localhost:44368/api/account/login", user)
+         axois.post("https://localhost:44368/api/user", user)
         .then(response=> {
             if(response.data){
                 console.log(response);
                 if(response.data){
-                  history.push("/buyer");
-                  // this.props.HandleSuccessFullAuth(response.data);
+                  // history.push("/buyer");
+                  console.log(response);
                 }
                 console.log('Success');
             }else{

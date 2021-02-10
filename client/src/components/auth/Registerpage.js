@@ -1,7 +1,19 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import {Register} from "../auth/Register"
+import {Register} from "../auth/Register";
+import axois from 'axios';
 
+const user= {
+  "FirstName": "",
+  "LastName": "",
+  "Address": "",
+  "UserType": "",
+  "Category": "",
+  "Email": "",
+  "Password": "",
+  "Messages" : [],
+  "Orders":[]
+}
 const Registerpage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -40,6 +52,21 @@ const Registerpage = () => {
       // } catch(err) {
       //   console.error(err.response.data);
       // }
+
+        try {
+        user.FirstName=name;
+        user.Email=email;
+        user.Password=password;
+        axois.post("https://localhost:44368/api/user", user)
+        .then(response=> {
+            console.log(response);
+        });
+
+      } catch (error) {
+          console.log(error);
+          console.log("errrrrrrrrrrrrrrrrrrr");
+      }
+
       
     }
   };
