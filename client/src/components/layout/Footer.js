@@ -1,59 +1,67 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Logo from './partials/Logo';
-import FooterNav from './partials/FooterNav';
-import FooterSocial from './partials/FooterSocial';
+import React from "react";
+import "./Style/Footer.css";
+import { Link } from "react-router-dom";
 
-const propTypes = {
-  topOuterDivider: PropTypes.bool,
-  topDivider: PropTypes.bool
-}
-
-const defaultProps = {
-  topOuterDivider: false,
-  topDivider: false
-}
-
-const Footer = ({
-  className,
-  topOuterDivider,
-  topDivider,
-  ...props
-}) => {
-
-  const classes = classNames(
-    'site-footer center-content-mobile',
-    topOuterDivider && 'has-top-divider',
-    className
-  );
-
+function Footer() {
   return (
-    <footer
-      {...props}
-      className={classes}
-    >
-      <div className="container">
-        <div className={
-          classNames(
-            'site-footer-inner',
-            topDivider && 'has-top-divider'
-          )}>
-          <div className="footer-top space-between text-xxs">
-            <Logo />
-            <FooterSocial />
+    <div className="footer-container">
+      <section className="footer-subscription">
+        <p className="footer-subscription-heading">
+          JobForMe! For free! Earn Free!
+        </p>
+        <p className="footer-subscription-text">
+          You can contact our admin panel at any time of your preference!
+        </p>
+      </section>
+      <section class="social-media">
+        <div class="social-media-wrap">
+          <div class="footer-logo">
+            <Link to="/" className="social-logo">
+              JobForMe
+              <i class="fas fa-paper-plane" />
+            </Link>
           </div>
-          <div className="footer-bottom space-between text-xxs invert-order-desktop">
-            <FooterNav />
-            <div className="footer-copyright">Made by <a href="https://cruip.com">Cruip</a>. All right reserved</div>
+          <small class="website-rights">JobForMe © 2021</small>
+          <div class="social-icons">
+            <a
+              href="https://www.facebook.com/"
+              className="social-icon-link "
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook-f" />
+            </a>
+            <a
+              href=" https://www.instagram.com/accounts/login/"
+              class="social-icon-link instagram"
+              to="/"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram" />
+            </a>
+            <a
+              href="https://www.youtube.com/"
+              className="social-icon-link youtube"
+              target="_blank"
+              aria-label="Youtube"
+            >
+              <i class="fab fa-youtube" />
+            </a>
+            <a
+              href="https://twitter.com/login?lang=en/"
+              class="social-icon-link twitter"
+              to="/"
+              target="_blank"
+              aria-label="Twitter"
+            >
+              <i class="fab fa-twitter" />
+            </a>
           </div>
         </div>
-      </div>
-    </footer>
+      </section>
+    </div>
   );
 }
-
-Footer.propTypes = propTypes;
-Footer.defaultProps = defaultProps;
 
 export default Footer;
