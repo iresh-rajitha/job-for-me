@@ -41,8 +41,8 @@ const Loginpage = (props) => {
             if(response.data){
                 console.log(response);
                 if(response.data){
-                  // history.push("/buyer");
-                  console.log(response);
+                  history.push("/buyer");
+                  // console.log(response);
                 }
                 console.log('Success');
             }else{

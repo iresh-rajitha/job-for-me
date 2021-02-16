@@ -14,17 +14,6 @@ const user= {
   "Orders":[]
 }
 
-const user= {
-  "FirstName": "",
-  "LastName": "",
-  "Address": "",
-  "UserType": "",
-  "Category": "",
-  "Email": "",
-  "Password": "",
-  "Messages" : [],
-  "Orders":[]
-}
 const Registerpage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -40,8 +29,7 @@ const Registerpage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    Register(name, email, password);
-    console.log("Page");
+    //console.log("Page");
 
     if (password !== password2) {
       console.log("Passwords do not match");
@@ -70,15 +58,15 @@ const Registerpage = () => {
         axois.post("https://localhost:44368/api/user", user)
         .then(response=> {
             console.log(response);
+        })
+        .error(err=>{
+          
         });
 
       } catch (error) {
           console.log(error);
           console.log("errrrrrrrrrrrrrrrrrrr");
       }
-      }
-
-      
     }
   };
 
