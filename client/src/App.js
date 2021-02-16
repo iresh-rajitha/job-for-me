@@ -8,7 +8,7 @@ import OrderPage from "./components/pages/Order";
 import AdminPage from "./components/pages/Admin";
 import LoginPage from "./components/auth/Loginpage";
 import RegisterPage from "./components/auth/Registerpage";
-import Footer from "./components/layout/Footer";
+import Footer from "./components/layout/Footer"; 
 import "./App.css";
 import Loginpage from "./components/auth/Loginpage";
 

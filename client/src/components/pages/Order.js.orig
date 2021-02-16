@@ -5,6 +5,7 @@ import { Grid } from "@material-ui/core";
 const Order = () => {
   return (
     <section className="container">
+<<<<<<< HEAD
       <div className="column">
         <Grid container item xs={12} spacing={3}>
           <Card style={{ width: "18rem", height: "18rem" }}>
@@ -174,6 +175,10 @@ const Order = () => {
         </Grid>
       </div>
       <div className="column">
+=======
+      <div></div>
+      <Grid container spacing={1}>
+>>>>>>> front-grid
         <Grid container item xs={12} spacing={3}>
           <Card style={{ width: "18rem" }}>
             <Card.Img

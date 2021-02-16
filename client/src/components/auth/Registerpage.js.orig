@@ -1,5 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
+import {Register} from "../auth/Register";
+import axois from 'axios';
+=======
 import axois from 'axios';
 
 const user= {
@@ -13,6 +17,7 @@ const user= {
   "Messages" : [],
   "Orders":[]
 }
+>>>>>>> adminpanel
 
 const user= {
   "FirstName": "",
@@ -63,7 +68,12 @@ const Registerpage = () => {
       // } catch(err) {
       //   console.error(err.response.data);
       // }
+<<<<<<< HEAD
+
+        try {
+=======
       try {
+>>>>>>> adminpanel
         user.FirstName=name;
         user.Email=email;
         user.Password=password;
@@ -76,9 +86,11 @@ const Registerpage = () => {
           console.log(error);
           console.log("errrrrrrrrrrrrrrrrrrr");
       }
-      }
+<<<<<<< HEAD
 
       
+=======
+>>>>>>> adminpanel
     }
   };
 

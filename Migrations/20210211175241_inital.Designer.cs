@@ -10,8 +10,8 @@ using OnlineFreelancinPlatform.Data;
 namespace OnlineFreelancinPlatform.Migrations
 {
     [DbContext(typeof(FreelancingDBContext))]
-    [Migration("20210113184730_initialization")]
-    partial class initialization
+    [Migration("20210211175241_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace OnlineFreelancinPlatform.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Admin", b =>
                 {
