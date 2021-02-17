@@ -1,20 +1,20 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { Login } from "../auth/Login"
+import { Login } from "../auth/Login";
 import { useHistory } from "react-router-dom";
-import axois from 'axios';
+import axois from "axios";
 
-const user= {
-  "FirstName": "Dhammika",
-  "LastName": "Piyumal",
-  "Address": "badulla",
-  "UserType": "Admin",
-  "Category": "Seller",
-  "Email": "dhammika.piyumal@gmail.com",
-  "Password": "dhammika123",
-  "Messages" : [],
-  "Orders":[]
-}
+const user = {
+  FirstName: "Dhammika",
+  LastName: "Piyumal",
+  Address: "badulla",
+  UserType: "Admin",
+  Category: "Seller",
+  Email: "dhammika.piyumal@gmail.com",
+  Password: "dhammika123",
+  Messages: [],
+  Orders: [],
+};
 
 const Loginpage = (props) => {
   const history = useHistory();
@@ -30,33 +30,31 @@ const Loginpage = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    user.Email=email;
-    user.Password=password;
+    user.Email = email;
+    user.Password = password;
+    Login(email, password);
 
     const body = JSON.stringify({ email, password });
 
     try {
-         axois.post("https://localhost:44368/api/user", user)
-        .then(response=> {
-            if(response.data){
-                console.log(response);
-                if(response.data){
-                  // history.push("/buyer");
-                  console.log(response);
-                }
-                console.log('Success');
-            }else{
-                console.log('fail');
-            }
-        });
-
+      axois.post("https://localhost:5001/api/user", user).then((response) => {
+        if (response.data) {
+          console.log(response);
+          if (response.data) {
+            // history.push("/buyer");
+            console.log(response);
+          }
+          console.log("Success");
+        } else {
+          console.log("fail");
+        }
+      });
     } catch (error) {
-        console.log(error);
-        console.log("errrrrrrrrrrrrrrrrrrr");
+      console.log(error);
+      console.log("errrrrrrrrrrrrrrrrrrr");
     }
     // history.push("/buyer");
   };
-  
 
   return (
     <section className="container">
@@ -66,7 +64,7 @@ const Loginpage = (props) => {
           <i className="fas fa-user"></i> Sign Into Your Account
         </p>
         <form className="form" onSubmit={(e) => onSubmit(e)}>
-        {/* <form className="form" onSubmit={MyComponent}> */}
+          {/* <form className="form" onSubmit={MyComponent}> */}
           <div className="form-group">
             <input
               type="email"
@@ -87,7 +85,7 @@ const Loginpage = (props) => {
               minLength="3"
             />
           </div>
-          <input type="submit"  className="btn btn-primary" value="Login" />
+          <input type="submit" className="btn btn-primary" value="Login" />
         </form>
         <p className="my-1">
           Do not have an account? <Link to="/register">Sign Up</Link>
