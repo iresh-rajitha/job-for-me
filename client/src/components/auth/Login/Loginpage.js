@@ -1,24 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { Login } from "../auth/Login";
-import { useHistory } from "react-router-dom";
-import axois from "axios";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const user = {
-  FirstName: "Dhammika",
-  LastName: "Piyumal",
-  Address: "badulla",
-  UserType: "Admin",
-  Category: "Seller",
-  Email: "dhammika.piyumal@gmail.com",
-  Password: "dhammika123",
-  Messages: [],
-  Orders: [],
-};
+import { login } from "./Login";
 
-const Loginpage = (props) => {
-  const history = useHistory();
-  const [formData, setFormData] = useState({
+const Loginpage = ({ login, isAuthenticated, user }) => {
+  const [formData, setFromData] = useState({
     email: "",
     password: "",
   });
@@ -26,35 +14,18 @@ const Loginpage = (props) => {
   const { email, password } = formData;
 
   const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFromData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    user.Email = email;
-    user.Password = password;
-    Login(email, password);
 
-    const body = JSON.stringify({ email, password });
-
-    try {
-      axois.post("https://localhost:5001/api/user", user).then((response) => {
-        if (response.data) {
-          console.log(response);
-          if (response.data) {
-            // history.push("/buyer");
-            console.log(response);
-          }
-          console.log("Success");
-        } else {
-          console.log("fail");
-        }
-      });
-    } catch (error) {
-      console.log(error);
-      console.log("errrrrrrrrrrrrrrrrrrr");
-    }
-    // history.push("/buyer");
+    login(email, password);
   };
+
+  if (isAuthenticated) {
+    if (user.role === "Customer") return <Redirect to="/order" />;
+    else console.log(user.role);
+  }
 
   return (
     <section className="container">
@@ -95,4 +66,15 @@ const Loginpage = (props) => {
   );
 };
 
-export default Loginpage;
+Loginpage.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  user: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps, { login })(Loginpage);

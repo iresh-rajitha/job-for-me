@@ -239,6 +239,10 @@ img {
   margin: 1.2rem 0;
 }
 
+.form .form-body {
+  margin: 2.8rem 0;
+}
+
 .form .form-text {
   display: block;
   margin-top: 0.3rem;
@@ -577,8 +581,7 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
-/* Code goes below */
-  
+  /* Code goes below */
 }
 .grid-container {
   display: grid;
@@ -599,4 +602,3 @@ button {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-

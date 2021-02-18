@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import ContactUs from "./components/auth/Email";
-import Contact from "./components/auth/Contact";
+import Loginpage from "./components/auth/Login/Loginpage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContactUs />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
