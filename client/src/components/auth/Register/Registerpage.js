@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { setAlert } from "./alert";
 import { Register } from "./Register.js";
+import { sendOTPmail } from "./OTPmail";
 
 const Registerpage = () => {
   const [formData, setFromData] = useState({
@@ -22,9 +23,12 @@ const Registerpage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    sendOTPmail(email, name);
+
     if (password !== confirmPassword)
       setAlert("Passwords do not match", "danger");
-    else Register(name, email, password, confirmPassword);
+    else sendOTPmail(email);
+    // else Register(name, email, password, confirmPassword);
   };
 
   return (
@@ -73,7 +77,7 @@ const Registerpage = () => {
             <input
               type="password"
               placeholder="Confirm Password"
-              name="password2"
+              name="confirmPassword"
               value={confirmPassword}
               onChange={(e) => onChange(e)}
               minLength="6"

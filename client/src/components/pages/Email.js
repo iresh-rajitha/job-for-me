@@ -3,11 +3,12 @@ import emailjs from "emailjs-com";
 
 // import "./ContactUs.css";
 
-const Email = (subject, email, body) => {
+const Email = (subject, email, body, signature) => {
   var templateParams = {
     subject: subject,
     email: email,
     body: body,
+    signature: signature,
   };
 
   const serviceID = "service_dod96eb";

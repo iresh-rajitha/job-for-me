@@ -10,9 +10,10 @@ const ContactUs = () => {
     subject: "",
     email: "",
     body: "",
+    signature: "",
   });
 
-  const { subject, email, body } = formData;
+  const { subject, email, body, signature } = formData;
 
   const onChange = (e) =>
     setFromData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +21,7 @@ const ContactUs = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    sendEmail(subject, email, body);
+    sendEmail(subject, email, body, signature);
   };
 
   return (
@@ -47,7 +48,7 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className="form-body">
+        <div className="form-groud">
           <input
             type="text"
             placeholder="Enter your Message Body"
@@ -55,6 +56,16 @@ const ContactUs = () => {
             value={body}
             onChange={(e) => onChange(e)}
             minLength="3"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Signature"
+            name="signature"
+            value={signature}
+            onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Send" />

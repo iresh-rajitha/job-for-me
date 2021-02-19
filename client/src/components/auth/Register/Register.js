@@ -1,5 +1,7 @@
 import axois from "axios";
 
+//import sendOTPmail from "./OTPmail";
+
 import { REGISTER_FAIL, REGISTER_SUCCESS } from "./types";
 import { setAlert } from "./alert";
 
@@ -13,6 +15,8 @@ export const Register = (name, email, password, confirmPassword) => async (
   const body = JSON.stringify({ name, email, password, confirmPassword });
 
   try {
+    //sendOTPmail(email);
+
     const res = await axois.post(
       "https://localhost:5001/api/LogSignUp/signup/customer",
       body,
