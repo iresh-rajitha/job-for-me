@@ -17,7 +17,7 @@ namespace OnlineFreelancinPlatform.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Admin", b =>
                 {
