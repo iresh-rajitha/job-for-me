@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navigationbar = () => {
-  var islogged= false;
+  var islogged = false;
 
   return (
     <nav className="navbar ">
@@ -24,14 +24,14 @@ const Navigationbar = () => {
         <li>
           <Link to="/register">Register</Link>
         </li>
-        {
-          islogged &&
-          <li>
-          <Link to="/login">Profile</Link>
+        <li>
+          <Link to="/contact">Contact Us</Link>
         </li>
-        }
-          
-        
+        {islogged && (
+          <li>
+            <Link to="/login">Profile</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Vid from "./cover_video.mp4";
 
 const Seller = () => {
   //   const [formData, setFormData] = useState({
