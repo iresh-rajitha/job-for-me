@@ -10,8 +10,8 @@ using OnlineFreelancinPlatform.Data;
 namespace OnlineFreelancinPlatform.Migrations
 {
     [DbContext(typeof(FreelancingDBContext))]
-    [Migration("20210113184730_initialization")]
-    partial class initialization
+    [Migration("20210218123154_init-commit")]
+    partial class initcommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace OnlineFreelancinPlatform.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Admin", b =>
                 {
@@ -80,8 +80,20 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.Property<int?>("AdminID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderDetailID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -89,15 +101,12 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("rating")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderID");
 
                     b.HasIndex("AdminID");
+
+                    b.HasIndex("OrderDetailID")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -117,13 +126,10 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.HasKey("OrderDetailID");
-
-                    b.HasIndex("OrderID")
-                        .IsUnique();
 
                     b.ToTable("OrderDetails");
                 });
@@ -186,24 +192,21 @@ namespace OnlineFreelancinPlatform.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("AdminID");
 
+                    b.HasOne("OnlineFreelancinPlatform.Model.OrderDetail", "OrderDetail")
+                        .WithOne("Order")
+                        .HasForeignKey("OnlineFreelancinPlatform.Model.Order", "OrderDetailID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("OnlineFreelancinPlatform.Model.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Admin");
 
+                    b.Navigation("OrderDetail");
+
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("OnlineFreelancinPlatform.Model.OrderDetail", b =>
-                {
-                    b.HasOne("OnlineFreelancinPlatform.Model.Order", "Order")
-                        .WithOne("OrderDetail")
-                        .HasForeignKey("OnlineFreelancinPlatform.Model.OrderDetail", "OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Admin", b =>
@@ -213,9 +216,9 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("OnlineFreelancinPlatform.Model.Order", b =>
+            modelBuilder.Entity("OnlineFreelancinPlatform.Model.OrderDetail", b =>
                 {
-                    b.Navigation("OrderDetail");
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.User", b =>

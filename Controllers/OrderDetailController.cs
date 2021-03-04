@@ -36,7 +36,7 @@ namespace OnlineFreelancinPlatform.Controllers
 
         // POST api/<OrderDetailController>
         [HttpPost]
-        public void Post([FromBody] OrderDetail orderDetail)
+        public void Post([FromForm] OrderDetail orderDetail)
         {
             _orderDetailService.Add(orderDetail);
         }

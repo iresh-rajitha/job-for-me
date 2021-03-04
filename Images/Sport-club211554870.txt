@@ -1,0 +1,2 @@
+rose-red: #f51c53
+light blue: #4fbdb5

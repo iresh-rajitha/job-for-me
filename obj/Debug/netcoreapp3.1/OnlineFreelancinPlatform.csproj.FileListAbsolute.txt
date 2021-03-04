@@ -126,3 +126,5 @@ E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreap
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\package.json
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\client\public\manifest.json
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Humanizer.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
