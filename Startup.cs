@@ -59,11 +59,11 @@ namespace OnlineFreelancinPlatform
 
             // services.AddSingleton<IJwtAuthenticationManager>(new JwtAuthenticationManager(key));
 
-            services.AddAuthentication("Basic")
-                .AddScheme<BasicAuthenticationOptions, CustomAuthenticationHandler>
-                ("Basic", null);
+            //services.AddAuthentication("Basic")
+            //    .AddScheme<BasicAuthenticationOptions, CustomAuthenticationHandler>
+            //    ("Basic", null);
             
-            services.AddSingleton<ICustomAuthenticationManager, CustomAuthenticationManager>();
+            //services.AddSingleton<ICustomAuthenticationManager, CustomAuthenticationManager>();
 
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IMessageService, MessageService>();

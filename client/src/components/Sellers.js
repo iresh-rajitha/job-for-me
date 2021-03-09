@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../actions/sellers";
+import * as actions from "../actions/sellers";
 import {
   Grid,
   Paper,
@@ -14,6 +14,7 @@ import {
   ButtonGroup,
   Button,
 } from "@material-ui/core";
+import SellerForm from "./SellerForm";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
@@ -49,6 +50,9 @@ const Sellers = ({ classes, ...props }) => {
     <section className="container">
       <Paper className={classes.paper} elevation={3}>
         <Grid>
+          <Grid item xs={6}>
+            <SellerForm {...{ currentId, setCurrentId }} />
+          </Grid>
           <Grid item xs={6}>
             <TableContainer>
               <Table>
