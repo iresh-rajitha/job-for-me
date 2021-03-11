@@ -19,6 +19,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
 
+import Popup from "./Popup";
+
 const styles = (theme) => ({
   root: {
     "& .MuiTableCell-head": {
@@ -35,6 +37,7 @@ const Sellers = ({ classes, ...props }) => {
   const { addToast } = useToasts();
 
   const [currentId, setCurrentId] = useState(0);
+  const [openPopup, setOpenPopup] = useState(false);
 
   useEffect(() => {
     props.fetchAllSellers();
@@ -46,13 +49,14 @@ const Sellers = ({ classes, ...props }) => {
         addToast("Deleted successfully", { appearance: "info" })
       );
   };
+
   return (
     <section className="container">
       <Paper className={classes.paper} elevation={3}>
         <Grid>
-          <Grid item xs={6}>
+          {/* <Grid item xs={6}>
             <SellerForm {...{ currentId, setCurrentId }} />
-          </Grid>
+          </Grid> */}
           <Grid item xs={6}>
             <TableContainer>
               <Table>
@@ -76,13 +80,16 @@ const Sellers = ({ classes, ...props }) => {
                                 color="primary"
                                 onClick={() => {
                                   setCurrentId(record.userId);
+                                  setOpenPopup(true);
                                 }}
                               />
                             </Button>
                             <Button>
                               <DeleteIcon
                                 color="secondary"
-                                onClick={() => onDelete(record.userId)}
+                                onClick={() => {
+                                  onDelete(record.userId);
+                                }}
                               />
                             </Button>
                           </ButtonGroup>
@@ -94,6 +101,13 @@ const Sellers = ({ classes, ...props }) => {
               </Table>
             </TableContainer>
           </Grid>
+          <Popup
+            title="Employee Form"
+            openPopup={openPopup}
+            setOpenPopup={setOpenPopup}
+          >
+            <SellerForm {...{ currentId, setCurrentId, setOpenPopup }} />
+          </Popup>
         </Grid>
       </Paper>
     </section>

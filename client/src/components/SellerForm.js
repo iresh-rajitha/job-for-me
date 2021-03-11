@@ -75,7 +75,12 @@ const SellersForm = ({ classes, ...props }) => {
     setErrors,
     handleInputChange,
     resetForm,
-  } = useForm(initialFieldValues, validate, props.setCurrentId);
+  } = useForm(
+    initialFieldValues,
+    validate,
+    props.setCurrentId,
+    props.setOpenPopup
+  );
 
   //material-ui select
   const inputLabel = React.useRef(null);
@@ -91,8 +96,11 @@ const SellersForm = ({ classes, ...props }) => {
         resetForm();
         addToast("Submitted successfully", { appearance: "success" });
       };
-      if (props.currentId === 0) props.createSeller(values, onSuccess);
-      else props.updateSeller(props.currentId, values, onSuccess);
+      if (props.currentId === 0) {
+        props.createSeller(values, onSuccess);
+      } else {
+        props.updateSeller(props.currentId, values, onSuccess);
+      }
     }
   };
 
@@ -198,13 +206,13 @@ const SellersForm = ({ classes, ...props }) => {
             >
               Submit
             </Button>
-            <Button
+            {/* <Button
               variant="contained"
               className={classes.smMargin}
               onClick={resetForm}
             >
               Reset
-            </Button>
+            </Button> */}
           </div>
         </Grid>
       </Grid>

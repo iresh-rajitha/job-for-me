@@ -15,6 +15,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 import Sellers from "./components/Sellers";
+import EmployeeList from "./components/EmployeeList";
 import { ToastProvider } from "react-toast-notifications";
 
 const App = () => (
@@ -42,6 +43,9 @@ const App = () => (
             </Route>
             <Route path="/contact">
               <ContactUs />
+            </Route>
+            <Route path="/employee">
+              <EmployeeList />
             </Route>
             <Route path="/buyer">
               {/* above component should be outside */}
