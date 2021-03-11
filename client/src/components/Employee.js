@@ -1,4 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import {
+  TextField,
+  withStyles,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormHelperText,
+} from "@material-ui/core";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+    margin: 0,
+    padding: 10,
+  },
+});
 
 const defaultImageSrc = "https://www.w3schools.com/w3images/avatar2.png";
 
@@ -12,6 +38,8 @@ const initialFieldValues = {
 };
 
 export default function Employee(props) {
+  const classes = useStyles();
+
   const { addOrEdit, recordForEdit } = props;
 
   const [values, setValues] = useState(initialFieldValues);
@@ -87,7 +115,58 @@ export default function Employee(props) {
         <p className="lead">An Employee</p>
       </div> */}
       <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
-        <div className="card">
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={values.imageSrc}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Add an Employee
+              </Typography>
+              <TextField
+                type="file"
+                variant="standard"
+                accept="image/*"
+                className={"form-control-file" + applyErrorClass("imageSrc")}
+                onChange={showPreview}
+                id="image-uploader"
+              />
+              <br />
+              <br />
+
+              <TextField
+                variant="outlined"
+                className={"form-control" + applyErrorClass("employeeName")}
+                placeholder="Employee Name"
+                name="employeeName"
+                value={values.employeeName}
+                onChange={handleInputChange}
+              />
+              <br />
+              <br />
+
+              <TextField
+                variant="outlined"
+                className="form-control"
+                placeholder="Occupation"
+                name="occupation"
+                value={values.occupation}
+                onChange={handleInputChange}
+              />
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button type="submit" className="btn btn-light">
+              Submit
+            </Button>
+          </CardActions>
+        </Card>
+        {/* <div className="card">
           <img src={values.imageSrc} className="card-img-top" />
           <div className="card-body">
             <div className="form-group">
@@ -123,7 +202,7 @@ export default function Employee(props) {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </form>
     </>
   );

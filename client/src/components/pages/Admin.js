@@ -62,6 +62,10 @@ const Sellers = ({ classes, ...props }) => {
   return (
     <section className="container">
       <Grid container spacing={1}>
+        <br />
+        <br />
+        <br />
+        <br />
         <Link to="/seller">
           <Card className={classes.card}>
             <CardActionArea>

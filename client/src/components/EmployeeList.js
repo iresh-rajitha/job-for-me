@@ -7,11 +7,26 @@ import Button from "@material-ui/core/Button";
 
 import Popup from "./Popup";
 
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
     },
+  },
+  table: {
+    minWidth: 650,
+    padding: "0px 8px",
+  },
+  tableRow: {
+    height: 30,
   },
 }));
 
@@ -124,7 +139,7 @@ export default function EmployeeList() {
         <Employee addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
       </div> */}
         <div className="col-md-8">
-          <table>
+          {/* <table>
             <tbody>
               {
                 // tr > 3 td
@@ -145,7 +160,37 @@ export default function EmployeeList() {
                 ))
               }
             </tbody>
-          </table>
+          </table> */}
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableBody>
+                {
+                  // tr > 3 td
+                  [...Array(Math.ceil(employeeList.length / 3))].map((e, i) => (
+                    <TableRow key={i} className={classes.tableRow}>
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        style={{ width: 100 }}
+                      >
+                        {imageCard(employeeList[3 * i])}
+                      </TableCell>
+                      <TableCell align="right" style={{ width: 100 }}>
+                        {employeeList[3 * i + 1]
+                          ? imageCard(employeeList[3 * i + 1])
+                          : null}
+                      </TableCell>
+                      <TableCell align="right" style={{ width: 100 }}>
+                        {employeeList[3 * i + 2]
+                          ? imageCard(employeeList[3 * i + 2])
+                          : null}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                }
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
         <Popup
           title="Employee Form"
