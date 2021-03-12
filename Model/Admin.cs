@@ -10,6 +10,7 @@ namespace OnlineFreelancinPlatform.Model
     {
         [Key]
         public int AdminID { get; set; }
+     
         public String AdminName { get; set; }
 
 

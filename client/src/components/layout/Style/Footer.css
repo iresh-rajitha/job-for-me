@@ -92,6 +92,15 @@
 .footer-input::placeholder {
   color: #b1b1b1;
 }
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.comboBoxOption {
+  padding: 5px;
+}
+
 
 /* Social Icons */
 .social-icon-link {

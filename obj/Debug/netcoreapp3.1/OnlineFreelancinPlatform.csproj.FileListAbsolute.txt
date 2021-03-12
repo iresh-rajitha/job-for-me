@@ -195,3 +195,6 @@ D:\Semester 5\Software Project\Project\obj\Debug\netcoreapp3.1\scopedcss\bundle\
 D:\Semester 5\Software Project\Project\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.RazorTargetAssemblyInfo.cache
 D:\Semester 5\Software Project\Project\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.csproj.CopyComplete
 D:\Semester 5\Software Project\Project\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.genruntimeconfig.cache
+D:\Semester 5\Software Project\Project\bin\Debug\netcoreapp3.1\client\reactfirstwebsite\package-lock.json
+D:\Semester 5\Software Project\Project\bin\Debug\netcoreapp3.1\client\reactfirstwebsite\package.json
+D:\Semester 5\Software Project\Project\bin\Debug\netcoreapp3.1\client\reactfirstwebsite\public\manifest.json

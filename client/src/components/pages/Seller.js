@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import Vid from "./cover_video.mp4";
 
+//import "./Footer.css";
+
 const Seller = () => {
   //   const [formData, setFormData] = useState({
   //     name: "",
@@ -18,6 +20,10 @@ const Seller = () => {
     e.preventDefault();
     console.log("Success");
   };
+
+
+  
+  
 
   return (
     <Fragment>
@@ -86,14 +92,46 @@ const Seller = () => {
                     required
                   />
                 </div>
+
+
                 <div className="form-group">
                   <input
                     type="text"
                     placeholder="Work Time: (Select Full Time or Part Time)"
                     name="workTime"
                     required
-                  />
+                    />
+
+                   {/*} <p>
+                            The selected option -{" "}
+                            <span style={{ fontWeight: "bold" }}>
+                              {" "}
+                              {selectedOption.length > 0 ? selectedOption : "None"}
+                            </span>
+        </p>*/}
+                        {/*<ComboBox
+                        options={options}
+                        placeholder="choose country"
+                        defaultIndex={4}
+                        optionsListMaxHeight={300}
+                        style={{
+                          width: "350px",
+                          margin: "0 auto",
+                          marginTop: "50px"
+                        }}
+                        focusColor="#20C374"
+                        renderOptions={(option) => (
+                          <div className="comboBoxOption">{option}</div>
+                        )}
+                        onSelect={(option) => setSelectedOption(option)}
+                        onChange={(event) => console.log(event.target.value)}
+                        enableAutocomplete
+                        onOptionsChange={(option) => setHighlightedOption(option)}
+                        />*/}
+              
                 </div>
+
+                
                 <div className="form-group">
                   <input
                     type="text"

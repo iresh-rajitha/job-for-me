@@ -92,6 +92,9 @@ const Loginpage = (props) => {
         <p className="my-1">
           Do not have an account? <Link to="/register">Sign Up</Link>
         </p>
+        <p className="my-2">
+          Do not have an account? <Link to="/register">Sign Up</Link>
+        </p>
       </Fragment>
     </section>
   );

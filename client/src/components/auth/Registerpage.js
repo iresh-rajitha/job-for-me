@@ -2,6 +2,8 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import axois from 'axios';
 
+ 
+
 const user= {
   "FirstName": "",
   "LastName": "",
@@ -14,14 +16,19 @@ const user= {
   "Orders":[]
 }
 
+
+
 const Registerpage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
+   
   });
 
+ 
+  //var {passworderror} = "";
   const { name, email, password, password2 } = formData;
 
   const onChange = (e) =>
@@ -31,8 +38,12 @@ const Registerpage = () => {
     e.preventDefault();
     //console.log("Page");
 
+    
+
     if (password !== password2) {
       console.log("Passwords do not match");
+      //passworderror = "Passwords do not match";
+
     } else {
       // const newUser = {
       //   name,
@@ -58,17 +69,20 @@ const Registerpage = () => {
         axois.post("https://localhost:44368/api/user", user)
         .then(response=> {
             console.log(response);
+            console.log("Successful");
         })
         .error(err=>{
-          
-        });
 
-      } catch (error) {
+        });
+      }catch (error) {
           console.log(error);
           console.log("errrrrrrrrrrrrrrrrrrr");
+          //return <Suberror/>;
       }
     }
   };
+
+
 
   return (
     <section className="container">
@@ -121,15 +135,21 @@ const Registerpage = () => {
               onChange={(e) => onChange(e)}
               minLength="6"
             />
-          </div>
+           </div>
           <input type="submit" className="btn btn-primary" value="Register" />
+         
+          
         </form>
+        
+          
         <p className="my-1">
           Already have an account? <Link to="/login">Sign In</Link>
         </p>
       </Fragment>
     </section>
   );
-};
+  
 
+ 
+};
 export default Registerpage;
