@@ -128,3 +128,9 @@ E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreap
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Humanizer.dll
 E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\libman.json
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\MailKit.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\MimeKit.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\SendGrid.dll
+E:\Project\OnlineFreelancinPlatform\OnlineFreelancinPlatform\bin\Debug\netcoreapp3.1\StarkbankEcdsa.dll

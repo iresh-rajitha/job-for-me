@@ -32,7 +32,6 @@ const fields =
 ];
 
 const initialValues={
-  orderDetailID: 0,
   description: "",
   file: null,
   field: fields[0],
@@ -47,13 +46,16 @@ function AddUpdateOrderPopUp(props) {
     const [fieldValue, setFieldValue] = React.useState(fields[0]);
     const [inputValue, setInputValue] = React.useState('');
 
-    const {orderdetailID,description,file,field,price,fileName} = formData;
+    const {description,file,field,price,fileName} = formData;
 
     useEffect(() => {
       // setRows(rows=>props.tableData);
-      // console.log(props.order);
-      setFormData(order);
-    },[order]);
+      console.log(props.order.description);
+      // setFormData({...formData, [description] : props.match.params.description})
+      // description=this.props.description;
+      // field=this.props.field;
+      // price=this.props.price;
+    });
 
     const onChange = (e) =>{
       const{name,value} = e.target;
@@ -80,20 +82,14 @@ function AddUpdateOrderPopUp(props) {
     }
     
     const submit = () => {
-      console.log(formData);
       const fd= new FormData();
-      fd.append('orderdetailID',formData.orderDetailID);
       fd.append('Description',formData.description);
       fd.append('File',formData.file);
       fd.append('Field',formData.field);
       fd.append('Price',formData.price);
       fd.append('FileName',formData.fileName);
 
-      console.log(fd.get('orderdetailID'));
-      console.log(fd.get('Description'));
-      // console.log(fd);
-      if(fd.get('orderdetailID') ==0){
-        axios.post('https://localhost:5001/api/OrderDetail',fd)
+      axios.post('https://localhost:5001/api/OrderDetail',fd)
       .then(res=>{
         console.log(res);
         handleClose();
@@ -101,18 +97,6 @@ function AddUpdateOrderPopUp(props) {
       .catch(err=>{
         console.log(err);
       });
-      }else{
-        // console.log(formData.orderdetailID);
-        axios.put('https://localhost:5001/api/OrderDetail/'+ fd.get('orderdetailID') ,fd)
-        .then(res=>{
-          console.log(res);
-          handleClose();
-        })
-        .catch(err=>{
-          console.log(err);
-        });
-      }
-      
     }
     
   
@@ -126,52 +110,12 @@ function AddUpdateOrderPopUp(props) {
               id="outlined-multiline-static"
               value={description}
               name="description"
-              label="Description"
+              label="Field Name"
               onChange={(e) => onChange(e)}
-              multiline
-              rows={3}
               variant="outlined"
             />
           </Grid>
-          <Grid className={styles.marging_b_15px}>
-            {/* <input 
-            type="file"
-            value={file}
-            name="file"
-            variant="outlined"
-            onChange={(e) => handleFile(e)}
-            /> */}
-          </Grid>
-
-          <Grid className={styles.marging_b_15px}>
-          <Autocomplete
-            value={fieldValue}
-            onChange={(event, newValue) => {
-              setFieldValue(newValue);
-            }}
-            inputValue={inputValue}
-            onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue);
-            }}
-            id="controllable-states-demo"
-            options={fields}
-            style={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Field" variant="outlined" />}
-          />
-          </Grid>
-
-          <Grid className={styles.marging_b_15px}>
-            <FormControl fullWidth className={classes.margin}>
-              <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
-              <Input
-                id="standard-adornment-amount"
-                value={price}
-                name="price"
-                onChange={(e) => onChange(e)}
-                startAdornment={<InputAdornment position="start">$</InputAdornment>}
-              />
-            </FormControl>
-          </Grid>
+          
           
           <DialogActions>
           <Button onClick={handleClose} variant="contained">

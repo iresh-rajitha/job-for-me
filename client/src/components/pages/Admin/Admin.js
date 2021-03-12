@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {Dashboard, Menu,ShoppingCart, SupervisorAccount,Chat, Equalizer, Report } from '@material-ui/icons';
 import { Link, Route, Switch,useRouteMatch } from "react-router-dom";
-import Orderpage from "./Buyer/Orderpage";
+import Orderpage from "../Buyer/Order/Orderpage";
+import FieldPage from "../Admin/Field/FieldPage"
 const drawerWidth = 240;
 
  
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ResponsiveDrawer(props) {
+function Admin(props) {
   let { path, url } = useRouteMatch();
   const { window } = props;
   const classes = useStyles();
@@ -65,13 +66,13 @@ function ResponsiveDrawer(props) {
   };
 
   const itemList =[
+    // {
+    //   name:'Dashboard',
+    //   icon: <Dashboard/>,
+    //   to: '/'
+    // },
     {
-      name:'Dashboard',
-      icon: <Dashboard/>,
-      to: '/'
-    },
-    {
-      name:'Order',
+      name:'Place Order',
       icon: <ShoppingCart/>,
       to: `${url}/order`
     },
@@ -81,9 +82,9 @@ function ResponsiveDrawer(props) {
       to: `${url}/message`
     },
     {
-      name:'Admin',
+      name:'Fields',
       icon: <SupervisorAccount/>,
-      to: `${url}/admin`
+      to: `${url}/field`
     },
     {
       name:'Stats',
@@ -134,7 +135,7 @@ function ResponsiveDrawer(props) {
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
-            You logged as Buyer
+            You logged as Admin
           </Typography>
         </Toolbar>
       </AppBar>
@@ -182,8 +183,8 @@ function ResponsiveDrawer(props) {
         <Route exact path={`${path}/message`}>
             Message
         </Route>
-        <Route exact path={`${path}/admin`}>
-            Admin
+        <Route exact path={`${path}/field`}>
+            <FieldPage/>
         </Route>
         <Route exact path={`${path}/stats`}>
             Statics
@@ -197,7 +198,7 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
+Admin.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -205,4 +206,4 @@ ResponsiveDrawer.propTypes = {
   window: PropTypes.func,
 };
 
-export default ResponsiveDrawer;
+export default Admin;

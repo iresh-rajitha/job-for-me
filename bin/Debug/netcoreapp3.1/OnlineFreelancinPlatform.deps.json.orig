@@ -31,9 +31,12 @@
           "Microsoft.EntityFrameworkCore": "5.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.2",
+<<<<<<< HEAD
+=======
           "MimeKit": "2.10.1",
           "SendGrid": "9.22.0",
           "System.IdentityModel.Tokens.Jwt": "6.8.0",
+>>>>>>> origin/dp
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -320,6 +323,8 @@
           }
         }
       },
+<<<<<<< HEAD
+=======
       "MailKit/2.10.1": {
         "dependencies": {
           "MimeKit": "2.10.1"
@@ -359,6 +364,7 @@
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0"
         }
       },
+>>>>>>> origin/dp
       "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.10": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.6.0"
@@ -373,6 +379,8 @@
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
         }
       },
+<<<<<<< HEAD
+=======
       "Microsoft.AspNetCore.Cors/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
@@ -444,6 +452,7 @@
           "System.Text.Encodings.Web": "4.5.0"
         }
       },
+>>>>>>> origin/dp
       "Microsoft.CSharp/4.7.0": {},
       "Microsoft.Data.SqlClient/2.0.1": {
         "dependencies": {
@@ -3249,6 +3258,8 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "MailKit/2.10.1": {
       "type": "package",
       "serviceable": true,
@@ -3277,6 +3288,7 @@
       "path": "microsoft.aspnetcore.authentication.core/2.2.0",
       "hashPath": "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512"
     },
+>>>>>>> origin/dp
     "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.10": {
       "type": "package",
       "serviceable": true,
@@ -3284,6 +3296,11 @@
       "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.10",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512"
     },
+<<<<<<< HEAD
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+=======
     "Microsoft.AspNetCore.Cors/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3364,6 +3381,7 @@
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
       "serviceable": true,
+>>>>>>> origin/dp
       "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "path": "microsoft.csharp/4.7.0",
       "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
@@ -3404,6 +3422,7 @@
       "hashPath": "microsoft.entityframeworkcore.analyzers.5.0.2.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Design/5.0.2": {
+<<<<<<< HEAD
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Bn1aa2M16p3aIS68q7aXb2Shv0G8evtwdp6SNfnxzTw5vdKH1BBe1g/4BPrY5a2YLp2dVwep2Jtjvk5VB9E0qA==",
@@ -3413,6 +3432,17 @@
     "Microsoft.EntityFrameworkCore.Relational/5.0.2": {
       "type": "package",
       "serviceable": true,
+=======
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bn1aa2M16p3aIS68q7aXb2Shv0G8evtwdp6SNfnxzTw5vdKH1BBe1g/4BPrY5a2YLp2dVwep2Jtjvk5VB9E0qA==",
+      "path": "microsoft.entityframeworkcore.design/5.0.2",
+      "hashPath": "microsoft.entityframeworkcore.design.5.0.2.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Relational/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+>>>>>>> origin/dp
       "sha512": "sha512-1bisryvgZWcc+jkgksUH7cBkqOSXqyaC7HCAte0Yy+RHzt903KERsTJ447K+HNkW3bVt5GV/VAEcSN2ywqU9wg==",
       "path": "microsoft.entityframeworkcore.relational/5.0.2",
       "hashPath": "microsoft.entityframeworkcore.relational.5.0.2.nupkg.sha512"

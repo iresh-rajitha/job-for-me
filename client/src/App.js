@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavigationBar from "./components/layout/Navigationbar";
 import LandingPage from "./components/layout/Landingpage";
 import SellerPage from "./components/pages/Seller";
-import BuyerPage from "./components/pages/Buyer";
+import BuyerPage from "./components/pages/Buyer/Buyer";
 import OrderPage from "./components/pages/Order";
-import AdminPage from "./components/pages/Admin";
 import Loginpage from "./components/auth/Login/Loginpage";
 import RegisterPage from "./components/auth/Register/Registerpage";
 import ContactUs from "./components/pages/ContactUs";
@@ -13,40 +12,53 @@ import Footer from "./components/layout/Footer";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
-// const HandleSuccessFullAuth=(data)=>{
-//   console.log(data);
-// }
+import Admin from "./components/pages/Admin/Admin";
+
+const HandleSuccessFullAuth=(data)=>{
+  console.log(data);
+}
 const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
-        <NavigationBar />
-        <Route exact path="/" component={LandingPage} />
+        
         <Switch>
+          <Route exact path="/">
+            <NavigationBar/>
+            <LandingPage />
+            <Footer />
+          </Route>
           <Route path="/register">
+            <NavigationBar/>
             <RegisterPage />
+            <Footer />
           </Route>
           <Route path="/login">
-            <Loginpage />
+            <NavigationBar/>
+            <Loginpage  />
+            <Footer />
           </Route>
           <Route path="/seller">
+            <NavigationBar/>
             <SellerPage />
+            <Footer />
           </Route>
           <Route path="/order">
+            <NavigationBar/>
             <OrderPage />
+            <Footer />
           </Route>
           <Route path="/admin">
-            <AdminPage />
+            <Admin/>
           </Route>
           <Route path="/contact">
             <ContactUs />
           </Route>
           <Route path="/buyer">
-            {/* above component should be outside */}
             <BuyerPage />
           </Route>
         </Switch>
-        <Footer />
+        
       </Fragment>
     </Router>
   </Provider>
