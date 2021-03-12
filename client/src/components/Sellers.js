@@ -57,13 +57,16 @@ const Sellers = ({ classes, ...props }) => {
           {/* <Grid item xs={6}>
             <SellerForm {...{ currentId, setCurrentId }} />
           </Grid> */}
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <TableContainer>
               <Table>
                 <TableHead className={classes.root}>
                   <TableRow>
                     <TableCell>First Name</TableCell>
                     <TableCell>Last Name</TableCell>
+                    <TableCell>Address</TableCell>
+                    <TableCell>Category</TableCell>
+                    <TableCell>Email</TableCell>
                     <TableCell></TableCell>
                   </TableRow>
                 </TableHead>
@@ -73,6 +76,9 @@ const Sellers = ({ classes, ...props }) => {
                       <TableRow key={index} hover>
                         <TableCell>{record.firstName}</TableCell>
                         <TableCell>{record.lastName}</TableCell>
+                        <TableCell>{record.address}</TableCell>
+                        <TableCell>{record.category}</TableCell>
+                        <TableCell>{record.email}</TableCell>
                         <TableCell>
                           <ButtonGroup variant="text">
                             <Button>

@@ -8,15 +8,15 @@ import OrderPage from "./components/pages/Order";
 import AdminPage from "./components/pages/Admin";
 import Loginpage from "./components/auth/Login/Loginpage";
 import RegisterPage from "./components/auth/Register/Registerpage";
-import Register from "./components/auth/Register";
 import ContactUs from "./components/pages/ContactUs";
 import Footer from "./components/layout/Footer";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
-import Sellers from "./components/Sellers";
+import Seller from "./components/pages/Seller";
 import EmployeeList from "./components/EmployeeList";
 import { ToastProvider } from "react-toast-notifications";
+import Sellers from "./components/Sellers";
 
 const App = () => (
   <Provider store={store}>
@@ -33,7 +33,7 @@ const App = () => (
               <Loginpage />
             </Route>
             <Route path="/seller">
-              <Sellers />
+              <Seller />
             </Route>
             <Route path="/order">
               <OrderPage />
@@ -49,7 +49,7 @@ const App = () => (
             </Route>
             <Route path="/buyer">
               {/* above component should be outside */}
-              <BuyerPage />
+              <Sellers />
             </Route>
           </Switch>
           <Footer />

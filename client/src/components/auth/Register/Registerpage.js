@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { setAlert } from "./alert";
 import { Register } from "./Register.js";
 import { sendOTPmail } from "./OTPmail";
+import Employee from "../../Employee";
 
 const Registerpage = () => {
   const [formData, setFromData] = useState({
@@ -88,6 +89,7 @@ const Registerpage = () => {
         <p className="my-1">
           Already have an account? <Link to="/login">Sign In</Link>
         </p>
+        <Employee />
       </Fragment>
     </section>
   );

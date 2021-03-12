@@ -19,12 +19,12 @@ const styles = (theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      minWidth: 230,
+      minWidth: "100%",
     },
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 230,
+    minWidth: "100%",
   },
   smMargin: {
     margin: theme.spacing(1),
@@ -185,7 +185,7 @@ const SellersForm = ({ classes, ...props }) => {
             onChange={handleInputChange}
             {...(errors.address && { error: true, helperText: errors.address })}
           />
-          <TextField
+          {/* <TextField
             name="password"
             variant="outlined"
             label="Password"
@@ -196,7 +196,7 @@ const SellersForm = ({ classes, ...props }) => {
               helperText: errors.password,
             })}
           />
-          <div>{props.currentId}</div>
+          <div>{props.currentId}</div> */}
           <div>
             <Button
               variant="contained"

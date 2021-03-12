@@ -126,7 +126,7 @@ export default function Employee(props) {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Add an Employee
+                Choose your profile picture.
               </Typography>
               <TextField
                 type="file"

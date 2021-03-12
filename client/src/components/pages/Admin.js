@@ -66,7 +66,7 @@ const Sellers = ({ classes, ...props }) => {
         <br />
         <br />
         <br />
-        <Link to="/seller">
+        <Link to="/employee">
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
@@ -107,7 +107,7 @@ const Sellers = ({ classes, ...props }) => {
             </CardActions>
           </Card>
         </Link>
-        <Link to="/employee">
+        <Link to="/buyer">
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia

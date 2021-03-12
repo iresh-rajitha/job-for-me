@@ -193,7 +193,7 @@ export default function EmployeeList() {
           </TableContainer>
         </div>
         <Popup
-          title="Employee Form"
+          title="Edit a buyer"
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
