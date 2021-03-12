@@ -82,17 +82,17 @@ function AddUpdateOrderPopUp(props) {
     const submit = () => {
       console.log(formData);
       const fd= new FormData();
-      fd.append('orderdetailID',formData.orderDetailID);
+      fd.append('orderDetailID',formData.orderDetailID);
       fd.append('Description',formData.description);
       fd.append('File',formData.file);
       fd.append('Field',formData.field);
       fd.append('Price',formData.price);
       fd.append('FileName',formData.fileName);
 
-      console.log(fd.get('orderdetailID'));
+      console.log(fd.get('orderDetailID'));
       console.log(fd.get('Description'));
       // console.log(fd);
-      if(fd.get('orderdetailID') ==0){
+      if(fd.get('orderDetailID') ==0){
         axios.post('https://localhost:5001/api/OrderDetail',fd)
       .then(res=>{
         console.log(res);
@@ -103,7 +103,7 @@ function AddUpdateOrderPopUp(props) {
       });
       }else{
         // console.log(formData.orderdetailID);
-        axios.put('https://localhost:5001/api/OrderDetail/'+ fd.get('orderdetailID') ,fd)
+        axios.put('https://localhost:5001/api/OrderDetail/'+ fd.get('orderDetailID') ,fd)
         .then(res=>{
           console.log(res);
           handleClose();

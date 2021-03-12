@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import AddUpdateFieldPopUp from './AddUpdateFieldPopUp';
 // import OrderTable from './OrderTable';
 import { spacing } from '@material-ui/system';
+import FieldTable from './fieldTable';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 const theme = {
@@ -42,7 +43,7 @@ function Orderpage() {
       // setSelectedValue(value);
     };
     const refreshOrderTable=()=>{
-      axios.get('https://localhost:5001/api/orderdetail')
+      axios.get('https://localhost:5001/api/field')
       .then(res=>{
         // tableData=res.data;
         setTableData(tableData=>res.data);
@@ -54,7 +55,7 @@ function Orderpage() {
     }
     const deleteFunction=(id)=>{
         console.log(id);
-        axios.delete('https://localhost:5001/api/orderdetail/'+id)
+        axios.delete('https://localhost:5001/api/field/'+id)
       .then(res=>{
         refreshOrderTable();
         console.log(tableData);
@@ -78,7 +79,7 @@ function Orderpage() {
                 <Add/>
             </IconButton>
             <AddUpdateFieldPopUp selectedValue={selectedValue} open={open} onClose={handleClose} order={order} />
-            {/* <OrderTable updateFunction={updateFunction} deleteFunction={deleteFunction} tableData={tableData} /> */}
+            <FieldTable updateFunction={updateFunction} deleteFunction={deleteFunction} tableData={tableData} />
         </div>
     )
 }

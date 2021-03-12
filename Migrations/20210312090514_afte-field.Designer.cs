@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineFreelancinPlatform.Data;
 
 namespace OnlineFreelancinPlatform.Migrations
 {
     [DbContext(typeof(FreelancingDBContext))]
-    partial class FreelancingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210312090514_afte-field")]
+    partial class aftefield
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,8 +43,8 @@ namespace OnlineFreelancinPlatform.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Description")
+                        .HasColumnType("int");
 
                     b.Property<string>("FieldName")
                         .HasColumnType("nvarchar(max)");

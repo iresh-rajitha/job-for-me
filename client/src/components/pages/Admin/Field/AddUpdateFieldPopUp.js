@@ -11,6 +11,7 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import styles from './AddUpdateOrderPopUp.module.css' 
 import axios from 'axios';
+import Field from '../../../../models/field.model';
 
 
 const useStyles = makeStyles({
@@ -19,43 +20,17 @@ const useStyles = makeStyles({
     color: blue[600],
   },
 });
-const fields = 
-[
-  'None',
-  'The Graphic Design',
- 'Technology',
- 'Web Design Design',
- 'Illustrator',
- 'Data Entry',
- 'Data Analysis',
- 'Ecommerce'
-];
-
-const initialValues={
-  description: "",
-  file: null,
-  field: fields[0],
-  price : "",
-  fileName:""
-};
+const field = new Field(0,"","");
 
 function AddUpdateOrderPopUp(props) {
     const classes = useStyles();
-    const { onClose, selectedValue, open , order} = props;
-    const [formData, setFormData] = useState(initialValues);
-    const [fieldValue, setFieldValue] = React.useState(fields[0]);
-    const [inputValue, setInputValue] = React.useState('');
-
-    const {description,file,field,price,fileName} = formData;
+    const { onClose, selectedValue, open} = props;
+    const [formData, setFormData] = useState(field);
+    const {fieldID, fieldName, description} = formData;
 
     useEffect(() => {
-      // setRows(rows=>props.tableData);
-      console.log(props.order.description);
-      // setFormData({...formData, [description] : props.match.params.description})
-      // description=this.props.description;
-      // field=this.props.field;
-      // price=this.props.price;
-    });
+      
+    },[]);
 
     const onChange = (e) =>{
       const{name,value} = e.target;
@@ -69,27 +44,12 @@ function AddUpdateOrderPopUp(props) {
     const handleClose = () => {
       onClose(selectedValue);
     };
-  
-    const handleListItemClick = (value) => {
-      onClose(value);
-    };
-    const handleFile=(e)=>{
-      console.log(e.target.files);
-      formData.file = e.target.files[0];
-    }
-    const changeField=(e)=>{
-      formData.field= e.target.value;
-    }
     
     const submit = () => {
-      const fd= new FormData();
-      fd.append('Description',formData.description);
-      fd.append('File',formData.file);
-      fd.append('Field',formData.field);
-      fd.append('Price',formData.price);
-      fd.append('FileName',formData.fileName);
-
-      axios.post('https://localhost:5001/api/OrderDetail',fd)
+      formData.fieldName=fieldName;
+      formData.description=description;
+      // console.log(formData);
+      axios.post('https://localhost:5001/api/field',formData)
       .then(res=>{
         console.log(res);
         handleClose();
@@ -108,15 +68,26 @@ function AddUpdateOrderPopUp(props) {
             <TextField
               className={styles.textArea}
               id="outlined-multiline-static"
-              value={description}
-              name="description"
+              value={fieldName}
+              name="fieldName"
               label="Field Name"
               onChange={(e) => onChange(e)}
               variant="outlined"
             />
           </Grid>
-          
-          
+          <Grid className={styles.marging_b_15px}>
+            <TextField
+              className={styles.textArea}
+              id="outlined-multiline-static"
+              value={description}
+              name="description"
+              label="Description"
+              onChange={(e) => onChange(e)}
+              multiline
+              rows={3}
+              variant="outlined"
+            />
+          </Grid>
           <DialogActions>
           <Button onClick={handleClose} variant="contained">
             Cancel

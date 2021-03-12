@@ -71,6 +71,7 @@ namespace OnlineFreelancinPlatform
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IFieldService, FieldService>();
 
             services.AddDbContext<FreelancingDBContext>(
                 options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
