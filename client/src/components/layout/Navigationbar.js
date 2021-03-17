@@ -8,7 +8,11 @@ const Navigationbar = () => {
     <nav className="navbar ">
       <h1>
         <Link to="/">
-          <i class="fas fa-comments-dollar"></i> JobForMe
+          {/* <i class="fas fa-comments-dollar"></i> JobForMe */}
+          <img
+            className="photo"
+            src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/765/4683342765_f43e76b4-4d93-4f52-b0e7-cc99ad1bf015.png?cb=1613721941"
+          />
         </Link>
       </h1>
       <ul>

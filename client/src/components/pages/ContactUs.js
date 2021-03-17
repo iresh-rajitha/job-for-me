@@ -26,6 +26,7 @@ const ContactUs = () => {
 
   return (
     <section className="container">
+      <img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/765/4683342765_f43e76b4-4d93-4f52-b0e7-cc99ad1bf015.png?cb=1613721941" />
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         {/* <form className="form" onSubmit={MyComponent}> */}
         <div className="form-group">
