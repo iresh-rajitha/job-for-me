@@ -13,9 +13,6 @@ namespace OnlineFreelancinPlatform.Model
         public String AdminName { get; set; }
 
 
-        public IList<Message> Messages { get; set; }
-        public IList<Order> Orders { get; set; }
-
 
     }
 }

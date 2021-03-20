@@ -20,17 +20,17 @@ const useStyles = makeStyles({
     color: blue[600],
   },
 });
-const field = new Field(0,"","");
+const newField = new Field(0,"","");
 
 function AddUpdateOrderPopUp(props) {
     const classes = useStyles();
-    const { onClose, selectedValue, open} = props;
-    const [formData, setFormData] = useState(field);
+    const { onClose,selectedValue, field, open} = props;
+    const [formData, setFormData] = useState(newField);
     const {fieldID, fieldName, description} = formData;
 
     useEffect(() => {
-      
-    },[]);
+      setFormData(field)
+    },[field]);
 
     const onChange = (e) =>{
       const{name,value} = e.target;
@@ -68,7 +68,7 @@ function AddUpdateOrderPopUp(props) {
             <TextField
               className={styles.textArea}
               id="outlined-multiline-static"
-              value={fieldName}
+              value={formData.fieldName}
               name="fieldName"
               label="Field Name"
               onChange={(e) => onChange(e)}
@@ -79,14 +79,14 @@ function AddUpdateOrderPopUp(props) {
             <TextField
               className={styles.textArea}
               id="outlined-multiline-static"
-              value={description}
+              value={formData.description}
               name="description"
               label="Description"
               onChange={(e) => onChange(e)}
               multiline
               rows={3}
               variant="outlined"
-            />
+            /> 
           </Grid>
           <DialogActions>
           <Button onClick={handleClose} variant="contained">

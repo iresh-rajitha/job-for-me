@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineFreelancinPlatform.Migrations
 {
-    public partial class initcommit : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,20 @@ namespace OnlineFreelancinPlatform.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admins", x => x.AdminID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Fields",
+                columns: table => new
+                {
+                    FieldID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FieldName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fields", x => x.FieldID);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +50,7 @@ namespace OnlineFreelancinPlatform.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "User",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
@@ -48,6 +62,21 @@ namespace OnlineFreelancinPlatform.Migrations
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,9 +106,9 @@ namespace OnlineFreelancinPlatform.Migrations
                         principalColumn: "AdminID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Messages_Users_UserId",
+                        name: "FK_Messages_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "User",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -95,9 +124,10 @@ namespace OnlineFreelancinPlatform.Migrations
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    AdminID = table.Column<int>(type: "int", nullable: true),
-                    OrderDetailID = table.Column<int>(type: "int", nullable: false)
+                    SellerUserId = table.Column<int>(type: "int", nullable: true),
+                    BuyerUserId = table.Column<int>(type: "int", nullable: true),
+                    OrderDetailID = table.Column<int>(type: "int", nullable: false),
+                    AdminID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,9 +145,15 @@ namespace OnlineFreelancinPlatform.Migrations
                         principalColumn: "OrderDetailID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_Orders_User_BuyerUserId",
+                        column: x => x.BuyerUserId,
+                        principalTable: "User",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_User_SellerUserId",
+                        column: x => x.SellerUserId,
+                        principalTable: "User",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -138,24 +174,35 @@ namespace OnlineFreelancinPlatform.Migrations
                 column: "AdminID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Orders_BuyerUserId",
+                table: "Orders",
+                column: "BuyerUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_OrderDetailID",
                 table: "Orders",
                 column: "OrderDetailID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_UserId",
+                name: "IX_Orders_SellerUserId",
                 table: "Orders",
-                column: "UserId");
+                column: "SellerUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Fields");
+
+            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Admins");
@@ -164,7 +211,7 @@ namespace OnlineFreelancinPlatform.Migrations
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "User");
         }
     }
 }

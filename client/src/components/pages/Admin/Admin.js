@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {Dashboard, Menu,ShoppingCart, SupervisorAccount,Chat, Equalizer, Report } from '@material-ui/icons';
 import { Link, Route, Switch,useRouteMatch } from "react-router-dom";
-import Orderpage from "../Buyer/Order/Orderpage";
+import Orderpage from "../Admin/Order/OrderPage";
 import FieldPage from "../Admin/Field/FieldPage"
 const drawerWidth = 240;
 

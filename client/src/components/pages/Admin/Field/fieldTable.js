@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Edit } from '@material-ui/icons';
+import  Confirmation  from "../../../common/Confirmation";
 
 
 const useStyles = makeStyles({
@@ -32,19 +33,36 @@ const useStyles = makeStyles({
 
 export default function FieldTable(props) {
     const [rows,setRows]= useState(props.tableData);
+    const [open,setOpen]= useState(false);
+    const [id,setID]= useState(0);
+    const [message,setMessage]= useState("default message");
     const classes = useStyles();
     useEffect(() => {
       setRows(rows=>props.tableData);
       // console.log(props.tableData);
     });
     const deleteOrder=(id)=>{
-      props.deleteFunction(id);
+      setID(id);
+      setMessage("Do you want to delete field "+id);
+      handleClickOpen();
+      // props.deleteFunction(id);
     }
     const updateOrder=(obj)=>{
       props.updateFunction(obj);
     }
+    const handleClickOpen = () => { 
+      setOpen(true);
+    };
+    const handleClose = (value) => {
+      console.log(value);
+      if(value){
+        props.deleteFunction(id);
+      }
+      setOpen(false);
+    }
     
     return (
+      <div>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
@@ -74,5 +92,10 @@ export default function FieldTable(props) {
             </TableBody>
           </Table>
         </TableContainer>
+        <Confirmation open={open} onClose={handleClose} message={message}/>
+
+      </div>
+        
+       
       );
 }

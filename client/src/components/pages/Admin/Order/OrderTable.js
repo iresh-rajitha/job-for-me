@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Edit } from '@material-ui/icons';
+import { Edit, GroupAdd } from '@material-ui/icons';
 
 
 const useStyles = makeStyles({
@@ -62,12 +62,12 @@ export default function OrderTable(props) {
                   <TableCell align="left">{row.description}</TableCell>
                   <TableCell align="left">{row.price}</TableCell>
                   <TableCell align="center">
-                  <IconButton style={{marginRight:"10px"}} aria-label="delete">
-                    <DeleteIcon  onClick={()=>deleteOrder(row.orderDetailID)} />
+                    <IconButton style={{marginRight:"10px"}} aria-label="delete">
+                      <DeleteIcon  onClick={()=>deleteOrder(row.orderDetailID)} />
                     </IconButton>
                     <IconButton aria-label="delete">
-                    <Edit   onClick={()=>updateOrder(row)}/>
-                  </IconButton>
+                      <GroupAdd  onClick={()=>updateOrder(row)}/>
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               ))}

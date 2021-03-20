@@ -93,7 +93,7 @@ namespace OnlineFreelancinPlatform.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("AdminID")
+                    b.Property<int?>("BuyerUserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
@@ -111,20 +111,20 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SellerUserId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderID");
 
-                    b.HasIndex("AdminID");
+                    b.HasIndex("BuyerUserId");
 
                     b.HasIndex("OrderDetailID")
                         .IsUnique();
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("SellerUserId");
 
                     b.ToTable("Orders");
                 });
@@ -207,13 +207,13 @@ namespace OnlineFreelancinPlatform.Migrations
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Message", b =>
                 {
                     b.HasOne("OnlineFreelancinPlatform.Model.Admin", "Admin")
-                        .WithMany("Messages")
+                        .WithMany()
                         .HasForeignKey("AdminID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineFreelancinPlatform.Model.User", "User")
-                        .WithMany("Messages")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -225,9 +225,9 @@ namespace OnlineFreelancinPlatform.Migrations
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Order", b =>
                 {
-                    b.HasOne("OnlineFreelancinPlatform.Model.Admin", "Admin")
-                        .WithMany("Orders")
-                        .HasForeignKey("AdminID");
+                    b.HasOne("OnlineFreelancinPlatform.Model.User", "Buyer")
+                        .WithMany()
+                        .HasForeignKey("BuyerUserId");
 
                     b.HasOne("OnlineFreelancinPlatform.Model.OrderDetail", "OrderDetail")
                         .WithOne("Order")
@@ -235,34 +235,20 @@ namespace OnlineFreelancinPlatform.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineFreelancinPlatform.Model.User", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                    b.HasOne("OnlineFreelancinPlatform.Model.User", "Seller")
+                        .WithMany()
+                        .HasForeignKey("SellerUserId");
 
-                    b.Navigation("Admin");
+                    b.Navigation("Buyer");
 
                     b.Navigation("OrderDetail");
 
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("OnlineFreelancinPlatform.Model.Admin", b =>
-                {
-                    b.Navigation("Messages");
-
-                    b.Navigation("Orders");
+                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.OrderDetail", b =>
                 {
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("OnlineFreelancinPlatform.Model.User", b =>
-                {
-                    b.Navigation("Messages");
-
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
