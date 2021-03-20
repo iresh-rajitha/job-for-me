@@ -68,21 +68,21 @@ const Sellers = ({ classes, ...props }) => {
                     <TableRow>
                       <TableCell>First Name</TableCell>
                       <TableCell>Last Name</TableCell>
-                      <TableCell>Address</TableCell>
-                      <TableCell>Category</TableCell>
+                      {/* <TableCell>Address</TableCell>
+                    <TableCell>Category</TableCell> */}
                       <TableCell>Email</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {props.sellerList.map((record, index) => {
-                      if (record.userType === "Seller") {
+                      if (record.userType === "Buyer") {
                         return (
                           <TableRow key={index} hover>
                             <TableCell>{record.firstName}</TableCell>
                             <TableCell>{record.lastName}</TableCell>
-                            <TableCell>{record.address}</TableCell>
-                            <TableCell>{record.category}</TableCell>
+                            {/* <TableCell>{record.address}</TableCell>
+                          <TableCell>{record.category}</TableCell> */}
                             <TableCell>{record.email}</TableCell>
                             <TableCell>
                               <ButtonGroup variant="text">

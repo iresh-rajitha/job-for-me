@@ -14,9 +14,6 @@ import useForm from "../useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/sellers";
 import { useToasts } from "react-toast-notifications";
-
-import LandngNav from "../layout/LandingNav";
-import Footer from "../layout/Footer";
 import { useHistory } from "react-router-dom";
 
 const styles = (theme) => ({
@@ -39,7 +36,7 @@ const initialFieldValues = {
   firstName: "",
   lastName: "",
   address: "",
-  userType: "Buyer",
+  userType: "",
   category: "",
   email: "",
   password: "",
@@ -73,10 +70,6 @@ const SellersForm = ({ classes, ...props }) => {
       return Object.values(temp).every((x) => x === "");
   };
 
-  const setRole = (fieldValues = values) => {
-    fieldValues.userType = "Buyer";
-  };
-
   const {
     values,
     setValues,
@@ -92,18 +85,22 @@ const SellersForm = ({ classes, ...props }) => {
   );
 
   //material-ui select
-  // const inputLabel = React.useRef(null);
-  // const [labelWidth, setLabelWidth] = React.useState(0);
-  // React.useEffect(() => {
-  //   setLabelWidth(inputLabel.current.offsetWidth);
-  // }, []);
+  //   const inputLabel = React.useRef(null);
+  //   const [labelWidth, setLabelWidth] = React.useState(0);
+  //   React.useEffect(() => {
+  //     setLabelWidth(inputLabel.current.offsetWidth);
+  //   }, []);
+
+  const setRole = (fieldValues = values) => {
+    fieldValues.userType = "Admin";
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setRole();
     if (validate()) {
       history.push({
-        pathname: "/order",
+        pathname: "/admin",
         state: values.email,
       });
       const onSuccess = () => {
@@ -146,12 +143,12 @@ const SellersForm = ({ classes, ...props }) => {
           />
         </div>
       </div> */}
-      <LandngNav />
+
       <section className="container">
         <div>
-          <h1 className="large text-primary">Join with us!</h1>
+          <h1 className="large text-primary">Add an Admin!</h1>
           <p className="lead">
-            <i className="fas fa-user"></i> Create Your Customer Profile
+            <i className="fas fa-user"></i> Create the Profile of the new Admin
           </p>
         </div>
         <form
@@ -223,7 +220,7 @@ const SellersForm = ({ classes, ...props }) => {
                 {...(errors.email && { error: true, helperText: errors.email })}
               />
             </Grid>
-            {/* <Grid item xs={12}>
+            <Grid item xs={12}>
               <TextField
                 name="address"
                 variant="outlined"
@@ -235,7 +232,7 @@ const SellersForm = ({ classes, ...props }) => {
                   helperText: errors.address,
                 })}
               />
-            </Grid> */}
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 name="password"
@@ -272,7 +269,6 @@ const SellersForm = ({ classes, ...props }) => {
           </Grid>
         </form>
       </section>
-      <Footer />
     </Fragment>
   );
 };
@@ -293,208 +289,135 @@ export default connect(
 )(withStyles(styles)(SellersForm));
 
 // import React, { Fragment } from "react";
-// import PropTypes from 'prop-types';
-// import AppBar from '@material-ui/core/AppBar';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import Divider from '@material-ui/core/Divider';
-// import Drawer from '@material-ui/core/Drawer';
-// import Hidden from '@material-ui/core/Hidden';
-// import IconButton from '@material-ui/core/IconButton';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import { makeStyles, useTheme } from '@material-ui/core/styles';
-// import {Dashboard, Menu,ShoppingCart, SupervisorAccount,Chat, Equalizer, Report } from '@material-ui/icons';
-// import { Link, Route, Switch,useRouteMatch } from "react-router-dom";
-// // import { Orderpage } from "./Buyer/Order-page";
-// const drawerWidth = 240;
 
-// const useStyles = makeStyles((theme) => ({
+// import SellerForm from "../SellerForm";
 
-//   root: {
-//     display: 'flex',
-//   },
-//   drawer: {
-//     [theme.breakpoints.up('sm')]: {
-//       width: drawerWidth,
-//       flexShrink: 0,
-//     },
-//   },
-//   appBar: {
-//     [theme.breakpoints.up('sm')]: {
-//       width: `calc(100% - ${drawerWidth}px)`,
-//       marginLeft: drawerWidth,
-//     },
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//     [theme.breakpoints.up('sm')]: {
-//       display: 'none',
-//     },
-//   },
-//   // necessary for content to be below app bar
-//   toolbar: theme.mixins.toolbar,
-//   drawerPaper: {
-//     width: drawerWidth,
-//   },
-//   content: {
-//     flexGrow: 1,
-//     padding: theme.spacing(3),
-//   },
-// }));
-
-// function ResponsiveDrawer(props) {
-//   let { path, url } = useRouteMatch();
-//   const { window } = props;
-//   const classes = useStyles();
-//   const theme = useTheme();
-//   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-//   const handleDrawerToggle = () => {
-//     setMobileOpen(!mobileOpen);
+// const Seller = () => {
+//   const onSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Success");
 //   };
 
-//   const itemList =[
-//     {
-//       name:'Dashboard',
-//       icon: <Dashboard/>,
-//       to: '/'
-//     },
-//     {
-//       name:'Order',
-//       icon: <ShoppingCart/>,
-//       to: `${url}/order`
-//     },
-//     {
-//       name:'Message',
-//       icon: <Chat/>,
-//       to: `${url}/message`
-//     },
-//     {
-//       name:'Admin',
-//       icon: <SupervisorAccount/>,
-//       to: `${url}/admin`
-//     },
-//     {
-//       name:'Stats',
-//       icon: <Equalizer/>,
-//       to: `${url}/stats`
-//     },
-//     {
-//       name:'Report',
-//       icon: <Report/>,
-//       to: `${url}/report`
-//     }
-//   ];
-
-//   const drawer = (
-//     <div>
-//       <div className={classes.toolbar} />
-//       <Divider />
-//       <List>
-//         {itemList.map((item, index) => (
-//           <Link to={item.to}>
-//           <ListItem button key={item.name}>
-//             <ListItemIcon>{item.icon}</ListItemIcon>
-//             <ListItemText primary={item.name} />
-//           </ListItem>
-//           </Link>
-
-//         ))}
-//       </List>
-//     </div>
-//   );
-
-//   const container = window !== undefined ? () => window().document.body : undefined;
-
 //   return (
-//     <div className={classes.root}>
-//       <CssBaseline />
-//       <AppBar position="fixed" className={classes.appBar}>
-//         <Toolbar>
-//           <IconButton
-//             color="inherit"
-//             aria-label="open drawer"
-//             edge="start"
-//             onClick={handleDrawerToggle}
-//             className={classes.menuButton}
-//           >
-//             <Menu />
-//           </IconButton>
-//           <Typography variant="h6" noWrap>
-//             You logged as Buyer
-//           </Typography>
-//         </Toolbar>
-//       </AppBar>
-//       <nav className={classes.drawer} aria-label="mailbox folders">
-//         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-//         <Hidden smUp implementation="css">
-//           <Drawer
-//             container={container}
-//             variant="temporary"
-//             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-//             open={mobileOpen}
-//             onClose={handleDrawerToggle}
-//             classes={{
-//               paper: classes.drawerPaper,
-//             }}
-//             ModalProps={{
-//               keepMounted: true, // Better open performance on mobile.
-//             }}
-//           >
-//             {drawer}
-//           </Drawer>
-//         </Hidden>
-//         <Hidden xsDown implementation="css">
-//           <Drawer
-//             classes={{
-//               paper: classes.drawerPaper,
-//             }}
-//             variant="permanent"
-//             open
-//           >
-//             {drawer}
-//           </Drawer>
-//         </Hidden>
-//       </nav>
-
-//       <main className={classes.content}>
-//         <div className={classes.toolbar} />
-//         <Switch>
-//         <Route exact path={`${path}/`}>
-//             Dashboard
-//         </Route>
-//         <Route exact path={`${path}/order`}>
-//             {/* <Orderpage/> */}
-//             Order
-//         </Route>
-//         <Route exact path={`${path}/message`}>
-//             Message
-//         </Route>
-//         <Route exact path={`${path}/admin`}>
-//             Admin
-//         </Route>
-//         <Route exact path={`${path}/stats`}>
-//             Statics
-//         </Route>
-//         <Route exact path={`${path}/report`}>
-//             Report
-//         </Route>
-//       </Switch>
-//       </main>
-//     </div>
+//     <Fragment>
+// <div>
+//   <div>
+//     <video
+//       style={{
+//         alignItem: "center",
+//         justifyContent: "center",
+//         position: "realative",
+//         zIndex: -1,
+//         width: "100%",
+//       }}
+//       autoPlay="true"
+//       loop
+//       muted
+//       src={Vid}
+//     />
+//   </div>
+//         <section className="container">
+//           <div>
+//             <h1 className="large text-primary">Become a Seller!</h1>
+//             <p className="lead">
+//               <i className="fas fa-user"></i> Create Your Seller Profile
+//             </p>
+//             <form className="form" onSubmit={(e) => onSubmit(e)}>
+//               <SellerForm />
+//               <div className="form-group">
+//                 <input type="text" placeholder="Name" name="name" required />
+//               </div>
+//               <div className="form-group">
+//                 <input
+//                   type="email"
+//                   placeholder="Email Address"
+//                   name="email"
+//                   required
+//                 />
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Country"
+//                     name="country"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Address"
+//                     name="address"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Contact No"
+//                     name="contactNo"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Expertise: Illustrator, Photoshop, After Effects or Premere Pro (Type One or more)"
+//                     name="expertise"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Work Time: (Select Full Time or Part Time)"
+//                     name="workTime"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="English Knowledge: (Select Begginer, Average or Expert)"
+//                     name="english"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Exam Date: (Select a Date and Time to Participate for the Examination)"
+//                     name="exam"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Employed Organizations: (If there is any)"
+//                     name="employed"
+//                     required
+//                   />
+//                 </div>
+//                 <div className="form-group">
+//                   <input
+//                     type="text"
+//                     placeholder="Experience: (Average or Expert)"
+//                     name="experience"
+//                     required
+//                   />
+//                 </div>
+//                 <small className="form-text">
+//                   This site uses Gravatar so if you want a profile image, use a
+//                   Gravatar email
+//                 </small>
+//               </div>
+//               <input type="submit" className="btn btn-primary" value="Submit" />
+//             </form>
+//           </div>
+//         </section>
+//       </div>
+//     </Fragment>
 //   );
-// }
-
-// ResponsiveDrawer.propTypes = {
-//   /**
-//    * Injected by the documentation to work in an iframe.
-//    * You won't need it on your project.
-//    */
-//   window: PropTypes.func,
 // };
 
-// export default ResponsiveDrawer;
+// export default Seller;

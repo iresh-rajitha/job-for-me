@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as actions from "../actions/sellers";
 import {
   Grid,
@@ -20,7 +21,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
 
 import Popup from "./Popup";
-import AdminNav from "./layout/AdminNav";
+import BuyerNav from "./layout/BuyerNav";
 import Footer from "./layout/Footer";
 
 const styles = (theme) => ({
@@ -35,8 +36,10 @@ const styles = (theme) => ({
   },
 });
 
-const Sellers = ({ classes, ...props }) => {
+const BuyerProfile = ({ classes, ...props }) => {
   const { addToast } = useToasts();
+  const history = useHistory();
+  const profileEmail = history.location.state;
 
   const [currentId, setCurrentId] = useState(0);
   const [openPopup, setOpenPopup] = useState(false);
@@ -54,7 +57,7 @@ const Sellers = ({ classes, ...props }) => {
 
   return (
     <Fragment>
-      <AdminNav />
+      <BuyerNav />
       <section className="container">
         <Paper className={classes.paper} elevation={3}>
           <Grid>
@@ -68,21 +71,21 @@ const Sellers = ({ classes, ...props }) => {
                     <TableRow>
                       <TableCell>First Name</TableCell>
                       <TableCell>Last Name</TableCell>
-                      <TableCell>Address</TableCell>
-                      <TableCell>Category</TableCell>
+                      {/* <TableCell>Address</TableCell>
+                    <TableCell>Category</TableCell> */}
                       <TableCell>Email</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {props.sellerList.map((record, index) => {
-                      if (record.userType === "Seller") {
+                      if (record.email === profileEmail) {
                         return (
                           <TableRow key={index} hover>
                             <TableCell>{record.firstName}</TableCell>
                             <TableCell>{record.lastName}</TableCell>
-                            <TableCell>{record.address}</TableCell>
-                            <TableCell>{record.category}</TableCell>
+                            {/* <TableCell>{record.address}</TableCell>
+                          <TableCell>{record.category}</TableCell> */}
                             <TableCell>{record.email}</TableCell>
                             <TableCell>
                               <ButtonGroup variant="text">
@@ -170,4 +173,4 @@ const mapActionToProps = {
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Sellers));
+)(withStyles(styles)(BuyerProfile));

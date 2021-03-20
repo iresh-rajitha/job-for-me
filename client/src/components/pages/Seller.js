@@ -14,6 +14,7 @@ import useForm from "../useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/sellers";
 import { useToasts } from "react-toast-notifications";
+import { useHistory } from "react-router-dom";
 
 const styles = (theme) => ({
   root: {
@@ -43,6 +44,7 @@ const initialFieldValues = {
 
 const SellersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts();
+  let history = useHistory();
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -89,9 +91,18 @@ const SellersForm = ({ classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
+  const setRole = (fieldValues = values) => {
+    fieldValues.userType = "Seller";
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setRole();
     if (validate()) {
+      history.push({
+        pathname: "/sellerdashboard",
+        state: values.email,
+      });
       const onSuccess = () => {
         resetForm();
         addToast("Submitted successfully", { appearance: "success" });

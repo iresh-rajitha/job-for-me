@@ -27,7 +27,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
 import EmployeeList from "../EmployeeList";
 
-import AdminNav from "../layout/AdminNav";
+import SellerNav from "../layout/SellerNav";
 import Footer from "../layout/Footer";
 
 const styles = (theme) => ({
@@ -49,11 +49,9 @@ const styles = (theme) => ({
 
 const Sellers = ({ classes, ...props }) => {
   const { addToast } = useToasts();
-
   const history = useHistory();
   console.log(history.location.state);
-  const adminEmail = history.location.state;
-
+  const sellerEmail = history.location.state;
   const [currentId, setCurrentId] = useState(0);
 
   useEffect(() => {
@@ -68,7 +66,7 @@ const Sellers = ({ classes, ...props }) => {
   };
   return (
     <Fragment>
-      <AdminNav {...{ adminEmail }} />
+      <SellerNav {...{ sellerEmail }} />
       <section className="container">
         <Grid container spacing={1}>
           <br />
@@ -87,14 +85,14 @@ const Sellers = ({ classes, ...props }) => {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Buyers
+                    Appointed Orders
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    View add or Delete Buyers!
+                    View appointed orders for you!
                   </Typography>
                   <Typography
                     variant="body2"
@@ -124,7 +122,12 @@ const Sellers = ({ classes, ...props }) => {
               </CardActions>
             </Card>
           </Link>
-          <Link to="/sellers">
+          <Link
+            to={{
+              pathname: "/sellerprofile",
+              state: sellerEmail,
+            }}
+          >
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -136,15 +139,14 @@ const Sellers = ({ classes, ...props }) => {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Sellers
+                    Your seller profile
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    Click on the Add New button to add or click on the profiles
-                    to make changes.
+                    Add account changes.
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -158,36 +160,34 @@ const Sellers = ({ classes, ...props }) => {
               </CardActions>
             </Card>
           </Link>
-          <Link to="/admins">
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Admins
-                  </Typography>
-                  {/* <Typography variant="body2" color="textSecondary" component="p">
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                height="140"
+                image="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Orders
+                </Typography>
+                {/* <Typography variant="body2" color="textSecondary" component="p">
                 Lizards are a widespread group of squamate reptiles, with over
                 6,000 species, ranging across all continents except Antarctica
               </Typography> */}
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                {/* <Button size="small" color="primary">
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              {/* <Button size="small" color="primary">
               Orders' List
             </Button>
             <Button size="small" color="primary">
               Place a Order
             </Button> */}
-              </CardActions>
-            </Card>
-          </Link>
+            </CardActions>
+          </Card>
         </Grid>
         {/* <Paper className={classes.paper} elevation={3}>
         <Grid>

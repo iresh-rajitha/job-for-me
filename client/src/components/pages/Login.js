@@ -1,4 +1,6 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Grid,
   TextField,
@@ -17,7 +19,6 @@ import { useToasts } from "react-toast-notifications";
 
 import LandngNav from "../layout/LandingNav";
 import Footer from "../layout/Footer";
-import { useHistory } from "react-router-dom";
 
 const styles = (theme) => ({
   root: {
@@ -100,23 +101,62 @@ const SellersForm = ({ classes, ...props }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setRole();
-    if (validate()) {
+    // console.log("bofore");
+    // history.push("/admin");
+    //return <Redirect to="/admin" />;
+
+    //   props.sellerList.map((record, index) => {
+    //     if (record.email === values.email) {
+    //       return console.log("SUCCESS");
+    //     }
+    //   });
+
+    if (
+      props.sellerList.find(
+        (x) => x.email === values.email && x.userType === "Buyer"
+      )
+    ) {
+      console.log("SUCCESS");
+      // history.push("/order");
       history.push({
         pathname: "/order",
         state: values.email,
       });
-      const onSuccess = () => {
-        resetForm();
-        addToast("Submitted successfully", { appearance: "success" });
-      };
-      // if (props.currentId === 0) {
-      //   props.createSeller(values, onSuccess);
-      // } else {
-      //   props.updateSeller(props.currentId, values, onSuccess);
-      // }
-      props.createSeller(values, onSuccess);
+    } else if (
+      props.sellerList.find(
+        (x) => x.email === values.email && x.userType === "Seller"
+      )
+    ) {
+      console.log("You are a seller.");
+      // history.push("/sellerdashboard");
+      history.push({
+        pathname: "/sellerdashboard",
+        state: values.email,
+      });
+    } else if (
+      props.sellerList.find(
+        (x) => x.email === values.email && x.userType === "Admin"
+      )
+    ) {
+      console.log("You are a admin.");
+      // history.push("/admin");
+      history.push({
+        pathname: "/admin",
+        state: values.email,
+      });
     }
+    // setRole();
+    // if (validate()) {
+    //   const onSuccess = () => {
+    //     resetForm();
+    //     addToast("Submitted successfully", { appearance: "success" });
+    //   };
+    //   // if (props.currentId === 0) {
+    //   //   props.createSeller(values, onSuccess);
+    //   // } else {
+    //   //   props.updateSeller(props.currentId, values, onSuccess);
+    //   // }
+    //   props.createSeller(values, onSuccess);
   };
 
   useEffect(() => {
@@ -149,9 +189,9 @@ const SellersForm = ({ classes, ...props }) => {
       <LandngNav />
       <section className="container">
         <div>
-          <h1 className="large text-primary">Join with us!</h1>
+          <h1 className="large text-primary">Let's log in first!</h1>
           <p className="lead">
-            <i className="fas fa-user"></i> Create Your Customer Profile
+            <i className="fas fa-user"></i> Log into your Customer profile
           </p>
         </div>
         <form
@@ -161,7 +201,7 @@ const SellersForm = ({ classes, ...props }) => {
           onSubmit={handleSubmit}
         >
           <Grid container>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <TextField
                 name="firstName"
                 variant="outlined"
@@ -186,7 +226,7 @@ const SellersForm = ({ classes, ...props }) => {
                   helperText: errors.lastName,
                 })}
               />
-            </Grid>
+            </Grid> */}
             {/* <Grid item xs={12}>
               <FormControl
                 variant="outlined"
@@ -260,13 +300,6 @@ const SellersForm = ({ classes, ...props }) => {
                 >
                   Submit
                 </Button>
-                {/* <Button
-              variant="contained"
-              className={classes.smMargin}
-              onClick={resetForm}
-            >
-              Reset
-            </Button> */}
               </div>
             </Grid>
           </Grid>
