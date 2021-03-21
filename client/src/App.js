@@ -5,6 +5,7 @@ import LandingNav from "./components/layout/LandingNav";
 import LandingPage from "./components/layout/Landingpage";
 import SellerPage from "./components/pages/Seller";
 import BuyerPage from "./components/pages/Buyer/Buyer";
+import AdminPage from "./components/pages/Admin";
 import OrderPage from "./components/pages/Order";
 import LoginPage from "./components/pages/Login";
 //import Loginpage from "./components/auth/Login/Loginpage";
