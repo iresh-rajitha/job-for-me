@@ -36,14 +36,14 @@ namespace OnlineFreelancinPlatform.Controllers
 
         // POST api/<OrderDetailController>
         [HttpPost]
-        public void Post([FromBody] OrderDetail orderDetail)
+        public void Post([FromForm] OrderDetail orderDetail)
         {
             _orderDetailService.Add(orderDetail);
         }
 
         // PUT api/<OrderDetailController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] OrderDetail orderDetail)
+        public void Put(int id, [FromForm] OrderDetail orderDetail)
         {
             _orderDetailService.Update(id, orderDetail);
         }

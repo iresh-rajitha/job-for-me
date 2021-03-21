@@ -39,7 +39,7 @@ const styles = (theme) => ({
 const SellerProfile = ({ classes, ...props }) => {
   const { addToast } = useToasts();
   const history = useHistory();
-  const profileEmail = history.location.state;
+  const profileId = history.location.state;
   const [currentId, setCurrentId] = useState(0);
   const [openPopup, setOpenPopup] = useState(false);
 
@@ -79,7 +79,7 @@ const SellerProfile = ({ classes, ...props }) => {
                   <TableBody>
                     {props.sellerList.map((record, index) => {
                       // if (record.userType === "Seller") {
-                      if (record.email === profileEmail) {
+                      if (record.userId === profileId) {
                         return (
                           <TableRow key={index} hover>
                             <TableCell>{record.firstName}</TableCell>

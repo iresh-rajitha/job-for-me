@@ -26,6 +26,8 @@ import AddanAdmin from "./components/pages/AddanAdmin";
 import BuyerProfile from "./components/BuyerProfile";
 import SellerProfile from "./components/SellerProfile";
 import AdminProfile from "./components/AdminProfile";
+import Buyer from "./components/pages/Buyer/Buyer";
+import YourOrders from "./components/pages/Buyer/Order/Orderpage";
 
 const App = () => (
   <Provider store={store}>
@@ -71,6 +73,9 @@ const App = () => (
             </Route>
             <Route path="/adminprofile">
               <AdminProfile />
+            </Route>
+            <Route path="/yourorders">
+              <YourOrders />
             </Route>
             <Route path="/sellers">
               {/* above component should be outside */}

@@ -21,8 +21,8 @@ namespace OnlineFreelancinPlatform.Model
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public IList<Message> Messages { get; set; }
-        public IList<Order> Orders { get; set; }
+        //public IList<Message> Messages { get; set; }
+        //public IList<Order> Orders { get; set; }
 
     }
 }

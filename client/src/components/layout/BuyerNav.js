@@ -18,10 +18,10 @@ const Navigationbar = (props) => {
       <ul>
         {/* <li>
           <a href="/admin">Admin Panel</a>
-        </li>
-        <li>
-          <a href="/order">Order a Service</a>
         </li> */}
+        <li>
+          <a href="/yourorders">Your Orders</a>
+        </li>
         <li>
           <a href="/seller">Become a Seller</a>
         </li>
@@ -36,7 +36,7 @@ const Navigationbar = (props) => {
           <Link
             to={{
               pathname: "/buyerprofile",
-              state: props.buyerEmail,
+              state: props.buyerId,
             }}
           >
             Profile

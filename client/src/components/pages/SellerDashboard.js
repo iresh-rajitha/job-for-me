@@ -51,7 +51,7 @@ const Sellers = ({ classes, ...props }) => {
   const { addToast } = useToasts();
   const history = useHistory();
   console.log(history.location.state);
-  const sellerEmail = history.location.state;
+  const sellerId = history.location.state;
   const [currentId, setCurrentId] = useState(0);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Sellers = ({ classes, ...props }) => {
   };
   return (
     <Fragment>
-      <SellerNav {...{ sellerEmail }} />
+      <SellerNav {...{ sellerId }} />
       <section className="container">
         <Grid container spacing={1}>
           <br />
@@ -125,7 +125,7 @@ const Sellers = ({ classes, ...props }) => {
           <Link
             to={{
               pathname: "/sellerprofile",
-              state: sellerEmail,
+              state: sellerId,
             }}
           >
             <Card className={classes.card}>

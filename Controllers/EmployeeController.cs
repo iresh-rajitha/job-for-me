@@ -31,7 +31,7 @@ namespace OnlineFreelancinPlatform.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
         {
-            return await _context.Employees
+            return await _context.Employers
                 .Select(x => new EmployeeModel()
                 {
                     EmployeeID = x.EmployeeID,
@@ -47,7 +47,7 @@ namespace OnlineFreelancinPlatform.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<EmployeeModel>> GetEmployeeModel(int id)
         {
-            var employeeModel = await _context.Employees.FindAsync(id);
+            var employeeModel = await _context.Employers.FindAsync(id);
 
             if (employeeModel == null)
             {
@@ -102,7 +102,7 @@ namespace OnlineFreelancinPlatform.Controllers
         public async Task<ActionResult<EmployeeModel>> PostEmployeeModel([FromForm] EmployeeModel employeeModel)
         {
             employeeModel.ImageName = await SaveImage(employeeModel.ImageFile);
-            _context.Employees.Add(employeeModel);
+            _context.Employers.Add(employeeModel);
             await _context.SaveChangesAsync();
 
             return StatusCode(201);
@@ -112,13 +112,13 @@ namespace OnlineFreelancinPlatform.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<EmployeeModel>> DeleteEmployeeModel(int id)
         {
-            var employeeModel = await _context.Employees.FindAsync(id);
+            var employeeModel = await _context.Employers.FindAsync(id);
             if (employeeModel == null)
             {
                 return NotFound();
             }
             DeleteImage(employeeModel.ImageName);
-            _context.Employees.Remove(employeeModel);
+            _context.Employers.Remove(employeeModel);
             await _context.SaveChangesAsync();
 
             return employeeModel;
@@ -126,7 +126,7 @@ namespace OnlineFreelancinPlatform.Controllers
 
         private bool EmployeeModelExists(int id)
         {
-            return _context.Employees.Any(e => e.EmployeeID == id);
+            return _context.Employers.Any(e => e.EmployeeID == id);
         }
 
         [NonAction]

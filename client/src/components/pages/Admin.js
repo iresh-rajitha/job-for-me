@@ -52,7 +52,7 @@ const Sellers = ({ classes, ...props }) => {
 
   const history = useHistory();
   console.log(history.location.state);
-  const adminEmail = history.location.state;
+  const adminId = history.location.state;
 
   const [currentId, setCurrentId] = useState(0);
 
@@ -68,7 +68,7 @@ const Sellers = ({ classes, ...props }) => {
   };
   return (
     <Fragment>
-      <AdminNav {...{ adminEmail }} />
+      <AdminNav {...{ adminId }} />
       <section className="container">
         <Grid container spacing={1}>
           <br />

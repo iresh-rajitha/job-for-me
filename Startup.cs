@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using OnlineFreelancinPlatform.Data;
+using OnlineFreelancinPlatform.Hubs;
 using OnlineFreelancinPlatform.Model;
 using OnlineFreelancinPlatform.Services;
 using OnlineFreelancinPlatform.Settings;
@@ -36,10 +37,22 @@ namespace OnlineFreelancinPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            // services.AddCors();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ClientPermission", policy =>
+                {
+                    policy.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("http://localhost:3000")
+                        .AllowCredentials();
+                });
+            });
+
             services.AddMvc();
             services.AddControllers();
-
+            services.AddSignalR();
             services.AddTransient<Services.IMailService, Services.MailService>();
 
             //services.AddAuthentication(x =>
@@ -92,10 +105,12 @@ namespace OnlineFreelancinPlatform
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors("ClientPermission");
+
+            //app.UseCors(x => x
+            //    .AllowAnyOrigin()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader());
 
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -114,6 +129,7 @@ namespace OnlineFreelancinPlatform
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
             });
         }
     }

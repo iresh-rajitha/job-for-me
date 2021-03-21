@@ -101,50 +101,60 @@ const SellersForm = ({ classes, ...props }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("bofore");
-    // history.push("/admin");
-    //return <Redirect to="/admin" />;
 
-    //   props.sellerList.map((record, index) => {
-    //     if (record.email === values.email) {
-    //       return console.log("SUCCESS");
-    //     }
+    props.sellerList.find((x) => {
+      if (x.email == values.email && x.userType === "Buyer") {
+        history.push({
+          pathname: "/order",
+          state: x.userId,
+        });
+      } else if (x.email == values.email && x.userType === "Seller") {
+        history.push({
+          pathname: "/sellerdashboard",
+          state: x.userId,
+        });
+      } else if (x.email == values.email && x.userType === "Admin") {
+        history.push({
+          pathname: "/admin",
+          state: x.userId,
+        });
+      }
+    });
+
+    // if (
+    //   props.sellerList.find(
+    //     (x) => x.email === values.email && x.userType === "Buyer"
+    //   )
+    // ) {
+    //   console.log("SUCCESS");
+    //   // history.push("/order");
+    //   history.push({
+    //     pathname: "/order",
+    //     state: values.email,
     //   });
-
-    if (
-      props.sellerList.find(
-        (x) => x.email === values.email && x.userType === "Buyer"
-      )
-    ) {
-      console.log("SUCCESS");
-      // history.push("/order");
-      history.push({
-        pathname: "/order",
-        state: values.email,
-      });
-    } else if (
-      props.sellerList.find(
-        (x) => x.email === values.email && x.userType === "Seller"
-      )
-    ) {
-      console.log("You are a seller.");
-      // history.push("/sellerdashboard");
-      history.push({
-        pathname: "/sellerdashboard",
-        state: values.email,
-      });
-    } else if (
-      props.sellerList.find(
-        (x) => x.email === values.email && x.userType === "Admin"
-      )
-    ) {
-      console.log("You are a admin.");
-      // history.push("/admin");
-      history.push({
-        pathname: "/admin",
-        state: values.email,
-      });
-    }
+    // } else if (
+    //   props.sellerList.find(
+    //     (x) => x.email === values.email && x.userType === "Seller"
+    //   )
+    // ) {
+    //   console.log("You are a seller.");
+    //   // history.push("/sellerdashboard");
+    //   history.push({
+    //     pathname: "/sellerdashboard",
+    //     state: values.email,
+    //   });
+    // } else if (
+    //   props.sellerList.find(
+    //     (x) => x.email === values.email && x.userType === "Admin"
+    //   )
+    // ) {
+    //   console.log("You are a admin.");
+    //   // history.push("/admin");
+    //   history.push({
+    //     pathname: "/admin",
+    //     state: values.email,
+    //   });
+    // }
     // setRole();
     // if (validate()) {
     //   const onSuccess = () => {

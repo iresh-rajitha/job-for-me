@@ -39,7 +39,7 @@ const Navigationbar = (props) => {
           <Link
             to={{
               pathname: "/adminprofile",
-              state: props.adminEmail,
+              state: props.adminId,
             }}
           >
             Profile

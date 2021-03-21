@@ -27,11 +27,11 @@ const Order = () => {
 
   const history = useHistory();
   console.log(history.location.state);
-  const buyerEmail = history.location.state;
+  const buyerId = history.location.state;
 
   return (
     <Fragment>
-      <BuyerNav {...{ buyerEmail }} />
+      <BuyerNav {...{ buyerId }} />
       <section className="container">
         <div></div>
         <Grid container spacing={1}>

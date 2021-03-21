@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import Loginpage from "./components/auth/Login/Loginpage";
+import Chat from "./Chat/Chat";
 
 ReactDOM.render(
   <React.StrictMode>
