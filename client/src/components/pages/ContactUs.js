@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import sendEmail from "./Email";
+import LandingNav from "../layout/LandingNav";
+import Footer from "../layout/Footer";
 
 const ContactUs = () => {
   const [formData, setFromData] = useState({
@@ -25,52 +27,57 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="container">
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
-        {/* <form className="form" onSubmit={MyComponent}> */}
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-groud">
-          <input
-            type="text"
-            placeholder="Enter your Message Body"
-            name="body"
-            value={body}
-            onChange={(e) => onChange(e)}
-            minLength="3"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Signature"
-            name="signature"
-            value={signature}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <input type="submit" className="btn btn-primary" value="Send" />
-      </form>
-    </section>
+    <Fragment>
+      <LandingNav />
+      <section className="container">
+        <img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/765/4683342765_f43e76b4-4d93-4f52-b0e7-cc99ad1bf015.png?cb=1613721941" />
+        <form className="form" onSubmit={(e) => onSubmit(e)}>
+          {/* <form className="form" onSubmit={MyComponent}> */}
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Subject"
+              name="subject"
+              value={subject}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              value={email}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className="form-groud">
+            <input
+              type="text"
+              placeholder="Enter your Message Body"
+              name="body"
+              value={body}
+              onChange={(e) => onChange(e)}
+              minLength="3"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Signature"
+              name="signature"
+              value={signature}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <input type="submit" className="btn btn-primary" value="Send" />
+        </form>
+      </section>
+      <Footer />
+    </Fragment>
   );
 };
 

@@ -17,8 +17,12 @@ function Footer() {
         <div class="social-media-wrap">
           <div class="footer-logo">
             <Link to="/" className="social-logo">
-              JobForMe
-              <i class="fas fa-paper-plane" />
+              {/* JobForMe
+              <i class="fas fa-paper-plane" /> */}
+              <img
+                className="landinglogo"
+                src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/765/4683342765_f43e76b4-4d93-4f52-b0e7-cc99ad1bf015.png?cb=1613721941"
+              />
             </Link>
           </div>
           <small class="website-rights">JobForMe © 2021</small>

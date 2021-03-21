@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using MailKit;
@@ -12,10 +13,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using OnlineFreelancinPlatform.Data;
+using OnlineFreelancinPlatform.Hubs;
 using OnlineFreelancinPlatform.Model;
 using OnlineFreelancinPlatform.Services;
 using OnlineFreelancinPlatform.Settings;
@@ -34,10 +37,22 @@ namespace OnlineFreelancinPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            // services.AddCors();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ClientPermission", policy =>
+                {
+                    policy.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("http://localhost:3000")
+                        .AllowCredentials();
+                });
+            });
+
             services.AddMvc();
             services.AddControllers();
-
+            services.AddSignalR();
             services.AddTransient<Services.IMailService, Services.MailService>();
 
             //services.AddAuthentication(x =>
@@ -59,11 +74,11 @@ namespace OnlineFreelancinPlatform
 
             // services.AddSingleton<IJwtAuthenticationManager>(new JwtAuthenticationManager(key));
 
-            services.AddAuthentication("Basic")
-                .AddScheme<BasicAuthenticationOptions, CustomAuthenticationHandler>
-                ("Basic", null);
+            //services.AddAuthentication("Basic")
+            //    .AddScheme<BasicAuthenticationOptions, CustomAuthenticationHandler>
+            //    ("Basic", null);
             
-            services.AddSingleton<ICustomAuthenticationManager, CustomAuthenticationManager>();
+            //services.AddSingleton<ICustomAuthenticationManager, CustomAuthenticationManager>();
 
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IMessageService, MessageService>();
@@ -91,12 +106,18 @@ namespace OnlineFreelancinPlatform
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors("ClientPermission");
 
+            //app.UseCors(x => x
+            //    .AllowAnyOrigin()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader());
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+                RequestPath = "/Images"
+            });
 
             app.UseHttpsRedirection();
 
@@ -109,6 +130,7 @@ namespace OnlineFreelancinPlatform
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
             });
         }
     }

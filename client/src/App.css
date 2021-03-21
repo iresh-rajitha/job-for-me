@@ -602,3 +602,20 @@ button {
   grid-column-start: 1;
   grid-column-end: 3;
 }
+
+.photo {
+  height: 35px;
+  width: 85px;
+  /* width: 15%;
+  margin: 1.5rem 1.5rem 3.125rem; */
+  filter: brightness(0) invert(1) opacity(100%);
+}
+
+.photo:hover {
+  /* transition-duration: 0.4s; */
+  filter: brightness(0) invert(1) opacity(50%);
+}
+
+.landinglogo {
+  filter: brightness(0) invert(1) opacity(100%);
+}
