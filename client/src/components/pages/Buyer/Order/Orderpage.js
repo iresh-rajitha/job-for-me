@@ -44,9 +44,8 @@ function Orderpage() {
     
     const handleClose = (value) => {
       setOpen(false);
+      console.log("refresh");
       refreshOrderTable();
-      // console.log(value);
-      // setSelectedValue(value);
     };
     const refreshOrderTable=()=>{
       axios.get('https://localhost:5001/api/orderdetail')

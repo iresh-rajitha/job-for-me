@@ -1,6 +1,7 @@
 const User = require("./user.model");
 
 class Order{
+    
     orderID=0;
     startDate="";
     deadline="";

@@ -20,7 +20,7 @@ import Seller from "./components/pages/Seller";
 import EmployeeList from "./components/EmployeeList";
 import { ToastProvider } from "react-toast-notifications";
 import Sellers from "./components/Sellers";
-import Buyers from "./components/Buyers";
+import Buyers from "./components/pages/Buyer/Buyer";
 import Admins from "./components/Admins";
 import AddanAdmin from "./components/pages/AddanAdmin";
 import BuyerProfile from "./components/BuyerProfile";

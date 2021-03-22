@@ -10,13 +10,16 @@ namespace OnlineFreelancinPlatform.Services
     public class OrderService : IOrderService
     {
         private readonly FreelancingDBContext _freelancingDBContext;
+        private readonly IOrderDetailService _orderDetailService;
 
-        public OrderService(FreelancingDBContext datacontext)
+        public OrderService(FreelancingDBContext datacontext, IOrderDetailService orderDetailService)
         {
             _freelancingDBContext = datacontext;
+            _orderDetailService = orderDetailService;
         }
         public void Add(Order Order)
         {
+            //_orderDetailService.Add(Order.OrderDetail);
             _freelancingDBContext.Orders.Add(Order);
             _freelancingDBContext.SaveChanges();
         }

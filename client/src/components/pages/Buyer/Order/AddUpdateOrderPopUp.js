@@ -11,6 +11,7 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import styles from './AddUpdateOrderPopUp.module.css' 
 import axios from 'axios';
+import Order from '../../../../models/order.model';
 
 
 const useStyles = makeStyles({
@@ -36,8 +37,9 @@ const initialValues={
   description: "",
   file: null,
   field: fields[0],
-  price : "",
-  fileName:""
+  price : 0,
+  fileName:"",
+  deadline:""
 };
 
 function AddUpdateOrderPopUp(props) {
@@ -46,12 +48,11 @@ function AddUpdateOrderPopUp(props) {
     const [formData, setFormData] = useState(initialValues);
     const [fieldValue, setFieldValue] = React.useState(fields[0]);
     const [inputValue, setInputValue] = React.useState('');
+    const [newOrder, setNewOrder] = useState(new Order(0,"2021-01-06T17:16:40","2021-01-06T17:16:40","",0,"",0));
 
-    const {orderdetailID,description,file,field,price,fileName} = formData;
+    const {orderdetailID,deadline,description,file,field,price,fileName} = formData;
 
     useEffect(() => {
-      // setRows(rows=>props.tableData);
-      // console.log(props.order);
       setFormData(order);
     },[order]);
 
@@ -89,11 +90,14 @@ function AddUpdateOrderPopUp(props) {
       fd.append('Price',formData.price);
       fd.append('FileName',formData.fileName);
 
-      console.log(fd.get('orderDetailID'));
-      console.log(fd.get('Description'));
-      // console.log(fd);
+      newOrder.startDate= new Date().toISOString();
+      formData.price=parseFloat(formData.price);
+      newOrder.orderDetail=formData;
+      newOrder.description=formData.description;
+      // newOrder.buyer=new User(id,"","","","","","");
+      console.log(newOrder);
       if(fd.get('orderDetailID') ==0){
-        axios.post('https://localhost:5001/api/OrderDetail',fd)
+        axios.post('https://localhost:5001/api/order',newOrder)
       .then(res=>{
         console.log(res);
         handleClose();
@@ -112,7 +116,26 @@ function AddUpdateOrderPopUp(props) {
           console.log(err);
         });
       }
-      
+
+
+      // var data = JSON.stringify(newOrder);
+      // var config = {
+      //   method: 'post',
+      //   url: 'https://localhost:5001/api/order',
+      //   headers: { 
+      //     'Content-Type': 'application/json'
+      //   },
+      //   data : data
+      // };
+
+      // axios(config)
+      // .then(function (response) {
+      //   console.log(JSON.stringify(response.data));
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+      // handleClose();
     }
     
   
@@ -144,7 +167,7 @@ function AddUpdateOrderPopUp(props) {
           </Grid>
 
           <Grid className={styles.marging_b_15px}>
-          <Autocomplete
+          {/* <Autocomplete
             value={fieldValue}
             onChange={(event, newValue) => {
               setFieldValue(newValue);
@@ -157,8 +180,24 @@ function AddUpdateOrderPopUp(props) {
             options={fields}
             style={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Field" variant="outlined" />}
+          /> */}
+          </Grid>
+          <Grid>
+          <TextField
+            id="date"
+            label="Deadline"
+            type="date"
+            defaultValue={new Date()}
+            name="deadline"
+            value={deadline}
+            onChange={(e) => onChange(e)}
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           </Grid>
+          
 
           <Grid className={styles.marging_b_15px}>
             <FormControl fullWidth className={classes.margin}>
