@@ -1,12 +1,4 @@
 class User{
-    userId=0;
-    firstName="";
-    lastName="";
-    address="";
-    userType="";
-    category="";
-    email="";
-    password="";
     constructor(userId,firstName,lastName,address,userType,category,email){
         this.userId=userId;
         this.firstName=firstName;

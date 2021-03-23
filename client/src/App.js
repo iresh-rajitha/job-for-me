@@ -5,7 +5,7 @@ import LandingNav from "./components/layout/LandingNav";
 import LandingPage from "./components/layout/Landingpage";
 import SellerPage from "./components/pages/Seller";
 import BuyerPage from "./components/pages/Buyer/Buyer";
-import AdminPage from "./components/pages/Admin";
+import AdminPage from "./components/pages/Admin/Admin";
 import OrderPage from "./components/pages/Order";
 import LoginPage from "./components/pages/Login";
 //import Loginpage from "./components/auth/Login/Loginpage";
@@ -28,6 +28,7 @@ import SellerProfile from "./components/SellerProfile";
 import AdminProfile from "./components/AdminProfile";
 import Buyer from "./components/pages/Buyer/Buyer";
 import YourOrders from "./components/pages/Buyer/Order/Orderpage";
+import PageNotFound from "./components/common/PageNotFound";
 
 const App = () => (
   <Provider store={store}>
@@ -59,10 +60,10 @@ const App = () => (
               <OrderPage />
             <Footer />
             </Route>
-            <Route exact path="/admin" component={AdminPage} />
-            {/* <Route path="/admin">
+            {/* <Route exact path="/admin" component={AdminPage} /> */}
+            <Route path="/admin">
               <AdminPage />
-            </Route> */}
+            </Route>
             <Route path="/contact">
               <ContactUs />
             </Route>
@@ -94,6 +95,9 @@ const App = () => (
             <Route path="/buyerprofile">
               {/* above component should be outside */}
               <BuyerProfile />
+            </Route>
+            <Route path="*">
+              <PageNotFound/>
             </Route>
           </Switch>
           {/* <Footer /> */}

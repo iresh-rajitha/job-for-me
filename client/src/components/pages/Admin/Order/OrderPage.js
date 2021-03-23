@@ -70,9 +70,9 @@ function Orderpage() {
 
     return (
         <div>
-           <IconButton mb={10} style={{background: "#3f51b5",color:"white"}} aria-label="delete"  onClick={handleClickOpen}>
+           {/* <IconButton mb={10} style={{background: "#3f51b5",color:"white"}} aria-label="delete"  onClick={handleClickOpen}>
                 <Add/>
-            </IconButton>
+            </IconButton> */}
             <AssignOrderPopup selectedValue={selectedValue} open={open} onClose={handleClose} order={order} />
             <OrderTable updateFunction={updateFunction} deleteFunction={deleteFunction} tableData={tableData} />
         </div>

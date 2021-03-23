@@ -177,19 +177,19 @@ function Admin(props) {
         <Route exact path={`${path}/`}>
             Dashboard
         </Route>
-        <Route exact path={`${path}/order`}>
+        <Route path={`${path}/order`}>
             <Orderpage/>
         </Route>
-        <Route exact path={`${path}/message`}>
+        <Route path={`${path}/message`}>
             Message
         </Route>
-        <Route exact path={`${path}/field`}>
+        <Route  path={`${path}/field`}>
             <FieldPage/>
         </Route>
-        <Route exact path={`${path}/stats`}>
+        <Route  path={`${path}/stats`}>
             Statics
         </Route>
-        <Route exact path={`${path}/report`}>
+        <Route  path={`${path}/report`}>
             Report
         </Route>
       </Switch>

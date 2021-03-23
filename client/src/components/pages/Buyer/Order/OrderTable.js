@@ -63,7 +63,7 @@ export default function OrderTable(props) {
                   <TableCell align="left">{row.price}</TableCell>
                   <TableCell align="center">
                   <IconButton style={{marginRight:"10px"}} aria-label="delete">
-                    <DeleteIcon  onClick={()=>deleteOrder(row.orderDetailID)} />
+                    <DeleteIcon  onClick={()=>deleteOrder(row.orderDetailID)}/>
                     </IconButton>
                     <IconButton aria-label="delete">
                     <Edit   onClick={()=>updateOrder(row)}/>
