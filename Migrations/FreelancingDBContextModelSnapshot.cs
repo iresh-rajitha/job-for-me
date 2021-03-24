@@ -34,6 +34,27 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.ToTable("Admins");
                 });
 
+            modelBuilder.Entity("OnlineFreelancinPlatform.Model.EmployeeModel", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Occupation")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("EmployeeID");
+
+                    b.ToTable("Employers");
+                });
+
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Field", b =>
                 {
                     b.Property<int>("FieldID")

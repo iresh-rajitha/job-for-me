@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineFreelancinPlatform.Migrations
 {
-    public partial class init : Migration
+    public partial class ii : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,21 @@ namespace OnlineFreelancinPlatform.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admins", x => x.AdminID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employers",
+                columns: table => new
+                {
+                    EmployeeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Occupation = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    ImageName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employers", x => x.EmployeeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -126,18 +141,11 @@ namespace OnlineFreelancinPlatform.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SellerUserId = table.Column<int>(type: "int", nullable: true),
                     BuyerUserId = table.Column<int>(type: "int", nullable: true),
-                    OrderDetailID = table.Column<int>(type: "int", nullable: false),
-                    AdminID = table.Column<int>(type: "int", nullable: true)
+                    OrderDetailID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.OrderID);
-                    table.ForeignKey(
-                        name: "FK_Orders_Admins_AdminID",
-                        column: x => x.AdminID,
-                        principalTable: "Admins",
-                        principalColumn: "AdminID",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Orders_OrderDetails_OrderDetailID",
                         column: x => x.OrderDetailID,
@@ -169,11 +177,6 @@ namespace OnlineFreelancinPlatform.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_AdminID",
-                table: "Orders",
-                column: "AdminID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_BuyerUserId",
                 table: "Orders",
                 column: "BuyerUserId");
@@ -192,6 +195,9 @@ namespace OnlineFreelancinPlatform.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Employers");
+
             migrationBuilder.DropTable(
                 name: "Fields");
 

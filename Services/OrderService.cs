@@ -19,9 +19,12 @@ namespace OnlineFreelancinPlatform.Services
         }
         public void Add(Order Order)
         {
-            //_orderDetailService.Add(Order.OrderDetail);
+            ////_orderDetailService.Add(Order.OrderDetail);
+            //var transaction = _freelancingDBContext.Database.BeginTransaction();
+            //_freelancingDBContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[User] ON");
             _freelancingDBContext.Orders.Add(Order);
             _freelancingDBContext.SaveChanges();
+
         }
 
         public void Delete(int id)
