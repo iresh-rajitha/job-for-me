@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,13 +15,16 @@ namespace OnlineFreelancinPlatform.Model
         public int Rating { get; set; }
         public string Description { get; set; }
 <<<<<<< HEAD
+        //[ForeignKey("SellerID")]
+        //public int SellerID { get; set; }
         public virtual User Seller{get;set;}
+        //[ForeignKey("BuyerID")]
+        //public int? BuyerID { get; set; }
         public virtual User Buyer {get;set;}
-        public int OrderDetailID { get; set; }
-        public virtual OrderDetail OrderDetail{get;set;}
 =======
         public virtual User Seller { get; set; }
         public virtual User Buyer { get; set; }
+>>>>>>> d56bdb4ca62cd7690084050426e570c67bdf05bf
         public int OrderDetailID { get; set; }
         public virtual OrderDetail OrderDetail { get; set; }
         //public string comment { get; set; }
@@ -29,7 +33,6 @@ namespace OnlineFreelancinPlatform.Model
         //public virtual User User{get;set;}
         //public virtual Admin Admin{get;set;}
         //public virtual OrderDetail OrderDetail{get;set;}
->>>>>>> origin/dp
 
     }
 }

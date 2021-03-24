@@ -16,10 +16,10 @@ namespace OnlineFreelancinPlatform.Model
         public string Description { get; set; }
         //[ForeignKey("SellerID")]
         //public int SellerID { get; set; }
-        public virtual User Seller{get;set;}
+        public virtual User Seller { get; set; }
         //[ForeignKey("BuyerID")]
         //public int? BuyerID { get; set; }
-        public virtual User Buyer {get;set;}
+        public virtual User Buyer { get; set; }
         public int OrderDetailID { get; set; }
         public virtual OrderDetail OrderDetail { get; set; }
         //public string comment { get; set; }
