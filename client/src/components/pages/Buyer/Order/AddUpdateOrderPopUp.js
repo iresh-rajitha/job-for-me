@@ -167,7 +167,7 @@ function AddUpdateOrderPopUp(props) {
           </Grid>
 
           <Grid className={styles.marging_b_15px}>
-          {/* <Autocomplete
+          <Autocomplete
             value={fieldValue}
             onChange={(event, newValue) => {
               setFieldValue(newValue);
@@ -180,7 +180,7 @@ function AddUpdateOrderPopUp(props) {
             options={fields}
             style={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Field" variant="outlined" />}
-          /> */}
+          />
           </Grid>
           <Grid>
           <TextField
