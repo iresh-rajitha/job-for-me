@@ -30,6 +30,4 @@ _ReSharper*/
 .vs/
 #Nuget packages folder
 packages/
-.eslintcache
-client/.eslintcache
 obj/
