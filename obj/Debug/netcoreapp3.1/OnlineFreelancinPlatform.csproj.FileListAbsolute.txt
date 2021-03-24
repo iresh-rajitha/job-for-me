@@ -199,3 +199,6 @@ D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\libman.json
 D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\MailKit.dll
 D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\MimeKit.dll
 D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Programming\React\JobForMe\job-for-me\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

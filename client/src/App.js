@@ -19,6 +19,7 @@ import store from "./store";
 import Seller from "./components/pages/Seller";
 import EmployeeList from "./components/EmployeeList";
 import { ToastProvider } from "react-toast-notifications";
+import OrderSellers from "./components/OrderSellers";
 import Sellers from "./components/Sellers";
 import Buyers from "./components/Buyers";
 import Admins from "./components/Admins";
@@ -27,7 +28,11 @@ import BuyerProfile from "./components/BuyerProfile";
 import SellerProfile from "./components/SellerProfile";
 import AdminProfile from "./components/AdminProfile";
 import Buyer from "./components/pages/Buyer/Buyer";
-import YourOrders from "./components/pages/Buyer/Order/Orderpage";
+import YourOrdersBuyer from "./components/pages/Buyer/Order/Orderpage";
+import YourOrdersSeller from "./components/pages/Buyer/Order/SellerOrderPage";
+import AdminOrders from "./components/pages/Buyer/Order/AdminOrderPage";
+// import YourOrders from "./components/pages/Buyer/Buyer";
+import Chat from "./components/pages/ChatUI";
 
 const App = () => (
   <Provider store={store}>
@@ -75,11 +80,24 @@ const App = () => (
               <AdminProfile />
             </Route>
             <Route path="/yourorders">
-              <YourOrders />
+              <YourOrdersBuyer />
+            </Route>
+            <Route path="/yourordersseller">
+              <YourOrdersSeller />
+            </Route>
+            <Route path="/adminorders">
+              <AdminOrders />
+            </Route>
+            <Route path="/chat">
+              <Chat />
             </Route>
             <Route path="/sellers">
               {/* above component should be outside */}
               <Sellers />
+            </Route>
+            <Route path="/ordersellers">
+              {/* above component should be outside */}
+              <OrderSellers />
             </Route>
             <Route path="/buyerprofile">
               {/* above component should be outside */}

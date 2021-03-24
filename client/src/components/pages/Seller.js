@@ -45,6 +45,7 @@ const initialFieldValues = {
 const SellersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts();
   let history = useHistory();
+  const buyerId = history.location.state;
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -99,20 +100,34 @@ const SellersForm = ({ classes, ...props }) => {
     e.preventDefault();
     setRole();
     if (validate()) {
-      history.push({
-        pathname: "/sellerdashboard",
-        state: values.email,
-      });
+      // history.push({
+      //   pathname: "/sellerdashboard",
+      //   state: values.email,
+      // });
       const onSuccess = () => {
         resetForm();
         addToast("Submitted successfully", { appearance: "success" });
       };
-      // if (props.currentId === 0) {
+      props.deleteSeller(buyerId, onSuccess);
+      // if (props.sellerList.find((x) => x.email === values.email)) {
+      //   props.deleteSeller(buyerId, onSuccess);
       //   props.createSeller(values, onSuccess);
       // } else {
-      //   props.updateSeller(props.currentId, values, onSuccess);
+      //   props.createSeller(values, onSuccess);
       // }
       props.createSeller(values, onSuccess);
+      // history.push({
+      //   pathname: "/sellerdashboard",
+      //   state: buyerId,
+      // });
+      props.sellerList.find((x) => {
+        if (x.email == values.email) {
+          history.push({
+            pathname: "/sellerdashboard",
+            state: x.userId,
+          });
+        }
+      });
     }
   };
 
@@ -150,6 +165,7 @@ const SellersForm = ({ classes, ...props }) => {
           <p className="lead">
             <i className="fas fa-user"></i> Create Your Seller Profile
           </p>
+          <p>* This will delete your customer profile!.</p>
         </div>
         <form
           autoComplete="off"
@@ -280,6 +296,7 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = {
   createSeller: actions.create,
   updateSeller: actions.update,
+  deleteSeller: actions.Delete,
   fetchAllSellers: actions.fetchAll,
 };
 

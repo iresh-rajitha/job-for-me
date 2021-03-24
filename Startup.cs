@@ -77,8 +77,10 @@ namespace OnlineFreelancinPlatform
             //services.AddAuthentication("Basic")
             //    .AddScheme<BasicAuthenticationOptions, CustomAuthenticationHandler>
             //    ("Basic", null);
-            
+
             //services.AddSingleton<ICustomAuthenticationManager, CustomAuthenticationManager>();
+
+            services.AddControllers().AddNewtonsoftJson();
 
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IMessageService, MessageService>();

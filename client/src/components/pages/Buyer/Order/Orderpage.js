@@ -8,6 +8,7 @@ import AddUpdateOrderPopUp from "./AddUpdateOrderPopUp";
 import OrderTable from "./OrderTable";
 import { spacing } from "@material-ui/system";
 import { OrderDetailService } from "../../../../services";
+import { useHistory } from "react-router-dom";
 
 import BuyerNav from "../../../layout/BuyerNav";
 import Footer from "../../../layout/Footer";
@@ -33,6 +34,9 @@ AddUpdateOrderPopUp.propTypes = {
 };
 
 function Orderpage() {
+  let history = useHistory();
+  const senderId = history.location.state;
+  console.log(senderId);
   useEffect(() => {
     refreshOrderTable();
   }, []);
@@ -48,13 +52,12 @@ function Orderpage() {
 
   const handleClose = (value) => {
     setOpen(false);
+    console.log("refresh");
     refreshOrderTable();
-    // console.log(value);
-    // setSelectedValue(value);
   };
   const refreshOrderTable = () => {
     axios
-      .get("https://localhost:5001/api/orderdetail")
+      .get("https://localhost:5001/api/order")
       .then((res) => {
         // tableData=res.data;
         setTableData((tableData) => res.data);
@@ -105,11 +108,13 @@ function Orderpage() {
             open={open}
             onClose={handleClose}
             order={order}
+            senderId={senderId}
           />
           <OrderTable
             updateFunction={updateFunction}
             deleteFunction={deleteFunction}
             tableData={tableData}
+            senderId={history.location.state}
           />
         </div>
       </section>

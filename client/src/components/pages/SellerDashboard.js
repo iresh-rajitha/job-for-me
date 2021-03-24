@@ -85,14 +85,14 @@ const Sellers = ({ classes, ...props }) => {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Appointed Orders
+                    Pending Orders
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    View appointed orders for you!
+                    View orders that are offered to you!
                   </Typography>
                   <Typography
                     variant="body2"
@@ -160,35 +160,46 @@ const Sellers = ({ classes, ...props }) => {
               </CardActions>
             </Card>
           </Link>
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Contemplative Reptile"
-                height="140"
-                image="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Orders
-                </Typography>
-                {/* <Typography variant="body2" color="textSecondary" component="p">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography> */}
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              {/* <Button size="small" color="primary">
+          <Link
+            to={{
+              pathname: "/yourordersseller",
+              state: sellerId,
+            }}
+          >
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Contemplative Reptile"
+                  height="140"
+                  image="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Your Orders
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    View orders that you are currently working on.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                {/* <Button size="small" color="primary">
               Orders' List
             </Button>
             <Button size="small" color="primary">
               Place a Order
             </Button> */}
-            </CardActions>
-          </Card>
+              </CardActions>
+            </Card>
+          </Link>
         </Grid>
+
         {/* <Paper className={classes.paper} elevation={3}>
         <Grid>
           <Grid item xs={6}>

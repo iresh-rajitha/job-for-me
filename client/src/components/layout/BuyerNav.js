@@ -20,11 +20,28 @@ const Navigationbar = (props) => {
           <a href="/admin">Admin Panel</a>
         </li> */}
         <li>
-          <a href="/yourorders">Your Orders</a>
+          <Link
+            to={{
+              pathname: "/yourorders",
+              state: props.buyerId,
+            }}
+          >
+            Your Orders
+          </Link>
         </li>
         <li>
-          <a href="/seller">Become a Seller</a>
+          <Link
+            to={{
+              pathname: "/seller",
+              state: props.buyerId,
+            }}
+          >
+            Become a Seller!
+          </Link>
         </li>
+        {/* <li>
+          <a href="/seller">Become a Seller</a>
+        </li> */}
         {/* <li>
           <Link to="/register">Register</Link>
         </li> */}

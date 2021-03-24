@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
 import ChatWindow from "./ChatWindow/ChatWindow";
 import ChatInput from "./ChatInput/ChatInput";
+
+import BuyerNav from "../components/layout/BuyerNav";
+import Footer from "../components/layout/Footer";
 
 const Chat = () => {
   const [connection, setConnection] = useState(null);
@@ -56,11 +59,17 @@ const Chat = () => {
   };
 
   return (
-    <div>
-      <ChatInput sendMessage={sendMessage} />
-      <hr />
-      <ChatWindow chat={chat} />
-    </div>
+    <Fragment>
+      <BuyerNav />
+      <section className="container">
+        <div>
+          <ChatInput sendMessage={sendMessage} />
+
+          <ChatWindow chat={chat} />
+        </div>
+      </section>
+      <Footer />
+    </Fragment>
   );
 };
 
