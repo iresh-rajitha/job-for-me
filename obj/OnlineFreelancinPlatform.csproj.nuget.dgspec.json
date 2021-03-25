@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj": {}
+    "D:\\Semester 5\\Software Project\\hobForMeNew\\job-for-me\\OnlineFreelancinPlatform.csproj": {}
   },
   "projects": {
-    "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj": {
+    "D:\\Semester 5\\Software Project\\hobForMeNew\\job-for-me\\OnlineFreelancinPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj",
+        "projectUniqueName": "D:\\Semester 5\\Software Project\\hobForMeNew\\job-for-me\\OnlineFreelancinPlatform.csproj",
         "projectName": "OnlineFreelancinPlatform",
-        "projectPath": "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj",
+        "projectPath": "D:\\Semester 5\\Software Project\\hobForMeNew\\job-for-me\\OnlineFreelancinPlatform.csproj",
         "packagesPath": "C:\\Users\\Win10-L\\.nuget\\packages\\",
-        "outputPath": "D:\\Semester 5\\Software Project\\Project\\obj\\",
+        "outputPath": "D:\\Semester 5\\Software Project\\hobForMeNew\\job-for-me\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

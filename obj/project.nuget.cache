@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2X+uMHf5dqOQHRT0qIAszwLKs3r26vJODwN09WgBc/1Ds5KS/XtX73cPWLx9YsUOqxKk/aulBgMkMAt1wPSetg==",
+  "dgSpecHash": "pORT7naeZxi3sz2neyerSteQoW4grXKhd/5tsO6MpKI44PqApmNDantvU2JWHjDzIndwbF8fmaoeX1QpB8GfqA==",
   "success": true,
-  "projectFilePath": "D:\\Semester 5\\Software Project\\Project\\OnlineFreelancinPlatform.csproj",
+  "projectFilePath": "D:\\Semester 5\\Software Project\\hobForMeNew\\job-for-me\\OnlineFreelancinPlatform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Win10-L\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Win10-L\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",

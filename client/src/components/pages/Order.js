@@ -30,180 +30,6 @@ const Order = () => {
   const buyerId = history.location.state;
 
   return (
-<<<<<<< HEAD
-    <section className="container">
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem", height: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </div>
-      <div className="column">
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-=======
     <Fragment>
       <BuyerNav {...{ buyerId }} />
       <section className="container">
@@ -211,7 +37,6 @@ const Order = () => {
         <Grid container spacing={1}>
           <Grid container item xs={12} spacing={3}>
             {/* <Card style={{ width: "18rem" }}>
->>>>>>> origin/front-grid
             <Card.Img
               variant="top"
               src="https://source.unsplash.com/user/erondu/600x400"
@@ -461,14 +286,9 @@ const Order = () => {
             </CardActions>
           </Card>
         </Grid>
-<<<<<<< HEAD
-      </div>
-    </section>
-=======
       </section>
       <Footer />
     </Fragment>
->>>>>>> origin/front-grid
   );
 };
 

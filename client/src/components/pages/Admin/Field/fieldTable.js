@@ -1,0 +1,101 @@
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { Edit } from '@material-ui/icons';
+import  Confirmation  from "../../../common/Confirmation";
+
+
+const useStyles = makeStyles({
+    table: {
+      minWidth: 650,
+    },
+  });
+
+//   AddUpdateOrderPopUp.propTypes = {
+//     onClose: PropTypes.func.isRequired,
+//     open: PropTypes.bool.isRequired,
+//     selectedValue: PropTypes.string.isRequired,
+//   };
+// const handleClickOpen = () => { 
+//   setOpen(true);
+// };
+// const handleClose = (value) => {
+//   setOpen(false);
+// };
+
+export default function FieldTable(props) {
+    const [rows,setRows]= useState(props.tableData);
+    const [open,setOpen]= useState(false);
+    const [id,setID]= useState(0);
+    const [message,setMessage]= useState("default message");
+    const classes = useStyles();
+    useEffect(() => {
+      setRows(rows=>props.tableData);
+      // console.log(props.tableData);
+    });
+    const deleteOrder=(id)=>{
+      setID(id);
+      setMessage("Do you want to delete field "+id);
+      handleClickOpen();
+      // props.deleteFunction(id);
+    }
+    const updateOrder=(obj)=>{
+      props.updateFunction(obj);
+    }
+    const handleClickOpen = () => { 
+      setOpen(true);
+    };
+    const handleClose = (value) => {
+      console.log(value);
+      if(value){
+        props.deleteFunction(id);
+      }
+      setOpen(false);
+    }
+    
+    return (
+      <div>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">Field ID</TableCell>
+                <TableCell align="left">Field Name</TableCell>
+                <TableCell align="left">Description</TableCell>
+                <TableCell align="center">Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.fieldID}>
+                  <TableCell align="left">{row.fieldID}</TableCell>
+                  <TableCell align="left">{row.fieldName}</TableCell>
+                  <TableCell align="left">{row.description}</TableCell>
+                  <TableCell align="center">
+                  <IconButton style={{marginRight:"10px"}} aria-label="delete">
+                    <DeleteIcon  onClick={()=>deleteOrder(row.fieldID)} />
+                    </IconButton>
+                    <IconButton aria-label="delete">
+                    <Edit   onClick={()=>updateOrder(row)}/>
+                  </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Confirmation open={open} onClose={handleClose} message={message}/>
+
+      </div>
+        
+       
+      );
+}

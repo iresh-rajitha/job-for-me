@@ -198,3 +198,10 @@ D:\Semester 5\Software Project\Project\obj\Debug\netcoreapp3.1\OnlineFreelancinP
 D:\Semester 5\Software Project\Project\bin\Debug\netcoreapp3.1\client\reactfirstwebsite\package-lock.json
 D:\Semester 5\Software Project\Project\bin\Debug\netcoreapp3.1\client\reactfirstwebsite\package.json
 D:\Semester 5\Software Project\Project\bin\Debug\netcoreapp3.1\client\reactfirstwebsite\public\manifest.json
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.csprojAssemblyReference.cache
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.AssemblyInfoInputs.cache
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.AssemblyInfo.cs
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.csproj.CoreCompileInputs.cache
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.MvcApplicationPartsAssemblyInfo.cache
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.dll
+D:\Semester 5\Software Project\hobForMeNew\job-for-me\obj\Debug\netcoreapp3.1\OnlineFreelancinPlatform.pdb

@@ -16,17 +16,6 @@ import * as actions from "../../actions/sellers";
 import { useToasts } from "react-toast-notifications";
 import { useHistory } from "react-router-dom";
 
-<<<<<<< HEAD
-//import "./Footer.css";
-
-const Seller = () => {
-  //   const [formData, setFormData] = useState({
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     password2: "",
-  //   });
-=======
 const styles = (theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -42,7 +31,6 @@ const styles = (theme) => ({
     margin: theme.spacing(1),
   },
 });
->>>>>>> origin/front-grid
 
 const initialFieldValues = {
   firstName: "",
@@ -128,12 +116,6 @@ const SellersForm = ({ classes, ...props }) => {
     }
   };
 
-<<<<<<< HEAD
-
-  
-  
-
-=======
   useEffect(() => {
     if (props.currentId !== 0) {
       setValues({
@@ -142,7 +124,6 @@ const SellersForm = ({ classes, ...props }) => {
       setErrors({});
     }
   }, [props.currentId]);
->>>>>>> origin/front-grid
   return (
     <Fragment>
       {/* <div>
@@ -161,133 +142,6 @@ const SellersForm = ({ classes, ...props }) => {
             src="https://sg.fiverrcdn.com/packages_lp/cover_video.mp4"
           />
         </div>
-<<<<<<< HEAD
-        <section className="container">
-          <div>
-            <h1 className="large text-primary">Become a Seller!</h1>
-            <p className="lead">
-              <i className="fas fa-user"></i> Create Your Seller Profile
-            </p>
-            <form className="form" onSubmit={(e) => onSubmit(e)}>
-              <div className="form-group">
-                <input type="text" placeholder="Name" name="name" required />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  required
-                />
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Country"
-                    name="country"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Address"
-                    name="address"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Contact No"
-                    name="contactNo"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Expertise: Illustrator, Photoshop, After Effects or Premere Pro (Type One or more)"
-                    name="expertise"
-                    required
-                  />
-                </div>
-
-
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Work Time: (Select Full Time or Part Time)"
-                    name="workTime"
-                    required
-                    />
-
-                   {/*} <p>
-                            The selected option -{" "}
-                            <span style={{ fontWeight: "bold" }}>
-                              {" "}
-                              {selectedOption.length > 0 ? selectedOption : "None"}
-                            </span>
-        </p>*/}
-                        {/*<ComboBox
-                        options={options}
-                        placeholder="choose country"
-                        defaultIndex={4}
-                        optionsListMaxHeight={300}
-                        style={{
-                          width: "350px",
-                          margin: "0 auto",
-                          marginTop: "50px"
-                        }}
-                        focusColor="#20C374"
-                        renderOptions={(option) => (
-                          <div className="comboBoxOption">{option}</div>
-                        )}
-                        onSelect={(option) => setSelectedOption(option)}
-                        onChange={(event) => console.log(event.target.value)}
-                        enableAutocomplete
-                        onOptionsChange={(option) => setHighlightedOption(option)}
-                        />*/}
-              
-                </div>
-
-                
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="English Knowledge: (Select Begginer, Average or Expert)"
-                    name="english"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Exam Date: (Select a Date and Time to Participate for the Examination)"
-                    name="exam"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Employed Organizations: (If there is any)"
-                    name="employed"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Experience: (Average or Expert)"
-                    name="experience"
-                    required
-                  />
-                </div>
-                <small className="form-text">
-                  This site uses Gravatar so if you want a profile image, use a
-                  Gravatar email
-                </small>
-=======
       </div> */}
 
       <section className="container">
@@ -410,7 +264,6 @@ const SellersForm = ({ classes, ...props }) => {
             >
               Reset
             </Button> */}
->>>>>>> origin/front-grid
               </div>
             </Grid>
           </Grid>
