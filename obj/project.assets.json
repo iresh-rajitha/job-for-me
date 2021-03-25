@@ -6386,19 +6386,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Personal\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\React\\JobForMe\\job-for-me\\OnlineFreelancinPlatform.csproj",
+      "projectUniqueName": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
       "projectName": "OnlineFreelancinPlatform",
-      "projectPath": "D:\\Programming\\React\\JobForMe\\job-for-me\\OnlineFreelancinPlatform.csproj",
-      "packagesPath": "C:\\Users\\Personal\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\React\\JobForMe\\job-for-me\\obj\\",
+      "projectPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "E:\\Project\\OnlineFreelancinPlatform\\OnlineFreelancinPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Personal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6489,7 +6489,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
