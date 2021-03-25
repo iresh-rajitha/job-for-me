@@ -33,6 +33,7 @@ import YourOrdersSeller from "./components/pages/Buyer/Order/SellerOrderPage";
 import AdminOrders from "./components/pages/Buyer/Order/AdminOrderPage";
 // import YourOrders from "./components/pages/Buyer/Buyer";
 import Chat from "./components/pages/ChatUI";
+import Payment from "./components/pages/Payment";
 
 const App = () => (
   <Provider store={store}>
@@ -40,70 +41,75 @@ const App = () => (
       <Router>
         <Fragment>
           {/* <LandingNav /> */}
-          <Route exact path="/" component={LandingPage} />
-          <Switch>
-            <Route path="/register">
-              <BuyerPage />
-            </Route>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Route path="/seller">
-              <Seller />
-            </Route>
-            <Route path="/order">
-              <OrderPage />
-            </Route>
-            <Route exact path="/admin" component={AdminPage} />
-            {/* <Route path="/admin">
+          <section className="landing-app">
+            <Route exact path="/" component={LandingPage} />
+            <Switch>
+              <Route path="/register">
+                <BuyerPage />
+              </Route>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+              <Route path="/seller">
+                <Seller />
+              </Route>
+              <Route path="/order">
+                <OrderPage />
+              </Route>
+              <Route exact path="/admin" component={AdminPage} />
+              {/* <Route path="/admin">
               <AdminPage />
             </Route> */}
-            <Route path="/contact">
-              <ContactUs />
-            </Route>
-            <Route path="/buyers">
-              <Buyers />
-            </Route>
-            <Route path="/sellerdashboard">
-              <SellerDashboard />
-            </Route>
-            <Route path="/sellerprofile">
-              <SellerProfile />
-            </Route>
-            <Route path="/admins">
-              <Admins />
-            </Route>
-            <Route path="/addanadmin">
-              <AddanAdmin />
-            </Route>
-            <Route path="/adminprofile">
-              <AdminProfile />
-            </Route>
-            <Route path="/yourorders">
-              <YourOrdersBuyer />
-            </Route>
-            <Route path="/yourordersseller">
-              <YourOrdersSeller />
-            </Route>
-            <Route path="/adminorders">
-              <AdminOrders />
-            </Route>
-            <Route path="/chat">
-              <Chat />
-            </Route>
-            <Route path="/sellers">
-              {/* above component should be outside */}
-              <Sellers />
-            </Route>
-            <Route path="/ordersellers">
-              {/* above component should be outside */}
-              <OrderSellers />
-            </Route>
-            <Route path="/buyerprofile">
-              {/* above component should be outside */}
-              <BuyerProfile />
-            </Route>
-          </Switch>
+              <Route path="/contact">
+                <ContactUs />
+              </Route>
+              <Route path="/buyers">
+                <Buyers />
+              </Route>
+              <Route path="/sellerdashboard">
+                <SellerDashboard />
+              </Route>
+              <Route path="/sellerprofile">
+                <SellerProfile />
+              </Route>
+              <Route path="/admins">
+                <Admins />
+              </Route>
+              <Route path="/addanadmin">
+                <AddanAdmin />
+              </Route>
+              <Route path="/payment">
+                <Payment />
+              </Route>
+              <Route path="/adminprofile">
+                <AdminProfile />
+              </Route>
+              <Route path="/yourorders">
+                <YourOrdersBuyer />
+              </Route>
+              <Route path="/yourordersseller">
+                <YourOrdersSeller />
+              </Route>
+              <Route path="/adminorders">
+                <AdminOrders />
+              </Route>
+              <Route path="/chat">
+                <Chat />
+              </Route>
+              <Route path="/sellers">
+                {/* above component should be outside */}
+                <Sellers />
+              </Route>
+              <Route path="/ordersellers">
+                {/* above component should be outside */}
+                <OrderSellers />
+              </Route>
+              <Route path="/buyerprofile">
+                {/* above component should be outside */}
+                <BuyerProfile />
+              </Route>
+            </Switch>
+          </section>
           {/* <Footer /> */}
         </Fragment>
       </Router>

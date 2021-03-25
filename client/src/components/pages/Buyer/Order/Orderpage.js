@@ -36,6 +36,7 @@ AddUpdateOrderPopUp.propTypes = {
 function Orderpage() {
   let history = useHistory();
   const senderId = history.location.state;
+  const buyerId = history.location.state;
   console.log(senderId);
   useEffect(() => {
     refreshOrderTable();
@@ -92,7 +93,7 @@ function Orderpage() {
 
   return (
     <Fragment>
-      <BuyerNav />
+      <BuyerNav {...{ buyerId }} />
       <section className="container">
         <div>
           <IconButton

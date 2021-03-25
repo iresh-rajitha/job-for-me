@@ -98,14 +98,14 @@ function AdminOrderPage() {
         <p> Currently avalible Sellers.</p>
         <OrderSellers />
         <div>
-          <IconButton
+          {/* <IconButton
             mb={10}
             style={{ background: "#3f51b5", color: "white" }}
             aria-label="delete"
             onClick={handleClickOpen}
           >
             <Add />
-          </IconButton>
+          </IconButton> */}
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}
             open={open}

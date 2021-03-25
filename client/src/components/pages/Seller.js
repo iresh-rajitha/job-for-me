@@ -15,6 +15,9 @@ import { connect } from "react-redux";
 import * as actions from "../../actions/sellers";
 import { useToasts } from "react-toast-notifications";
 import { useHistory } from "react-router-dom";
+import Container from "@material-ui/core/Container";
+import BuyerNav from "../layout/BuyerNav";
+import Footer from "../layout/Footer";
 
 const styles = (theme) => ({
   root: {
@@ -141,150 +144,140 @@ const SellersForm = ({ classes, ...props }) => {
   }, [props.currentId]);
   return (
     <Fragment>
-      {/* <div>
-        <div>
-          <video
-            style={{
-              alignItem: "center",
-              justifyContent: "center",
-              position: "realative",
-              zIndex: -1,
-              width: "100%",
-            }}
-            autoPlay="true"
-            loop
-            muted
-            src="https://sg.fiverrcdn.com/packages_lp/cover_video.mp4"
-          />
-        </div>
-      </div> */}
+      <BuyerNav />
 
       <section className="container">
-        <div>
-          <h1 className="large text-primary">Become a Seller!</h1>
-          <p className="lead">
-            <i className="fas fa-user"></i> Create Your Seller Profile
-          </p>
-          <p>* This will delete your customer profile!.</p>
-        </div>
-        <form
-          autoComplete="off"
-          noValidate
-          className={classes.root}
-          onSubmit={handleSubmit}
-        >
-          <Grid container>
-            <Grid item xs={12}>
-              <TextField
-                name="firstName"
-                variant="outlined"
-                label="First Name"
-                value={values.firstName}
-                onChange={handleInputChange}
-                {...(errors.firstName && {
-                  error: true,
-                  helperText: errors.firstName,
-                })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="lastName"
-                variant="outlined"
-                label="Last Name"
-                value={values.lastName}
-                onChange={handleInputChange}
-                {...(errors.lastName && {
-                  error: true,
-                  helperText: errors.lastName,
-                })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl
-                variant="outlined"
-                className={classes.formControl}
-                {...(errors.category && { error: true })}
-              >
-                <InputLabel ref={inputLabel}>Category</InputLabel>
-                <Select
-                  name="category"
-                  value={values.category}
+        <Container component="main" maxWidth="xs">
+          <div>
+            <h1 className="large text-primary">Become a Seller!</h1>
+            <p className="lead">
+              <i className="fas fa-user"></i> Create Your Seller Profile
+            </p>
+            <p>* This will delete your customer profile!.</p>
+          </div>
+          <form
+            autoComplete="off"
+            noValidate
+            className={classes.root}
+            onSubmit={handleSubmit}
+          >
+            <Grid container>
+              <Grid item xs={12}>
+                <TextField
+                  name="firstName"
+                  variant="outlined"
+                  label="First Name"
+                  value={values.firstName}
                   onChange={handleInputChange}
-                  labelWidth={labelWidth}
+                  {...(errors.firstName && {
+                    error: true,
+                    helperText: errors.firstName,
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="lastName"
+                  variant="outlined"
+                  label="Last Name"
+                  value={values.lastName}
+                  onChange={handleInputChange}
+                  {...(errors.lastName && {
+                    error: true,
+                    helperText: errors.lastName,
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl
+                  variant="outlined"
+                  className={classes.formControl}
+                  {...(errors.category && { error: true })}
                 >
-                  <MenuItem value="">Select a Category</MenuItem>
-                  <MenuItem value="illustration">Illustration</MenuItem>
-                  <MenuItem value="albumCovers">Album Covers</MenuItem>
-                  <MenuItem value="vectorArts">Vector Arts</MenuItem>
-                  <MenuItem value="photoEditing">Photo Editing</MenuItem>
-                  <MenuItem value="videoEditing">Video Editing</MenuItem>
-                  <MenuItem value="uiDesigning">UI Designing</MenuItem>
-                </Select>
-                {errors.category && (
-                  <FormHelperText>{errors.category}</FormHelperText>
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="email"
-                variant="outlined"
-                label="Email"
-                value={values.email}
-                onChange={handleInputChange}
-                {...(errors.email && { error: true, helperText: errors.email })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="address"
-                variant="outlined"
-                label="Address"
-                value={values.address}
-                onChange={handleInputChange}
-                {...(errors.address && {
-                  error: true,
-                  helperText: errors.address,
-                })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="password"
-                variant="outlined"
-                label="Password"
-                value={values.password}
-                onChange={handleInputChange}
-                {...(errors.password && {
-                  error: true,
-                  helperText: errors.password,
-                })}
-              />
-              <div>{props.currentId}</div>
-            </Grid>
-            <Grid item xs={12}>
-              <div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin}
-                >
-                  Submit
-                </Button>
-                {/* <Button
+                  <InputLabel ref={inputLabel}>Category</InputLabel>
+                  <Select
+                    name="category"
+                    value={values.category}
+                    onChange={handleInputChange}
+                    labelWidth={labelWidth}
+                  >
+                    <MenuItem value="">Select a Category</MenuItem>
+                    <MenuItem value="illustration">Illustration</MenuItem>
+                    <MenuItem value="albumCovers">Album Covers</MenuItem>
+                    <MenuItem value="vectorArts">Vector Arts</MenuItem>
+                    <MenuItem value="photoEditing">Photo Editing</MenuItem>
+                    <MenuItem value="videoEditing">Video Editing</MenuItem>
+                    <MenuItem value="uiDesigning">UI Designing</MenuItem>
+                  </Select>
+                  {errors.category && (
+                    <FormHelperText>{errors.category}</FormHelperText>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="email"
+                  variant="outlined"
+                  label="Email"
+                  value={values.email}
+                  onChange={handleInputChange}
+                  {...(errors.email && {
+                    error: true,
+                    helperText: errors.email,
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="address"
+                  variant="outlined"
+                  label="Address"
+                  value={values.address}
+                  onChange={handleInputChange}
+                  {...(errors.address && {
+                    error: true,
+                    helperText: errors.address,
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="password"
+                  variant="outlined"
+                  label="Password"
+                  value={values.password}
+                  onChange={handleInputChange}
+                  {...(errors.password && {
+                    error: true,
+                    helperText: errors.password,
+                  })}
+                />
+                <div>{props.currentId}</div>
+              </Grid>
+              <Grid item xs={12}>
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    className={classes.smMargin}
+                  >
+                    Submit
+                  </Button>
+                  {/* <Button
               variant="contained"
               className={classes.smMargin}
               onClick={resetForm}
             >
               Reset
             </Button> */}
-              </div>
+                </div>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Container>
       </section>
+      <Footer />
     </Fragment>
   );
 };

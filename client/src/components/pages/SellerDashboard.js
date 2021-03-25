@@ -73,7 +73,12 @@ const Sellers = ({ classes, ...props }) => {
           <br />
           <br />
           <br />
-          <Link to="/buyers">
+          <Link
+            to={{
+              pathname: "/order",
+              state: sellerId,
+            }}
+          >
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -85,14 +90,14 @@ const Sellers = ({ classes, ...props }) => {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Pending Orders
+                    Browse as a Buyer
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    View orders that are offered to you!
+                    Go and have the customer experience!
                   </Typography>
                   <Typography
                     variant="body2"

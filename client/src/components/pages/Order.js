@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-//import { Card, Button } from "react-bootstrap";
+import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 import BuyerNav from "../layout/BuyerNav";
 import Footer from "../layout/Footer";
 
+import AddUpdateOrderPopUp from "./Buyer/Order/AddUpdateOrderPopUp";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -22,12 +23,68 @@ const useStyles = makeStyles({
   },
 });
 
+const emails = ["username@gmail.com", "user02@gmail.com"];
+
+const initialValues = {
+  orderDetailID: 0,
+  description: "",
+  file: null,
+  field: "",
+  price: "",
+  fileName: "",
+};
+
 const Order = () => {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [order, setOrder] = useState(initialValues);
+  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const [field, setField] = useState(0);
 
   const history = useHistory();
   console.log(history.location.state);
   const buyerId = history.location.state;
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const illustration = () => {
+    setField(1);
+    console.log(field);
+    setOpen(true);
+  };
+
+  const albumCovers = () => {
+    setOpen(true);
+    setField(2);
+  };
+
+  const vectorArts = () => {
+    setOpen(true);
+    setField(3);
+  };
+
+  const photoEditing = () => {
+    setOpen(true);
+    setField(4);
+  };
+
+  const videoEditing = () => {
+    setOpen(true);
+    setField(5);
+  };
+
+  const uiDesigning = () => {
+    setOpen(true);
+    setField(6);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    console.log("refresh");
+    // refreshOrderTable();
+  };
 
   return (
     <Fragment>
@@ -35,86 +92,7 @@ const Order = () => {
       <section className="container">
         <div></div>
         <Grid container spacing={1}>
-          <Grid container item xs={12} spacing={3}>
-            {/* <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Grid>
-      </Grid>
-      <Grid container spacing={6}>
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src="https://source.unsplash.com/user/erondu/600x400"
-            />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>Some Custom text one can write here</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card> */}
-          </Grid>
+          <Grid container item xs={12} spacing={3}></Grid>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -135,12 +113,12 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={illustration}>
                 Place Order
               </Button>
-              <Button size="small" color="primary">
+              {/* <Button size="small" color="primary">
                 Learn More
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
           <Card className={classes.root}>
@@ -163,12 +141,12 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={albumCovers}>
                 Place Order
               </Button>
-              <Button size="small" color="primary">
+              {/* <Button size="small" color="primary">
                 Learn More
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
           <Card className={classes.root}>
@@ -191,12 +169,12 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={vectorArts}>
                 Place Order
               </Button>
-              <Button size="small" color="primary">
+              {/* <Button size="small" color="primary">
                 Learn More
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
           <Card className={classes.root}>
@@ -219,12 +197,12 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={photoEditing}>
                 Place Order
               </Button>
-              <Button size="small" color="primary">
+              {/* <Button size="small" color="primary">
                 Learn More
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
           <Card className={classes.root}>
@@ -247,12 +225,12 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={videoEditing}>
                 Place Order
               </Button>
-              <Button size="small" color="primary">
+              {/* <Button size="small" color="primary">
                 Learn More
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
           <Card className={classes.root}>
@@ -275,15 +253,23 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={uiDesigning}>
                 Place Order
               </Button>
-              <Button size="small" color="primary">
+              {/* <Button size="small" color="primary">
                 Learn More
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
         </Grid>
+        <AddUpdateOrderPopUp
+          selectedValue={selectedValue}
+          open={open}
+          onClose={handleClose}
+          order={order}
+          senderId={buyerId}
+          field={field}
+        />
       </section>
       <Footer />
     </Fragment>

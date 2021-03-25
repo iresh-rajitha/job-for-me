@@ -65,72 +65,33 @@ const Messages = ({ classes, ...props }) => {
       <AdminNav />
       <section className="container">
         <Paper className={classes.paper} elevation={3}>
-          <Grid>
-            <Grid item xs={6}>
+          <Grid item xs={12}>
+            <Grid item xs={12}>
               <MessagesForm
                 {...{ currentId, recieverId, senderId, setCurrentId }}
               />
             </Grid>
-            <Grid item xs={12}>
-              <p> Sent </p>
-              <TableContainer>
-                <Table>
-                  <TableHead className={classes.root}>
-                    <TableRow></TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {props.messageList.map((record, index) => {
-                      if (record.from === senderId) {
-                        return (
-                          <TableRow key={index} hover>
-                            <TableCell>{record.text}</TableCell>
-                            <TableCell>
-                              <ButtonGroup variant="text">
-                                <Button>
-                                  <EditIcon
-                                    color="primary"
-                                    onClick={() => {
-                                      setCurrentId(record.messageID);
-                                      setOpenPopup(true);
-                                    }}
-                                  />
-                                </Button>
-                                <Button>
-                                  <DeleteIcon
-                                    color="secondary"
-                                    onClick={() => {
-                                      onDelete(record.messageID);
-                                    }}
-                                  />
-                                </Button>
-                              </ButtonGroup>
-                            </TableCell>
-                          </TableRow>
-                        );
-                      }
-                    })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
 
-            <Grid item xs={12}></Grid>
-            <Grid item xs={12}>
-              <p> Replies </p>
-              <TableContainer>
-                <Table>
-                  <TableHead className={classes.root}>
-                    <TableRow></TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {props.messageList.map((record, index) => {
-                      if (record.from === recieverId) {
-                        return (
-                          <TableRow key={index} hover>
-                            <TableCell>{record.text}</TableCell>
-                            <TableCell>
-                              <ButtonGroup variant="text">
-                                <Button>
+            <Grid container item xs={12} spacing={3}>
+              <Grid item xs={6}>
+                <p className="lead"> Sent </p>
+                <TableContainer>
+                  <Table>
+                    <TableHead className={classes.root}>
+                      <TableRow></TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {props.messageList.map((record, index) => {
+                        if (
+                          record.from === senderId &&
+                          record.to === recieverId
+                        ) {
+                          return (
+                            <TableRow key={index} hover>
+                              <TableCell>{record.text}</TableCell>
+                              <TableCell>
+                                <ButtonGroup variant="text">
+                                  {/* <Button>
                                   <EditIcon
                                     color="primary"
                                     onClick={() => {
@@ -138,24 +99,71 @@ const Messages = ({ classes, ...props }) => {
                                       setOpenPopup(true);
                                     }}
                                   />
-                                </Button>
-                                <Button>
-                                  <DeleteIcon
+                                </Button> */}
+                                  <Button>
+                                    <DeleteIcon
+                                      color="secondary"
+                                      onClick={() => {
+                                        onDelete(record.messageID);
+                                      }}
+                                    />
+                                  </Button>
+                                </ButtonGroup>
+                              </TableCell>
+                            </TableRow>
+                          );
+                        }
+                      })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Grid>
+
+              <Grid item xs={6}>
+                <p className="lead"> Replies </p>
+                <TableContainer>
+                  <Table>
+                    <TableHead className={classes.root}>
+                      <TableRow></TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {props.messageList.map((record, index) => {
+                        if (
+                          record.from === recieverId &&
+                          record.to === senderId
+                        ) {
+                          return (
+                            <TableRow key={index} hover>
+                              <TableCell>{record.text}</TableCell>
+                              <TableCell>
+                                <ButtonGroup variant="text">
+                                  {/* <Button>
+                                  <EditIcon
+                                    color="primary"
+                                    onClick={() => {
+                                      setCurrentId(record.messageID);
+                                      setOpenPopup(true);
+                                    }}
+                                  />
+                                </Button> */}
+                                  <Button>
+                                    {/* <DeleteIcon
                                     color="secondary"
                                     onClick={() => {
                                       onDelete(record.messageID);
                                     }}
-                                  />
-                                </Button>
-                              </ButtonGroup>
-                            </TableCell>
-                          </TableRow>
-                        );
-                      }
-                    })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                                  /> */}
+                                  </Button>
+                                </ButtonGroup>
+                              </TableCell>
+                            </TableRow>
+                          );
+                        }
+                      })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Grid>
             </Grid>
             <Popup
               title="Message Form"

@@ -16,7 +16,7 @@ import useForm from "../useForm";
 import { connect } from "react-redux";
 import * as actions from "../../actions/sellers";
 import { useToasts } from "react-toast-notifications";
-
+import Container from "@material-ui/core/Container";
 import LandngNav from "../layout/LandingNav";
 import Footer from "../layout/Footer";
 
@@ -198,20 +198,21 @@ const SellersForm = ({ classes, ...props }) => {
       </div> */}
       <LandngNav />
       <section className="container">
-        <div>
-          <h1 className="large text-primary">Let's log in first!</h1>
-          <p className="lead">
-            <i className="fas fa-user"></i> Log into your Customer profile
-          </p>
-        </div>
-        <form
-          autoComplete="off"
-          noValidate
-          className={classes.root}
-          onSubmit={handleSubmit}
-        >
-          <Grid container>
-            {/* <Grid item xs={12}>
+        <Container component="main" maxWidth="xs">
+          <div>
+            <h1 className="large text-primary">Let's log in first!</h1>
+            <p className="lead">
+              <i className="fas fa-user"></i> Log into your Customer profile
+            </p>
+          </div>
+          <form
+            autoComplete="off"
+            noValidate
+            className={classes.root}
+            onSubmit={handleSubmit}
+          >
+            <Grid container>
+              {/* <Grid item xs={12}>
               <TextField
                 name="firstName"
                 variant="outlined"
@@ -237,7 +238,7 @@ const SellersForm = ({ classes, ...props }) => {
                 })}
               />
             </Grid> */}
-            {/* <Grid item xs={12}>
+              {/* <Grid item xs={12}>
               <FormControl
                 variant="outlined"
                 className={classes.formControl}
@@ -263,17 +264,20 @@ const SellersForm = ({ classes, ...props }) => {
                 )}
               </FormControl>
             </Grid> */}
-            <Grid item xs={12}>
-              <TextField
-                name="email"
-                variant="outlined"
-                label="Email"
-                value={values.email}
-                onChange={handleInputChange}
-                {...(errors.email && { error: true, helperText: errors.email })}
-              />
-            </Grid>
-            {/* <Grid item xs={12}>
+              <Grid item xs={12}>
+                <TextField
+                  name="email"
+                  variant="outlined"
+                  label="Email"
+                  value={values.email}
+                  onChange={handleInputChange}
+                  {...(errors.email && {
+                    error: true,
+                    helperText: errors.email,
+                  })}
+                />
+              </Grid>
+              {/* <Grid item xs={12}>
               <TextField
                 name="address"
                 variant="outlined"
@@ -286,34 +290,35 @@ const SellersForm = ({ classes, ...props }) => {
                 })}
               />
             </Grid> */}
-            <Grid item xs={12}>
-              <TextField
-                name="password"
-                variant="outlined"
-                label="Password"
-                value={values.password}
-                onChange={handleInputChange}
-                {...(errors.password && {
-                  error: true,
-                  helperText: errors.password,
-                })}
-              />
-              <div>{props.currentId}</div>
+              <Grid item xs={12}>
+                <TextField
+                  name="password"
+                  variant="outlined"
+                  label="Password"
+                  value={values.password}
+                  onChange={handleInputChange}
+                  {...(errors.password && {
+                    error: true,
+                    helperText: errors.password,
+                  })}
+                />
+                <div>{props.currentId}</div>
+              </Grid>
+              <Grid item xs={12}>
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    className={classes.smMargin}
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin}
-                >
-                  Submit
-                </Button>
-              </div>
-            </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Container>
       </section>
       <Footer />
     </Fragment>

@@ -18,6 +18,7 @@ import { useToasts } from "react-toast-notifications";
 import LandngNav from "../layout/LandingNav";
 import Footer from "../layout/Footer";
 import { useHistory } from "react-router-dom";
+import Container from "@material-ui/core/Container";
 
 const styles = (theme) => ({
   root: {
@@ -148,46 +149,47 @@ const SellersForm = ({ classes, ...props }) => {
       </div> */}
       <LandngNav />
       <section className="container">
-        <div>
-          <h1 className="large text-primary">Join with us!</h1>
-          <p className="lead">
-            <i className="fas fa-user"></i> Create Your Customer Profile
-          </p>
-        </div>
-        <form
-          autoComplete="off"
-          noValidate
-          className={classes.root}
-          onSubmit={handleSubmit}
-        >
-          <Grid container>
-            <Grid item xs={12}>
-              <TextField
-                name="firstName"
-                variant="outlined"
-                label="First Name"
-                value={values.firstName}
-                onChange={handleInputChange}
-                {...(errors.firstName && {
-                  error: true,
-                  helperText: errors.firstName,
-                })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="lastName"
-                variant="outlined"
-                label="Last Name"
-                value={values.lastName}
-                onChange={handleInputChange}
-                {...(errors.lastName && {
-                  error: true,
-                  helperText: errors.lastName,
-                })}
-              />
-            </Grid>
-            {/* <Grid item xs={12}>
+        <Container component="main" maxWidth="xs">
+          <div>
+            <h1 className="large text-primary">Join with us!</h1>
+            <p className="lead">
+              <i className="fas fa-user"></i> Create Your Customer Profile
+            </p>
+          </div>
+          <form
+            autoComplete="off"
+            noValidate
+            className={classes.root}
+            onSubmit={handleSubmit}
+          >
+            <Grid container>
+              <Grid item xs={12}>
+                <TextField
+                  name="firstName"
+                  variant="outlined"
+                  label="First Name"
+                  value={values.firstName}
+                  onChange={handleInputChange}
+                  {...(errors.firstName && {
+                    error: true,
+                    helperText: errors.firstName,
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="lastName"
+                  variant="outlined"
+                  label="Last Name"
+                  value={values.lastName}
+                  onChange={handleInputChange}
+                  {...(errors.lastName && {
+                    error: true,
+                    helperText: errors.lastName,
+                  })}
+                />
+              </Grid>
+              {/* <Grid item xs={12}>
               <FormControl
                 variant="outlined"
                 className={classes.formControl}
@@ -213,17 +215,20 @@ const SellersForm = ({ classes, ...props }) => {
                 )}
               </FormControl>
             </Grid> */}
-            <Grid item xs={12}>
-              <TextField
-                name="email"
-                variant="outlined"
-                label="Email"
-                value={values.email}
-                onChange={handleInputChange}
-                {...(errors.email && { error: true, helperText: errors.email })}
-              />
-            </Grid>
-            {/* <Grid item xs={12}>
+              <Grid item xs={12}>
+                <TextField
+                  name="email"
+                  variant="outlined"
+                  label="Email"
+                  value={values.email}
+                  onChange={handleInputChange}
+                  {...(errors.email && {
+                    error: true,
+                    helperText: errors.email,
+                  })}
+                />
+              </Grid>
+              {/* <Grid item xs={12}>
               <TextField
                 name="address"
                 variant="outlined"
@@ -236,41 +241,42 @@ const SellersForm = ({ classes, ...props }) => {
                 })}
               />
             </Grid> */}
-            <Grid item xs={12}>
-              <TextField
-                name="password"
-                variant="outlined"
-                label="Password"
-                value={values.password}
-                onChange={handleInputChange}
-                {...(errors.password && {
-                  error: true,
-                  helperText: errors.password,
-                })}
-              />
-              <div>{props.currentId}</div>
-            </Grid>
-            <Grid item xs={12}>
-              <div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin}
-                >
-                  Submit
-                </Button>
-                {/* <Button
+              <Grid item xs={12}>
+                <TextField
+                  name="password"
+                  variant="outlined"
+                  label="Password"
+                  value={values.password}
+                  onChange={handleInputChange}
+                  {...(errors.password && {
+                    error: true,
+                    helperText: errors.password,
+                  })}
+                />
+                <div>{props.currentId}</div>
+              </Grid>
+              <Grid item xs={12}>
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    className={classes.smMargin}
+                  >
+                    Submit
+                  </Button>
+                  {/* <Button
               variant="contained"
               className={classes.smMargin}
               onClick={resetForm}
             >
               Reset
             </Button> */}
-              </div>
+                </div>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Container>
       </section>
       <Footer />
     </Fragment>

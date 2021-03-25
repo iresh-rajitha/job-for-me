@@ -619,3 +619,9 @@ button {
 .landinglogo {
   filter: brightness(0) invert(1) opacity(100%);
 }
+
+.landing-app {
+  /* position: relative; */
+  background: url("./img/bbb.png") no-repeat fixed center center/cover;
+  /* height: 100vh; */
+}

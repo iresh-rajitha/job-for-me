@@ -51,7 +51,7 @@ function AddUpdateOrderPopUp(props) {
   const classes = useStyles();
   const { onClose, selectedValue, open, order, senderId } = props;
   const [formData, setFormData] = useState(initialValues);
-  const [fieldValue, setFieldValue] = React.useState(fields[0]);
+  const [fieldValue, setFieldValue] = React.useState(fields[props.field]);
   const [inputValue, setInputValue] = React.useState("");
   const [newOrder, setNewOrder] = useState(
     new Order(
