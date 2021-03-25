@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {Dashboard, Menu,ShoppingCart, SupervisorAccount,Chat, Equalizer, Report } from '@material-ui/icons';
 import { Link, Route, Switch,useRouteMatch } from "react-router-dom";
-// import { Orderpage } from "./Buyer/Order-page";
+import Orderpage from "./Order/Orderpage";
 const drawerWidth = 240;
 
  
@@ -65,11 +65,11 @@ function ResponsiveDrawer(props) {
   };
 
   const itemList =[
-    {
-      name:'Dashboard',
-      icon: <Dashboard/>,
-      to: '/'
-    },
+    // {
+    //   name:'Dashboard',
+    //   icon: <Dashboard/>,
+    //   to: '/'
+    // },
     {
       name:'Order',
       icon: <ShoppingCart/>,
@@ -177,8 +177,7 @@ function ResponsiveDrawer(props) {
             Dashboard
         </Route>
         <Route exact path={`${path}/order`}>
-            {/* <Orderpage/> */}
-            Order
+            <Orderpage/>
         </Route>
         <Route exact path={`${path}/message`}>
             Message

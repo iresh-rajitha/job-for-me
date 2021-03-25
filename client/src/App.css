@@ -239,6 +239,10 @@ img {
   margin: 1.2rem 0;
 }
 
+.form .form-body {
+  margin: 2.8rem 0;
+}
+
 .form .form-text {
   display: block;
   margin-top: 0.3rem;
@@ -577,8 +581,7 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
-/* Code goes below */
-  
+  /* Code goes below */
 }
 .grid-container {
   display: grid;
@@ -600,15 +603,19 @@ button {
   grid-column-end: 3;
 }
 
-
-.column {
-  float: right;
-  width: 30%;
+.photo {
+  height: 35px;
+  width: 85px;
+  /* width: 15%;
+  margin: 1.5rem 1.5rem 3.125rem; */
+  filter: brightness(0) invert(1) opacity(100%);
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.photo:hover {
+  /* transition-duration: 0.4s; */
+  filter: brightness(0) invert(1) opacity(50%);
+}
+
+.landinglogo {
+  filter: brightness(0) invert(1) opacity(100%);
 }

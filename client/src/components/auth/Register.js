@@ -1,60 +1,95 @@
-import axois from 'axios';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SellerPage from '../pages/Seller';
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
+const Register = ({ setAlert, register }) => {
+  const [formData, setFromData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-// export const Login = async (email, password) => {
-//     let history = useHistory();
-//     history.push("../pages/Seller");
-// }
+  const { name, email, password, confirmPassword } = formData;
 
+  const onChange = (e) =>
+    setFromData({ ...formData, [e.target.name]: e.target.value });
 
-export const Register = async (name, email, password) => {
-    // const history = useHistory();
-    console.log("Register");
-    const config = {
-        headers: { 
-            "Content-Type": "application/json",
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-     }
-    };
-    const user= {
-        "FirstName": "",
-        "LastName": "",
-        "Address": "",
-        "UserType": "",
-        "Category": "",
-        "Email": "",
-        "Password": "",
-        "Messages" : [],
-        "Orders":[]
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword)
+      setAlert("Passwords do not match", "danger");
+    else {
+      console.log("SUCCESS");
+      register({ name, email, password });
     }
-    user.Email=email;
-    user.Password=password;
-    user.FirstName=name;
+  };
 
-    // const body = JSON.stringify({ email, password });
-
-    try {
-        await axois.post("https://localhost:44368/api/user", user, config)
-        .then(response=> {
-            console.log(response);
-        });
-        // console.log(response);
-        // console.log("Success");
-        
-    
-        
-        //return res;
-
-    } catch (error) {
-        console.log(error);
-        console.log("errrrrrrrrrrrrrrrrrrr")
-    }
-
+  return (
+    <section className="container">
+      <Fragment>
+        <h1 className="large text-primary">Sign Up</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Create Your Account
+        </p>
+        <form className="form" onSubmit={(e) => onSubmit(e)}>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              value={name}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              value={email}
+              onChange={(e) => onChange(e)}
+            />
+            <small className="form-text">
+              This site uses Gravatar so if you want a profile image, use a
+              Gravatar email
+            </small>
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          <input type="submit" className="btn btn-primary" value="Register" />
+        </form>
+        <p className="my-1">
+          Already have an account? <Link to="/login">Sign In</Link>
+        </p>
+      </Fragment>
+    </section>
+  );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert, register })(Register);
