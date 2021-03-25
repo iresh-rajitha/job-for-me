@@ -25,5 +25,6 @@ namespace OnlineFreelancinPlatform.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<EmployeeModel> Employers { get; set; }
+        public DbSet<Field> Fields { get; set; }
     }
 }

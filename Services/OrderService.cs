@@ -23,6 +23,8 @@ namespace OnlineFreelancinPlatform.Services
             //var transaction = _freelancingDBContext.Database.BeginTransaction();
             //_freelancingDBContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[User] ON");
             _freelancingDBContext.Orders.Add(Order);
+            _freelancingDBContext.Orders.Attach(Order);
+
             _freelancingDBContext.SaveChanges();
 
         }
