@@ -80,16 +80,16 @@ function ResponsiveDrawer(props) {
       icon: <Chat/>,
       to: `${url}/message`
     },
-    {
-      name:'Admin',
-      icon: <SupervisorAccount/>,
-      to: `${url}/admin`
-    },
-    {
-      name:'Stats',
-      icon: <Equalizer/>,
-      to: `${url}/stats`
-    },
+    // {
+    //   name:'Admin',
+    //   icon: <SupervisorAccount/>,
+    //   to: `${url}/admin`
+    // },
+    // {
+    //   name:'Stats',
+    //   icon: <Equalizer/>,
+    //   to: `${url}/stats`
+    // },
     {
       name:'Report',
       icon: <Report/>,

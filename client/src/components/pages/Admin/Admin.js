@@ -76,26 +76,26 @@ function Admin(props) {
       icon: <ShoppingCart/>,
       to: `${url}/order`
     },
-    {
-      name:'Message',
-      icon: <Chat/>,
-      to: `${url}/message`
-    },
+    // {
+    //   name:'Message',
+    //   icon: <Chat/>,
+    //   to: `${url}/message`
+    // },
     {
       name:'Fields',
       icon: <SupervisorAccount/>,
       to: `${url}/field`
     },
-    {
-      name:'Stats',
-      icon: <Equalizer/>,
-      to: `${url}/stats`
-    },
-    {
-      name:'Report',
-      icon: <Report/>,
-      to: `${url}/report`
-    }
+    // {
+    //   name:'Stats',
+    //   icon: <Equalizer/>,
+    //   to: `${url}/stats`
+    // },
+    // {
+    //   name:'Report',
+    //   icon: <Report/>,
+    //   to: `${url}/report`
+    // }
   ];
 
   
@@ -174,10 +174,10 @@ function Admin(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-        <Route exact path={`${path}/`}>
+        <Route  path={`${path}/dashboard`}>
             Dashboard
         </Route>
-        <Route path={`${path}/order`}>
+        <Route exact path={`${path}/`}>
             <Orderpage/>
         </Route>
         <Route path={`${path}/message`}>

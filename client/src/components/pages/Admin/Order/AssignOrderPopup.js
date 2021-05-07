@@ -3,7 +3,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Container, DialogActions, DialogContent, Grid, TextField } from '@material-ui/core';
+import { Button, Container, DialogActions, DialogContent, Grid, Paper, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -33,6 +33,11 @@ export default function AssignOrderPopup(props) {
     const [formData, setFormData] = useState(initialValues);
     const [userValue, setUserValue] = React.useState(users[0]);
     const [inputValue, setInputValue] = React.useState('');
+    const { onClose, selectedValue, open , order} = props;
+
+    useEffect(() => {
+        setFormData(order);
+      },[order]);
 
     const classes = useStyles();
     
@@ -50,12 +55,16 @@ export default function AssignOrderPopup(props) {
          })
          console.log(name+" "+value);
       };
-    const { onClose,selectedValue, open} = props;
     return (
         <div>
             <Dialog onClose={handleClose} aria-labelledby="form-dialog-title" open={open}>
                 <DialogTitle id="form-dialog-title">Add Order</DialogTitle>
                 <DialogContent>
+                    <Paper className={styles.card}>
+                        <h3>Order Detail: </h3>{order.description}
+                        <h3>Price: </h3>{order.price}
+                        <br/>
+                    </Paper>
                 <Grid className={styles.marging_b_15px}>
                     <Autocomplete
                         value={userValue}

@@ -67,6 +67,7 @@ function AddUpdateOrderPopUp(props) {
   
     const handleClose = () => {
       onClose(selectedValue);
+      setFormData(initialValues);
     };
   
     const handleListItemClick = (value) => {
