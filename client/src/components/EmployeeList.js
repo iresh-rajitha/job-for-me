@@ -1,133 +1,132 @@
-import React, { useState, useEffect } from "react";
-import Employee from "./Employee";
-import axios from "axios";
+import React, { useState, useEffect } from 'react'
+import Employee from './Employee'
+import axios from 'axios'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
 
-import Popup from "./Popup";
+import Popup from './Popup'
 
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
+    '& > *': {
       margin: theme.spacing(1),
     },
   },
   table: {
     minWidth: 650,
-    padding: "0px 8px",
+    padding: '0px 8px',
   },
   tableRow: {
     height: 30,
   },
-}));
+}))
 
 export default function EmployeeList() {
-  const classes = useStyles();
-  const [employeeList, setEmployeeList] = useState([]);
-  const [recordForEdit, setRecordForEdit] = useState(null);
-  const [openPopup, setOpenPopup] = useState(false);
+  const classes = useStyles()
+  const [employeeList, setEmployeeList] = useState([])
+  const [recordForEdit, setRecordForEdit] = useState(null)
+  const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
-    refreshEmployeeList();
-  }, []);
+    refreshEmployeeList()
+  }, [refreshEmployeeList])
 
-  const employeeAPI = (url = "https://localhost:5001/api/Employee/") => {
+  const employeeAPI = (url = 'https://localhost:5001/api/Employee/') => {
     return {
       fetchAll: () => axios.get(url),
       create: (newRecord) => axios.post(url, newRecord),
       update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
       delete: (id) => axios.delete(url + id),
-    };
-  };
+    }
+  }
 
   function refreshEmployeeList() {
     employeeAPI()
       .fetchAll()
       .then((res) => {
-        setEmployeeList(res.data);
+        setEmployeeList(res.data)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   }
 
   const addOrEdit = (formData, onSuccess) => {
-    console.log(formData);
-    if (formData.get("employeeID") == "0")
+    console.log(formData)
+    if (formData.get('employeeID') == '0')
       employeeAPI()
         .create(formData)
         .then((res) => {
-          onSuccess();
-          refreshEmployeeList();
-          setOpenPopup(false);
+          onSuccess()
+          refreshEmployeeList()
+          setOpenPopup(false)
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
     else
       employeeAPI()
-        .update(formData.get("employeeID"), formData)
+        .update(formData.get('employeeID'), formData)
         .then((res) => {
-          onSuccess();
-          refreshEmployeeList();
-          setOpenPopup(false);
+          onSuccess()
+          refreshEmployeeList()
+          setOpenPopup(false)
         })
-        .catch((err) => console.log(err));
-  };
+        .catch((err) => console.log(err))
+  }
 
   const showRecordDetails = (data) => {
-    setRecordForEdit(data);
-    setOpenPopup(true);
-  };
+    setRecordForEdit(data)
+    setOpenPopup(true)
+  }
 
   const onDelete = (e, id) => {
-    e.stopPropagation();
-    if (window.confirm("Are you sure to delete this record?"))
+    e.stopPropagation()
+    if (window.confirm('Are you sure to delete this record?'))
       employeeAPI()
         .delete(id)
         .then((res) => refreshEmployeeList())
-        .catch((err) => console.log(err));
-  };
+        .catch((err) => console.log(err))
+  }
 
   const imageCard = (data) => (
     <div
-      className="card"
+      className='card'
       onClick={() => {
-        showRecordDetails(data);
+        showRecordDetails(data)
       }}
     >
-      <img src={data.imageSrc} className="card-img-top rounded-circle" />
-      <div className="card-body">
+      <img src={data.imageSrc} className='card-img-top rounded-circle' />
+      <div className='card-body'>
         <h5>{data.employeeName}</h5>
         <span>{data.occupation}</span> <br />
         <button
-          className="btn btn-light delete-button"
+          className='btn btn-light delete-button'
           onClick={(e) => onDelete(e, parseInt(data.employeeID))}
         >
-          <i className="far fa-trash-alt"></i>
+          <i className='far fa-trash-alt'></i>
         </button>
       </div>
     </div>
-  );
+  )
 
   return (
-    <section className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="jumbotron jumbotron-fluid py-4">
+    <section className='container'>
+      <div className='row'>
+        <div className='col-md-12'>
+          <div className='jumbotron jumbotron-fluid py-4'>
             {/* <div className="container text-center">
             <h1 className="display-4">Employee Register</h1>
           </div> */}
             <div className={classes.root}>
               <Button
-                variant="outlined"
-                color="primary"
-                href="#outlined-buttons"
+                variant='outlined'
+                color='primary'
+                href='#outlined-buttons'
                 onClick={() => setOpenPopup(true)}
               >
                 Add New
@@ -138,7 +137,7 @@ export default function EmployeeList() {
         {/* <div classname="col-md-4">
         <Employee addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
       </div> */}
-        <div className="col-md-8">
+        <div className='col-md-8'>
           {/* <table>
             <tbody>
               {
@@ -162,25 +161,25 @@ export default function EmployeeList() {
             </tbody>
           </table> */}
           <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
+            <Table className={classes.table} aria-label='simple table'>
               <TableBody>
                 {
                   // tr > 3 td
                   [...Array(Math.ceil(employeeList.length / 3))].map((e, i) => (
                     <TableRow key={i} className={classes.tableRow}>
                       <TableCell
-                        component="th"
-                        scope="row"
+                        component='th'
+                        scope='row'
                         style={{ width: 100 }}
                       >
                         {imageCard(employeeList[3 * i])}
                       </TableCell>
-                      <TableCell align="right" style={{ width: 100 }}>
+                      <TableCell align='right' style={{ width: 100 }}>
                         {employeeList[3 * i + 1]
                           ? imageCard(employeeList[3 * i + 1])
                           : null}
                       </TableCell>
-                      <TableCell align="right" style={{ width: 100 }}>
+                      <TableCell align='right' style={{ width: 100 }}>
                         {employeeList[3 * i + 2]
                           ? imageCard(employeeList[3 * i + 2])
                           : null}
@@ -193,7 +192,7 @@ export default function EmployeeList() {
           </TableContainer>
         </div>
         <Popup
-          title="Edit a buyer"
+          title='Edit a buyer'
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
@@ -201,7 +200,7 @@ export default function EmployeeList() {
         </Popup>
       </div>
     </section>
-  );
+  )
 }
 
 {
