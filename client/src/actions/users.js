@@ -1,71 +1,71 @@
-import api from "./api";
+import api from './user'
 
 export const ACTION_TYPES = {
-  CREATE: "CREATE",
-  UPDATE: "UPDATE",
-  DELETE: "DELETE",
-  FETCH_ALL: "FETCH_ALL",
-};
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE',
+  FETCH_ALL: 'FETCH_ALL',
+}
 
 const formateData = (data) => ({
   ...data,
   age: parseInt(data.age ? data.age : 0),
-});
+})
 
 export const fetchAll = () => (dispatch) => {
   api
-    .sellers()
+    .users()
     .fetchAll()
     .then((response) => {
-      console.log(response);
+      console.log(response)
       dispatch({
         type: ACTION_TYPES.FETCH_ALL,
         payload: response.data,
-      });
+      })
     })
-    .catch((error) => console.log(error));
-};
+    .catch((error) => console.log(error))
+}
 
 export const create = (data, onSuccess) => (dispatch) => {
-  data = formateData(data);
+  data = formateData(data)
   api
-    .sellers()
+    .users()
     .create(data)
     .then((res) => {
       dispatch({
         type: ACTION_TYPES.CREATE,
         payload: res.data,
-      });
-      onSuccess();
+      })
+      onSuccess()
     })
-    .catch((err) => console.log(err));
-};
+    .catch((err) => console.log(err))
+}
 
 export const update = (id, data, onSuccess) => (dispatch) => {
-  data = formateData(data);
+  data = formateData(data)
   api
-    .sellers()
+    .users()
     .update(id, data)
     .then((res) => {
       dispatch({
         type: ACTION_TYPES.UPDATE,
         payload: { id, ...data },
-      });
-      onSuccess();
+      })
+      onSuccess()
     })
-    .catch((err) => console.log(err));
-};
+    .catch((err) => console.log(err))
+}
 
 export const Delete = (id, onSuccess) => (dispatch) => {
   api
-    .sellers()
+    .users()
     .delete(id)
     .then((res) => {
       dispatch({
         type: ACTION_TYPES.DELETE,
         payload: id,
-      });
-      onSuccess();
+      })
+      onSuccess()
     })
-    .catch((err) => console.log(err));
-};
+    .catch((err) => console.log(err))
+}

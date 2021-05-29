@@ -10,12 +10,6 @@ const Landing = () => {
       <LandingNav />
 
       <section className='landing'>
-        {/* <video
-        src="/video/Person Working on an Apple MacBook.mp4"
-        autoplay
-        loop
-        muted
-      ></video> */}
         <div className='dark-overlay'>
           <div className='landing-inner'>
             <h1 className='x-large'>

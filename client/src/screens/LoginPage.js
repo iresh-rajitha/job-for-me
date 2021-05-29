@@ -9,7 +9,7 @@ import Container from '@material-ui/core/Container'
 import LandngNav from '../components/LandingNav'
 import Footer from '../components/Footer'
 import useForm from '../useForm'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 
 const styles = (theme) => ({
   root: {
@@ -37,7 +37,7 @@ const initialFieldValues = {
   password: '',
 }
 
-const SellersForm = ({ classes, ...props }) => {
+const LoginPage = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   let history = useHistory()
 
@@ -80,7 +80,7 @@ const SellersForm = ({ classes, ...props }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    props.sellerList.find((x) => {
+    props.userList.find((x) => {
       if (x.email == values.email && x.userType === 'Buyer') {
         history.push({
           pathname: '/order',
@@ -101,9 +101,10 @@ const SellersForm = ({ classes, ...props }) => {
   }
 
   useEffect(() => {
+    props.fetchAllUsers()
     if (props.currentId !== 0) {
       setValues({
-        ...props.sellerList.find((x) => x.userId === props.currentId),
+        ...props.userList.find((x) => x.userId === props.currentId),
       })
       setErrors({})
     }
@@ -175,16 +176,16 @@ const SellersForm = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  createSeller: actions.create,
-  updateSeller: actions.update,
-  fetchAllSellers: actions.fetchAll,
+  createUser: actions.create,
+  updateUser: actions.update,
+  fetchAllUsers: actions.fetchAll,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(SellersForm))
+)(withStyles(styles)(LoginPage))

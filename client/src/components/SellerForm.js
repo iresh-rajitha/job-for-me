@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import { useToasts } from 'react-toast-notifications'
 
 const styles = (theme) => ({
@@ -91,9 +91,9 @@ const SellersForm = ({ classes, ...props }) => {
         addToast('Submitted successfully', { appearance: 'success' })
       }
       if (props.currentId === 0) {
-        props.createSeller(values, onSuccess)
+        props.createUser(values, onSuccess)
       } else {
-        props.updateSeller(props.currentId, values, onSuccess)
+        props.updateUser(props.currentId, values, onSuccess)
       }
     }
   }
@@ -101,7 +101,7 @@ const SellersForm = ({ classes, ...props }) => {
   useEffect(() => {
     if (props.currentId !== 0) {
       setValues({
-        ...props.sellerList.find((x) => x.userId === props.currentId),
+        ...props.userList.find((x) => x.userId === props.currentId),
       })
       setErrors({})
     }
@@ -179,18 +179,6 @@ const SellersForm = ({ classes, ...props }) => {
             onChange={handleInputChange}
             {...(errors.address && { error: true, helperText: errors.address })}
           />
-          {/* <TextField
-            name="password"
-            variant="outlined"
-            label="Password"
-            value={values.password}
-            onChange={handleInputChange}
-            {...(errors.password && {
-              error: true,
-              helperText: errors.password,
-            })}
-          />
-          <div>{props.currentId}</div> */}
           <div>
             <Button
               variant='contained'
@@ -200,13 +188,6 @@ const SellersForm = ({ classes, ...props }) => {
             >
               Submit
             </Button>
-            {/* <Button
-              variant="contained"
-              className={classes.smMargin}
-              onClick={resetForm}
-            >
-              Reset
-            </Button> */}
           </div>
         </Grid>
       </Grid>
@@ -215,12 +196,12 @@ const SellersForm = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  createSeller: actions.create,
-  updateSeller: actions.update,
+  createUser: actions.create,
+  updateUser: actions.update,
 }
 
 export default connect(

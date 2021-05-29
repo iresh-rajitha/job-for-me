@@ -79,6 +79,7 @@ const MessagesForm = ({ classes, ...props }) => {
     if (validate()) {
       const onSuccess = () => {
         resetForm()
+        props.fetchAllMessages()
         addToast('Submitted successfully', { appearance: 'success' })
       }
       if (props.currentId === 0) {

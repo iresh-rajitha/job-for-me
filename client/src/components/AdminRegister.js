@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from 'react'
 import { Grid, TextField, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import { useToasts } from 'react-toast-notifications'
 import { useHistory } from 'react-router-dom'
 
@@ -32,7 +32,7 @@ const initialFieldValues = {
   password: '',
 }
 
-const SellersForm = ({ classes, ...props }) => {
+const AdminRegister = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   let history = useHistory()
 
@@ -68,13 +68,6 @@ const SellersForm = ({ classes, ...props }) => {
       props.setOpenPopup
     )
 
-  //material-ui select
-  //   const inputLabel = React.useRef(null);
-  //   const [labelWidth, setLabelWidth] = React.useState(0);
-  //   React.useEffect(() => {
-  //     setLabelWidth(inputLabel.current.offsetWidth);
-  //   }, []);
-
   const setRole = (fieldValues = values) => {
     fieldValues.userType = 'Admin'
   }
@@ -91,43 +84,21 @@ const SellersForm = ({ classes, ...props }) => {
         resetForm()
         addToast('Submitted successfully', { appearance: 'success' })
       }
-      // if (props.currentId === 0) {
-      //   props.createSeller(values, onSuccess);
-      // } else {
-      //   props.updateSeller(props.currentId, values, onSuccess);
-      // }
-      props.createSeller(values, onSuccess)
+
+      props.createUser(values, onSuccess)
     }
   }
 
   useEffect(() => {
     if (props.currentId !== 0) {
       setValues({
-        ...props.sellerList.find((x) => x.userId === props.currentId),
+        ...props.userList.find((x) => x.userId === props.currentId),
       })
       setErrors({})
     }
   }, [props.currentId])
   return (
     <Fragment>
-      {/* <div>
-        <div>
-          <video
-            style={{
-              alignItem: "center",
-              justifyContent: "center",
-              position: "realative",
-              zIndex: -1,
-              width: "100%",
-            }}
-            autoPlay="true"
-            loop
-            muted
-            src="https://sg.fiverrcdn.com/packages_lp/cover_video.mp4"
-          />
-        </div>
-      </div> */}
-
       <section className='container'>
         <div>
           <h1 className='large text-primary'>Add an Admin!</h1>
@@ -168,32 +139,6 @@ const SellersForm = ({ classes, ...props }) => {
                 })}
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControl
-                variant="outlined"
-                className={classes.formControl}
-                {...(errors.category && { error: true })}
-              >
-                <InputLabel ref={inputLabel}>Category</InputLabel>
-                <Select
-                  name="category"
-                  value={values.category}
-                  onChange={handleInputChange}
-                  labelWidth={labelWidth}
-                >
-                  <MenuItem value="">Select a Category</MenuItem>
-                  <MenuItem value="illustration">Illustration</MenuItem>
-                  <MenuItem value="albumCovers">Album Covers</MenuItem>
-                  <MenuItem value="vectorArts">Vector Arts</MenuItem>
-                  <MenuItem value="photoEditing">Photo Editing</MenuItem>
-                  <MenuItem value="videoEditing">Video Editing</MenuItem>
-                  <MenuItem value="uiDesigning">UI Designing</MenuItem>
-                </Select>
-                {errors.category && (
-                  <FormHelperText>{errors.category}</FormHelperText>
-                )}
-              </FormControl>
-            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 name='email'
@@ -241,13 +186,6 @@ const SellersForm = ({ classes, ...props }) => {
                 >
                   Submit
                 </Button>
-                {/* <Button
-              variant="contained"
-              className={classes.smMargin}
-              onClick={resetForm}
-            >
-              Reset
-            </Button> */}
               </div>
             </Grid>
           </Grid>
@@ -258,150 +196,16 @@ const SellersForm = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  createSeller: actions.create,
-  updateSeller: actions.update,
-  fetchAllSellers: actions.fetchAll,
+  createUser: actions.create,
+  updateUser: actions.update,
+  fetchAllUsers: actions.fetchAll,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(SellersForm))
-
-// import React, { Fragment } from "react";
-
-// import SellerForm from "../SellerForm";
-
-// const Seller = () => {
-//   const onSubmit = (e) => {
-//     e.preventDefault();
-//     console.log("Success");
-//   };
-
-//   return (
-//     <Fragment>
-// <div>
-//   <div>
-//     <video
-//       style={{
-//         alignItem: "center",
-//         justifyContent: "center",
-//         position: "realative",
-//         zIndex: -1,
-//         width: "100%",
-//       }}
-//       autoPlay="true"
-//       loop
-//       muted
-//       src={Vid}
-//     />
-//   </div>
-//         <section className="container">
-//           <div>
-//             <h1 className="large text-primary">Become a Seller!</h1>
-//             <p className="lead">
-//               <i className="fas fa-user"></i> Create Your Seller Profile
-//             </p>
-//             <form className="form" onSubmit={(e) => onSubmit(e)}>
-//               <SellerForm />
-//               <div className="form-group">
-//                 <input type="text" placeholder="Name" name="name" required />
-//               </div>
-//               <div className="form-group">
-//                 <input
-//                   type="email"
-//                   placeholder="Email Address"
-//                   name="email"
-//                   required
-//                 />
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Country"
-//                     name="country"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Address"
-//                     name="address"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Contact No"
-//                     name="contactNo"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Expertise: Illustrator, Photoshop, After Effects or Premere Pro (Type One or more)"
-//                     name="expertise"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Work Time: (Select Full Time or Part Time)"
-//                     name="workTime"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="English Knowledge: (Select Begginer, Average or Expert)"
-//                     name="english"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Exam Date: (Select a Date and Time to Participate for the Examination)"
-//                     name="exam"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Employed Organizations: (If there is any)"
-//                     name="employed"
-//                     required
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Experience: (Average or Expert)"
-//                     name="experience"
-//                     required
-//                   />
-//                 </div>
-//                 <small className="form-text">
-//                   This site uses Gravatar so if you want a profile image, use a
-//                   Gravatar email
-//                 </small>
-//               </div>
-//               <input type="submit" className="btn btn-primary" value="Submit" />
-//             </form>
-//           </div>
-//         </section>
-//       </div>
-//     </Fragment>
-//   );
-// };
-
-// export default Seller;
+)(withStyles(styles)(AdminRegister))

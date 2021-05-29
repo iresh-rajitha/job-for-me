@@ -47,6 +47,8 @@ const initialValues = {
 }
 
 function AdminOrderPopUp(props) {
+  const [done, setDone] = React.useState(false)
+
   const classes = useStyles()
   const { onClose, selectedValue, open, order } = props
   const [formData, setFormData] = useState(initialValues)
@@ -63,7 +65,7 @@ function AdminOrderPopUp(props) {
 
   useEffect(() => {
     setFormData(order)
-  }, [order])
+  }, [order, done])
 
   const onChange = (e) => {
     const { name, value } = e.target
@@ -100,6 +102,7 @@ function AdminOrderPopUp(props) {
     fd.append('seller', new User(sellerId, '', '', '', '', '', ''))
 
     if (fd.get('orderID') == 0) {
+      setDone(true)
       axios
         .post('https://localhost:5001/api/order', newOrder)
         .then((res) => {
@@ -120,6 +123,7 @@ function AdminOrderPopUp(props) {
           console.log(err)
         })
     }
+    props.refreshOrderTable()
   }
 
   return (

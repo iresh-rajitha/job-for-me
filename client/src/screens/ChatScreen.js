@@ -54,6 +54,7 @@ const Messages = ({ classes, ...props }) => {
       props.deleteMessage(id, () =>
         addToast('Deleted successfully', { appearance: 'info' })
       )
+    props.fetchAllMessages()
   }
 
   return (

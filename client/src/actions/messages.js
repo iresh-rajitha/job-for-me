@@ -1,33 +1,33 @@
-import calls from "./calls";
+import calls from './message'
 
 export const ACTION_TYPES = {
-  CREATE: "CREATE",
-  UPDATE: "UPDATE",
-  DELETE: "DELETE",
-  FETCH_ALL: "FETCH_ALL",
-};
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE',
+  FETCH_ALL: 'FETCH_ALL',
+}
 
 const formateData = (data) => ({
   ...data,
   age: parseInt(data.age ? data.age : 0),
-});
+})
 
 export const fetchAll = () => (dispatch) => {
   calls
     .messages()
     .fetchAll()
     .then((response) => {
-      console.log(response);
+      console.log(response)
       dispatch({
         type: ACTION_TYPES.FETCH_ALL,
         payload: response.data,
-      });
+      })
     })
-    .catch((error) => console.log(error));
-};
+    .catch((error) => console.log(error))
+}
 
 export const create = (data, onSuccess) => (dispatch) => {
-  data = formateData(data);
+  data = formateData(data)
   calls
     .messages()
     .create(data)
@@ -35,14 +35,14 @@ export const create = (data, onSuccess) => (dispatch) => {
       dispatch({
         type: ACTION_TYPES.CREATE,
         payload: res.data,
-      });
-      onSuccess();
+      })
+      onSuccess()
     })
-    .catch((err) => console.log(err));
-};
+    .catch((err) => console.log(err))
+}
 
 export const update = (id, data, onSuccess) => (dispatch) => {
-  data = formateData(data);
+  data = formateData(data)
   calls
     .messages()
     .update(id, data)
@@ -50,11 +50,11 @@ export const update = (id, data, onSuccess) => (dispatch) => {
       dispatch({
         type: ACTION_TYPES.UPDATE,
         payload: { id, ...data },
-      });
-      onSuccess();
+      })
+      onSuccess()
     })
-    .catch((err) => console.log(err));
-};
+    .catch((err) => console.log(err))
+}
 
 export const Delete = (id, onSuccess) => (dispatch) => {
   calls
@@ -64,8 +64,8 @@ export const Delete = (id, onSuccess) => (dispatch) => {
       dispatch({
         type: ACTION_TYPES.DELETE,
         payload: id,
-      });
-      onSuccess();
+      })
+      onSuccess()
     })
-    .catch((err) => console.log(err));
-};
+    .catch((err) => console.log(err))
+}

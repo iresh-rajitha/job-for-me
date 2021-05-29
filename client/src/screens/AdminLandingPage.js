@@ -10,7 +10,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
 
@@ -31,13 +31,13 @@ const styles = (theme) => ({
   },
 })
 
-const Sellers = ({ classes, ...props }) => {
+const AdminLandingPage = ({ classes, ...props }) => {
   const history = useHistory()
   console.log(history.location.state)
   const adminId = history.location.state
 
   useEffect(() => {
-    props.fetchAllSellers()
+    props.fetchAllUsers()
   }, [props])
 
   return (
@@ -175,15 +175,15 @@ const Sellers = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  fetchAllSellers: actions.fetchAll,
-  deleteSeller: actions.Delete,
+  fetchAllUsers: actions.fetchAll,
+  deleteUserr: actions.Delete,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Sellers))
+)(withStyles(styles)(AdminLandingPage))

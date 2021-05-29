@@ -19,7 +19,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { useToasts } from 'react-toast-notifications'
 
 import SellerForm from '../components/SellerForm'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import Popup from '../components/Popup'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
@@ -37,19 +37,19 @@ const styles = (theme) => ({
   },
 })
 
-const Sellers = ({ classes, ...props }) => {
+const AdminAdminsList = ({ classes, ...props }) => {
   const { addToast } = useToasts()
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
-    props.fetchAllSellers()
+    props.fetchAllUsers()
   }, [props])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))
-      props.deleteSeller(id, () =>
+      props.deleteUser(id, () =>
         addToast('Deleted successfully', { appearance: 'info' })
       )
   }
@@ -73,7 +73,7 @@ const Sellers = ({ classes, ...props }) => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {props.sellerList.map((record, index) => {
+                    {props.userList.map((record, index) => {
                       if (record.userType === 'Admin') {
                         return (
                           <TableRow key={index} hover>
@@ -127,15 +127,15 @@ const Sellers = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  fetchAllSellers: actions.fetchAll,
-  deleteSeller: actions.Delete,
+  fetchAllUsers: actions.fetchAll,
+  deleteUser: actions.Delete,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Sellers))
+)(withStyles(styles)(AdminAdminsList))

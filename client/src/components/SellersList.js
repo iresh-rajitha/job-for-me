@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import {
   Grid,
   Paper,
@@ -20,8 +20,6 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { useToasts } from 'react-toast-notifications'
 
 import Popup from './Popup'
-import AdminNav from './AdminNav'
-import Footer from './Footer'
 
 const styles = (theme) => ({
   root: {
@@ -42,25 +40,19 @@ const OrderSellers = ({ classes, ...props }) => {
   const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
-    props.fetchAllSellers()
+    props.fetchAllUsers()
   }, [props])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))
-      props.deleteSeller(id, () =>
+      props.deleteUser(id, () =>
         addToast('Deleted successfully', { appearance: 'info' })
       )
   }
 
   return (
-    // <Fragment>
-    //   <AdminNav />
-    //   <section className="container">
     <Paper className={classes.paper} elevation={3}>
       <Grid>
-        {/* <Grid item xs={6}>
-            <SellerForm {...{ currentId, setCurrentId }} />
-          </Grid> */}
         <Grid item xs={12}>
           <TableContainer>
             <Table>
@@ -75,7 +67,7 @@ const OrderSellers = ({ classes, ...props }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {props.sellerList.map((record, index) => {
+                {props.userList.map((record, index) => {
                   if (record.userType === 'Seller') {
                     return (
                       <TableRow key={index} hover>
@@ -108,36 +100,6 @@ const OrderSellers = ({ classes, ...props }) => {
                       </TableRow>
                     )
                   }
-                  // return (
-                  //   <TableRow key={index} hover>
-                  //     <TableCell>{record.firstName}</TableCell>
-                  //     <TableCell>{record.lastName}</TableCell>
-                  //     <TableCell>{record.address}</TableCell>
-                  //     <TableCell>{record.category}</TableCell>
-                  //     <TableCell>{record.email}</TableCell>
-                  //     <TableCell>
-                  //       <ButtonGroup variant="text">
-                  //         <Button>
-                  //           <EditIcon
-                  //             color="primary"
-                  //             onClick={() => {
-                  //               setCurrentId(record.userId);
-                  //               setOpenPopup(true);
-                  //             }}
-                  //           />
-                  //         </Button>
-                  //         <Button>
-                  //           <DeleteIcon
-                  //             color="secondary"
-                  //             onClick={() => {
-                  //               onDelete(record.userId);
-                  //             }}
-                  //           />
-                  //         </Button>
-                  //       </ButtonGroup>
-                  //     </TableCell>
-                  //   </TableRow>
-                  // );
                 })}
               </TableBody>
             </Table>
@@ -152,19 +114,16 @@ const OrderSellers = ({ classes, ...props }) => {
         </Popup>
       </Grid>
     </Paper>
-    //   </section>
-    //   <Footer />
-    // </Fragment>
   )
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  fetchAllSellers: actions.fetchAll,
-  deleteSeller: actions.Delete,
+  fetchAllUsers: actions.fetchAll,
+  deleteUser: actions.Delete,
 }
 
 export default connect(

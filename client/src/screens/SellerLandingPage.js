@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import { useToasts } from 'react-toast-notifications'
 
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import SellerNav from '../components/SellerNav'
 import Footer from '../components/Footer'
 
@@ -32,7 +32,7 @@ const styles = (theme) => ({
   },
 })
 
-const Sellers = ({ classes, ...props }) => {
+const SellerLandingPage = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   const history = useHistory()
   console.log(history.location.state)
@@ -40,8 +40,8 @@ const Sellers = ({ classes, ...props }) => {
   const [currentId, setCurrentId] = useState(0)
 
   useEffect(() => {
-    props.fetchAllSellers()
-  }, [])
+    props.fetchAllUsers()
+  }, [props])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))
@@ -172,15 +172,15 @@ const Sellers = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  fetchAllSellers: actions.fetchAll,
-  deleteSeller: actions.Delete,
+  fetchAllUsers: actions.fetchAll,
+  deleteUser: actions.Delete,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(Sellers))
+)(withStyles(styles)(SellerLandingPage))

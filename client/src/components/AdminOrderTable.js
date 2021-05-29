@@ -40,6 +40,7 @@ export default function AdminOrderTable(props) {
     setOpenPopup(true)
     setOrderId(id)
     console.log(orderId)
+    props.refreshOrderTable()
   }
 
   return (

@@ -17,7 +17,7 @@ import {
 import Container from '@material-ui/core/Container'
 
 import useForm from '../useForm'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
 
@@ -47,7 +47,7 @@ const initialFieldValues = {
   password: '',
 }
 
-const SellersForm = ({ classes, ...props }) => {
+const BuyerToSeller = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   let history = useHistory()
   const buyerId = history.location.state
@@ -102,12 +102,13 @@ const SellersForm = ({ classes, ...props }) => {
       const onSuccess = () => {
         resetForm()
         addToast('Submitted successfully', { appearance: 'success' })
+        props.fetchAllUsers()
       }
-      props.deleteSeller(buyerId, onSuccess)
+      props.deleteUser(buyerId, onSuccess)
 
-      props.createSeller(values, onSuccess)
+      props.createUser(values, onSuccess)
 
-      props.sellerList.find((x) => {
+      props.userList.find((x) => {
         if (x.email == values.email) {
           history.push({
             pathname: '/sellerdashboard',
@@ -121,7 +122,7 @@ const SellersForm = ({ classes, ...props }) => {
   useEffect(() => {
     if (props.currentId !== 0) {
       setValues({
-        ...props.sellerList.find((x) => x.userId === props.currentId),
+        ...props.userList.find((x) => x.userId === props.currentId),
       })
       setErrors({})
     }
@@ -260,17 +261,17 @@ const SellersForm = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  createSeller: actions.create,
-  updateSeller: actions.update,
-  deleteSeller: actions.Delete,
-  fetchAllSellers: actions.fetchAll,
+  createUser: actions.create,
+  updateUser: actions.update,
+  deleteUser: actions.Delete,
+  fetchAllUsers: actions.fetchAll,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(SellersForm))
+)(withStyles(styles)(BuyerToSeller))

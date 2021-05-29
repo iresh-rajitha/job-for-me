@@ -20,7 +20,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { useToasts } from 'react-toast-notifications'
 
 import SellerForm from '../components/SellerForm'
-import * as actions from '../actions/sellers'
+import * as actions from '../actions/users'
 import Popup from '../components/Popup'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'

@@ -94,6 +94,7 @@ function AdminOrderPage() {
         <div>
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}
+            refreshOrderTable={refreshOrderTable}
             open={open}
             onClose={handleClose}
             order={order}
@@ -101,6 +102,7 @@ function AdminOrderPage() {
           <OrderTable
             updateFunction={updateFunction}
             deleteFunction={deleteFunction}
+            refreshOrderTable={refreshOrderTable}
             tableData={tableData}
           />
         </div>
