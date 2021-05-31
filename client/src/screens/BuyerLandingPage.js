@@ -107,8 +107,12 @@ const Order = () => {
                   Illustration
                 </Typography>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  An illustration is a decoration, interpretation or visual
+                  explanation of a text, concept or process, designed for
+                  integration in print and digital published media, such as
+                  posters, flyers, magazines, books, teaching materials,
+                  animations, video games and films. An illustration is
+                  typically created by an illustrator.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -132,8 +136,12 @@ const Order = () => {
                   Album Covers
                 </Typography>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  Besides the practicalities of identifying specific records,
+                  album covers serve the purpose of advertising the musical
+                  contents on the LP, through the use of graphic design,
+                  photography, and/or illustration. An album cover normally has
+                  the artist's name, sometimes in logo form; and the album
+                  title.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -157,8 +165,11 @@ const Order = () => {
                   Vector Arts
                 </Typography>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  Vector artwork is art that's made up of vector graphics. These
+                  graphics are points, lines, curves and shapes that are based
+                  on mathematical formulas. When you scale a vector image file,
+                  it isn't low resolution and there's no loss of quality, so it
+                  can be sized to however large or small you need it to be.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -182,8 +193,11 @@ const Order = () => {
                   Photo Editing
                 </Typography>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  Photo editors review and select photos for promotion,
+                  publication, and dissemination. They identify relevant images,
+                  edit photos to make them more appealing, and arrange them in a
+                  suitable layout. Photo editors also assign projects to
+                  photographers to meet the organization's photography needs
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -207,8 +221,11 @@ const Order = () => {
                   Video Editing
                 </Typography>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  Video editors manipulate film and video footage to create a
+                  coherent and complete project that accurately depicts the film
+                  directors envision. They use complex editing software to piece
+                  together stills, footage, sound effects, dialog, and animation
+                  effects.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -232,8 +249,12 @@ const Order = () => {
                   UI Designing
                 </Typography>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  User interface (UI) design is the process designers use to
+                  build interfaces in software or computerized devices, focusing
+                  on looks or style. Designers aim to create interfaces which
+                  users find easy to use and pleasurable. UI design refers to
+                  graphical user interfaces and other forms—e.g.,
+                  voice-controlled interfaces
                 </Typography>
               </CardContent>
             </CardActionArea>

@@ -18,7 +18,7 @@ import {
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 
-import SellerForm from '../components/SellerForm'
+import BuyerForm from '../components/BuyerForm'
 import * as actions from '../actions/users'
 import Popup from '../components/Popup'
 import AdminNav from '../components/AdminNav'
@@ -108,11 +108,11 @@ const AdminBuyerList = ({ classes, ...props }) => {
               </TableContainer>
             </Grid>
             <Popup
-              title='Employee Form'
+              title='Edit Buyer Details'
               openPopup={openPopup}
               setOpenPopup={setOpenPopup}
             >
-              <SellerForm {...{ currentId, setCurrentId, setOpenPopup }} />
+              <BuyerForm {...{ currentId, setCurrentId, setOpenPopup }} />
             </Popup>
           </Grid>
         </Paper>

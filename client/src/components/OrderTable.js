@@ -40,16 +40,16 @@ export default function OrderTable(props) {
   let history = useHistory()
 
   useEffect(() => {
-    setRows((rows) => props.tableData)
+    setRows(props.tableData)
     // console.log(props.tableData);
   })
   const deleteOrder = (id) => {
     props.deleteFunction(id)
-    setRows((rows) => props.tableData)
+    setRows(props.tableData)
   }
   const updateOrder = (obj) => {
     props.updateFunction(obj)
-    setRows((rows) => props.tableData)
+    setRows(props.tableData)
   }
 
   const chatWithSeller = (sellerID) => {
@@ -104,9 +104,9 @@ export default function OrderTable(props) {
                           onClick={() => deleteOrder(row.orderDetailID)}
                         />
                       </IconButton>
-                      <IconButton aria-label='delete'>
+                      {/* <IconButton aria-label='delete'>
                         <Edit onClick={() => updateOrder(row)} />
-                      </IconButton>
+                      </IconButton> */}
                       <IconButton aria-label='delete'>
                         <ChatIcon onClick={() => chatWithSeller(row.to)} />
                       </IconButton>

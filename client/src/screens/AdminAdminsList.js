@@ -18,7 +18,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useToasts } from 'react-toast-notifications'
 
-import SellerForm from '../components/SellerForm'
+import AdminForm from '../components/AdminForm'
 import * as actions from '../actions/users'
 import Popup from '../components/Popup'
 import AdminNav from '../components/AdminNav'
@@ -111,11 +111,11 @@ const AdminAdminsList = ({ classes, ...props }) => {
               </TableContainer>
             </Grid>
             <Popup
-              title='Employee Form'
+              title='Edit Admin Details'
               openPopup={openPopup}
               setOpenPopup={setOpenPopup}
             >
-              <SellerForm {...{ currentId, setCurrentId, setOpenPopup }} />
+              <AdminForm {...{ currentId, setCurrentId, setOpenPopup }} />
             </Popup>
           </Grid>
         </Paper>

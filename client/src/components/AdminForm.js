@@ -41,7 +41,7 @@ const initialFieldValues = {
   password: '',
 }
 
-const SellersForm = ({ classes, ...props }) => {
+const AdminForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
 
   const validate = (fieldValues = values) => {
@@ -50,12 +50,8 @@ const SellersForm = ({ classes, ...props }) => {
       temp.firstName = fieldValues.firstName ? '' : 'This field is required.'
     if ('lastName' in fieldValues)
       temp.lastName = fieldValues.lastName ? '' : 'This field is required.'
-    if ('userTpye' in fieldValues)
-      temp.userType = fieldValues.userType ? '' : 'This field is required.'
-    if ('password' in fieldValues)
-      temp.password = fieldValues.password ? '' : 'This field is required.'
-    if ('category' in fieldValues)
-      temp.category = fieldValues.category ? '' : 'This field is required.'
+    if ('address' in fieldValues)
+      temp.address = fieldValues.address ? '' : 'This field is required.'
     if ('email' in fieldValues)
       temp.email = /^$|.+@.+..+/.test(fieldValues.email)
         ? ''
@@ -77,11 +73,11 @@ const SellersForm = ({ classes, ...props }) => {
     )
 
   //material-ui select
-  const inputLabel = React.useRef(null)
-  const [labelWidth, setLabelWidth] = React.useState(0)
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth)
-  }, [])
+  //   const inputLabel = React.useRef(null)
+  //   const [labelWidth, setLabelWidth] = React.useState(0)
+  //   React.useEffect(() => {
+  //     setLabelWidth(inputLabel.current.offsetWidth)
+  //   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -136,30 +132,6 @@ const SellersForm = ({ classes, ...props }) => {
             helperText: errors.lastName,
           })}
         />
-        <FormControl
-          variant='outlined'
-          className={classes.formControl}
-          {...(errors.category && { error: true })}
-        >
-          <InputLabel ref={inputLabel}>Category</InputLabel>
-          <Select
-            name='category'
-            value={values.category}
-            onChange={handleInputChange}
-            labelWidth={labelWidth}
-          >
-            <MenuItem value=''>Select a Category</MenuItem>
-            <MenuItem value='illustration'>Illustration</MenuItem>
-            <MenuItem value='albumCovers'>Album Covers</MenuItem>
-            <MenuItem value='vectorArts'>Vector Arts</MenuItem>
-            <MenuItem value='photoEditing'>Photo Editing</MenuItem>
-            <MenuItem value='videoEditing'>Video Editing</MenuItem>
-            <MenuItem value='uiDesigning'>UI Designing</MenuItem>
-          </Select>
-          {errors.category && (
-            <FormHelperText>{errors.category}</FormHelperText>
-          )}
-        </FormControl>
 
         <TextField
           name='email'
@@ -204,4 +176,4 @@ const mapActionToProps = {
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(SellersForm))
+)(withStyles(styles)(AdminForm))

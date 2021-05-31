@@ -81,17 +81,38 @@ const LoginPage = ({ classes, ...props }) => {
     e.preventDefault()
 
     props.userList.find((x) => {
-      if (x.email == values.email && x.userType === 'Buyer') {
+      if (
+        x.email == values.email &&
+        x.password == values.password &&
+        x.userType === 'Buyer'
+      ) {
+        addToast('Logged in successfully as a Buyer!', {
+          appearance: 'success',
+        })
         history.push({
           pathname: '/order',
           state: x.userId,
         })
-      } else if (x.email == values.email && x.userType === 'Seller') {
+      } else if (
+        x.email == values.email &&
+        x.password == values.password &&
+        x.userType === 'Seller'
+      ) {
+        addToast('Logged in successfully as a Seller!', {
+          appearance: 'success',
+        })
         history.push({
           pathname: '/sellerdashboard',
           state: x.userId,
         })
-      } else if (x.email == values.email && x.userType === 'Admin') {
+      } else if (
+        x.email == values.email &&
+        x.password == values.password &&
+        x.userType === 'Admin'
+      ) {
+        addToast('Logged in successfully as an Admin', {
+          appearance: 'success',
+        })
         history.push({
           pathname: '/admin',
           state: x.userId,
@@ -143,6 +164,7 @@ const LoginPage = ({ classes, ...props }) => {
               <Grid item xs={12}>
                 <TextField
                   name='password'
+                  type='password'
                   variant='outlined'
                   label='Password'
                   value={values.password}
@@ -170,6 +192,7 @@ const LoginPage = ({ classes, ...props }) => {
           </form>
         </Container>
       </section>
+
       <Footer />
     </Fragment>
   )

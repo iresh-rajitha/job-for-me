@@ -3,11 +3,12 @@ import { Fragment } from 'react'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { IconButton } from '@material-ui/core'
+import { Grid, Button } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 
 import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
 import OrderTable from '../components/OrderTable'
+import OrderList from '../components/OrdersList'
 import PropTypes from 'prop-types'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
@@ -88,19 +89,23 @@ function Orderpage() {
     // refreshOrderTable();
   }
 
+  const handleAdd = () => {
+    setOpen(true)
+  }
+
   return (
     <Fragment>
       <BuyerNav {...{ buyerId }} />
       <section className='container'>
         <div>
-          <IconButton
+          {/* <IconButton
             mb={10}
             style={{ background: '#3f51b5', color: 'white' }}
             aria-label='delete'
             onClick={handleClickOpen}
           >
             <Add />
-          </IconButton>
+          </IconButton> */}
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}
             open={open}
@@ -114,6 +119,13 @@ function Orderpage() {
             tableData={tableData}
             senderId={history.location.state}
           />
+          {/* <OrderList senderId={history.location.state} /> */}
+
+          <Grid container justify='flex-end'>
+            <Button onClick={handleAdd} variant='contained' color='primary'>
+              Place another order!
+            </Button>
+          </Grid>
         </div>
       </section>
       <Footer />

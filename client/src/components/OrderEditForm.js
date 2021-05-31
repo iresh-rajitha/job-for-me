@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { useToasts } from 'react-toast-notifications'
+
 import {
   Grid,
   TextField,
@@ -10,10 +13,10 @@ import {
   Button,
   FormHelperText,
 } from '@material-ui/core'
+import InputAdornment from '@material-ui/core/InputAdornment'
+
 import useForm from '../useForm'
-import { connect } from 'react-redux'
-import * as actions from '../actions/users'
-import { useToasts } from 'react-toast-notifications'
+import * as actions from '../actions/orders'
 
 const styles = (theme) => ({
   root: {
@@ -32,34 +35,32 @@ const styles = (theme) => ({
 })
 
 const initialFieldValues = {
-  firstName: '',
-  lastName: '',
-  address: '',
-  userType: 'Seller',
-  category: '',
-  email: '',
-  password: '',
+  orderDetailID: 0,
+  description: '',
+  file: null,
+  field: 'None',
+  price: 0,
+  fileName: '',
+  deadline: '',
 }
 
-const SellersForm = ({ classes, ...props }) => {
+const OrderEditForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+  const [values, setValues] = useState(initialFieldValues)
+  const [errors, setErrors] = useState({})
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
-    if ('firstName' in fieldValues)
-      temp.firstName = fieldValues.firstName ? '' : 'This field is required.'
-    if ('lastName' in fieldValues)
-      temp.lastName = fieldValues.lastName ? '' : 'This field is required.'
-    if ('userTpye' in fieldValues)
-      temp.userType = fieldValues.userType ? '' : 'This field is required.'
-    if ('password' in fieldValues)
-      temp.password = fieldValues.password ? '' : 'This field is required.'
-    if ('category' in fieldValues)
-      temp.category = fieldValues.category ? '' : 'This field is required.'
-    if ('email' in fieldValues)
-      temp.email = /^$|.+@.+..+/.test(fieldValues.email)
+    if ('description' in fieldValues)
+      temp.description = fieldValues.description
         ? ''
-        : 'Email is not valid.'
+        : 'This field is required.'
+    if ('deadline' in fieldValues)
+      temp.deadline = fieldValues.deadline ? '' : 'This field is required.'
+    if ('price' in fieldValues)
+      temp.price = fieldValues.price ? '' : 'This field is required.'
+    if ('fields' in fieldValues)
+      temp.fields = fieldValues.fields ? '' : 'This field is required.'
     setErrors({
       ...temp,
     })
@@ -67,14 +68,6 @@ const SellersForm = ({ classes, ...props }) => {
     if (fieldValues === values)
       return Object.values(temp).every((x) => x === '')
   }
-
-  const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
-    useForm(
-      initialFieldValues,
-      validate,
-      props.setCurrentId,
-      props.setOpenPopup
-    )
 
   //material-ui select
   const inputLabel = React.useRef(null)
@@ -91,21 +84,40 @@ const SellersForm = ({ classes, ...props }) => {
         addToast('Submitted successfully', { appearance: 'success' })
       }
       if (props.currentId === 0) {
-        props.createUser(values, onSuccess)
+        props.createOrder(values, onSuccess)
       } else {
-        props.updateUser(props.currentId, values, onSuccess)
+        props.updateOrder(props.currentId, values, onSuccess)
       }
     }
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    const fieldValue = { [name]: value }
+    setValues({
+      ...values,
+      ...fieldValue,
+    })
+    validate(fieldValue)
+  }
+
+  const resetForm = () => {
+    setValues({
+      ...initialFieldValues,
+    })
+    setErrors({})
+    props.setCurrentId(0)
+    props.setOpenPopup(false)
   }
 
   useEffect(() => {
     if (props.currentId !== 0) {
       setValues({
-        ...props.userList.find((x) => x.userId === props.currentId),
+        ...props.orderList.find((x) => x.orderID === props.currentId),
       })
       setErrors({})
     }
-  }, [])
+  }, [props])
   return (
     <form
       autoComplete='off'
@@ -115,26 +127,24 @@ const SellersForm = ({ classes, ...props }) => {
     >
       <Grid container>
         <TextField
-          name='firstName'
+          name='description'
           variant='outlined'
           label='First Name'
-          value={values.firstName}
+          value={values.description}
           onChange={handleInputChange}
-          {...(errors.firstName && {
+          {...(errors.description && {
             error: true,
-            helperText: errors.firstName,
+            helperText: errors.description,
           })}
         />
         <TextField
-          name='lastName'
-          variant='outlined'
-          label='Last Name'
-          value={values.lastName}
+          id='date'
+          label='Deadline'
+          type='date'
+          defaultValue={new Date()}
+          name='deadline'
+          value={values.deadline}
           onChange={handleInputChange}
-          {...(errors.lastName && {
-            error: true,
-            helperText: errors.lastName,
-          })}
         />
         <FormControl
           variant='outlined'
@@ -162,22 +172,13 @@ const SellersForm = ({ classes, ...props }) => {
         </FormControl>
 
         <TextField
-          name='email'
-          variant='outlined'
-          label='Email'
-          value={values.email}
+          id='standard-adornment-amount'
+          value={values.price}
+          name='price'
           onChange={handleInputChange}
-          {...(errors.email && { error: true, helperText: errors.email })}
+          startAdornment={<InputAdornment position='start'>$</InputAdornment>}
         />
-        <TextField
-          name='address'
-          variant='outlined'
-          label='Address'
-          value={values.address}
-          onChange={handleInputChange}
-          {...(errors.address && { error: true, helperText: errors.address })}
-        />
-        <Grid container justify='flex-end'>
+        <div>
           <Button
             variant='contained'
             color='primary'
@@ -186,22 +187,22 @@ const SellersForm = ({ classes, ...props }) => {
           >
             Submit
           </Button>
-        </Grid>
+        </div>
       </Grid>
     </form>
   )
 }
 
 const mapStateToProps = (state) => ({
-  userList: state.users.list,
+  orderList: state.orders.list,
 })
 
 const mapActionToProps = {
-  createUser: actions.create,
-  updateUser: actions.update,
+  createOrder: actions.create,
+  updateOrder: actions.update,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(SellersForm))
+)(withStyles(styles)(OrderEditForm))

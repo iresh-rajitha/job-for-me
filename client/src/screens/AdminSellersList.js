@@ -112,7 +112,7 @@ const AdminSellersList = ({ classes, ...props }) => {
               </TableContainer>
             </Grid>
             <Popup
-              title='Employee Form'
+              title='Edit Seller Details'
               openPopup={openPopup}
               setOpenPopup={setOpenPopup}
             >
