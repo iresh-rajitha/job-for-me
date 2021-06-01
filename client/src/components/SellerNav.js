@@ -5,7 +5,12 @@ const Navigationbar = (props) => {
   return (
     <nav className='navbar '>
       <h1>
-        <Link to='/'>
+        <Link
+          to={{
+            pathname: '/sellerdashboard',
+            state: props.sellerId,
+          }}
+        >
           {/* <i class="fas fa-comments-dollar"></i> JobForMe */}
           <img
             className='photo'

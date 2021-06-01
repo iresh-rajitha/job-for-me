@@ -35,6 +35,7 @@ const ContactUs = () => {
   const classes = useStyles()
 
   const history = useHistory()
+  const sellerId = history.location.state
 
   const [formData, setFromData] = useState({
     subject: '',
@@ -62,7 +63,7 @@ const ContactUs = () => {
 
   return (
     <Fragment>
-      <SellerNav />
+      <SellerNav {...{ sellerId }} />
       <section className='container'>
         <Container component='main' maxWidth='xs'>
           <CssBaseline />

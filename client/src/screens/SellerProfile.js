@@ -41,6 +41,7 @@ const SellerProfile = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   const history = useHistory()
   const profileId = history.location.state
+  const sellerId = history.location.state
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
 
@@ -61,7 +62,7 @@ const SellerProfile = ({ classes, ...props }) => {
 
   return (
     <Fragment>
-      <SellerNav />
+      <SellerNav {...{ sellerId }} />
       <section className='container'>
         <Paper className={classes.paper} elevation={3}>
           <Grid>

@@ -7,7 +7,7 @@ import { IconButton } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 
 import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
-import BuyerNav from '../components/BuyerNav'
+import SellerNav from '../components/SellerNav'
 import Footer from '../components/Footer'
 import OrderTable from '../components/SellerOrderTable'
 
@@ -31,6 +31,8 @@ AddUpdateOrderPopUp.propTypes = {
 
 function SellerOrderpage() {
   let history = useHistory()
+  const sellerId = history.location.state
+
   const senderId = history.location.state
   console.log(senderId)
 
@@ -92,7 +94,7 @@ function SellerOrderpage() {
 
   return (
     <Fragment>
-      <BuyerNav />
+      <SellerNav {...{ sellerId }} />
       <section className='container'>
         <div>
           <IconButton

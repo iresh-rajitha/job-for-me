@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react'
+import { useHistory } from 'react-router-dom'
+
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -12,6 +14,7 @@ import PaymentIcon from '@material-ui/icons/Payment'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
 
@@ -51,9 +54,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles()
 
+  const history = useHistory()
+  const buyerId = history.location.state
+
   return (
     <Fragment>
-      <BuyerNav />
+      <BuyerNav {...{ buyerId }} />
       <section className='container'>
         <Container component='main' maxWidth='xs'>
           <CssBaseline />

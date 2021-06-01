@@ -41,6 +41,7 @@ const styles = (theme) => ({
 const BuyerProfile = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   const history = useHistory()
+  const buyerId = history.location.state
   const profileId = history.location.state
 
   const [currentId, setCurrentId] = useState(0)
@@ -63,7 +64,7 @@ const BuyerProfile = ({ classes, ...props }) => {
 
   return (
     <Fragment>
-      <BuyerNav />
+      <BuyerNav {...{ buyerId }} />
       <section className='container'>
         <Paper className={classes.paper} elevation={3}>
           <Grid>

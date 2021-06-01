@@ -132,7 +132,7 @@ const BuyerToSeller = ({ classes, ...props }) => {
   }, [props.currentId])
   return (
     <Fragment>
-      <BuyerNav />
+      <BuyerNav {...{ buyerId }} />
 
       <section className='container'>
         <Container component='main' maxWidth='xs'>
