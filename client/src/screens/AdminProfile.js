@@ -37,7 +37,7 @@ const styles = (theme) => ({
   },
 })
 
-const SellerProfile = ({ classes, ...props }) => {
+const AdminProfile = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   const history = useHistory()
   const profileId = history.location.state
@@ -45,14 +45,18 @@ const SellerProfile = ({ classes, ...props }) => {
   const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
-    props.fetchAllSellers()
-  }, [props])
+    if (!history.location.state) {
+      history.push('/login')
+    }
+    props.fetchAllUsers()
+  }, [props, history.location.state])
 
   const onDelete = (id) => {
-    if (window.confirm('Are you sure to delete this record?'))
-      props.deleteSeller(id, () =>
+    if (window.confirm('Are you sure to delete your Admin Profile?'))
+      props.deleteUser(id, () =>
         addToast('Deleted successfully', { appearance: 'info' })
       )
+    history.push('/login')
   }
 
   return (
@@ -75,7 +79,7 @@ const SellerProfile = ({ classes, ...props }) => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {props.sellerList.map((record, index) => {
+                    {props.userList.map((record, index) => {
                       if (record.userId === profileId) {
                         return (
                           <TableRow key={index} hover>
@@ -128,15 +132,15 @@ const SellerProfile = ({ classes, ...props }) => {
 }
 
 const mapStateToProps = (state) => ({
-  sellerList: state.sellers.list,
+  userList: state.users.list,
 })
 
 const mapActionToProps = {
-  fetchAllSellers: actions.fetchAll,
-  deleteSeller: actions.Delete,
+  fetchAllUsers: actions.fetchAll,
+  deleteUser: actions.Delete,
 }
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(SellerProfile))
+)(withStyles(styles)(AdminProfile))

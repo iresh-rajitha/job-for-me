@@ -88,8 +88,11 @@ const BuyerToSeller = ({ classes, ...props }) => {
   const inputLabel = React.useRef(null)
   const [labelWidth, setLabelWidth] = React.useState(0)
   React.useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setLabelWidth(inputLabel.current.offsetWidth)
-  }, [])
+  }, [history.location.state])
 
   const setRole = (fieldValues = values) => {
     fieldValues.userType = 'Seller'

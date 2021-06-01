@@ -6,7 +6,7 @@ import { ToastProvider } from 'react-toast-notifications'
 import LandingPage from './screens/LandingPage'
 import LoginPage from './screens/LoginPage'
 import RegisterPage from './screens/RegisterPage'
-import ContactUs from './screens/ContactUsPage'
+import ContactUsPage from './screens/ContactUsPage'
 
 import Chat from './screens/ChatScreen'
 
@@ -22,10 +22,12 @@ import YourOrdersBuyer from './screens/BuyerOrdersList'
 import Seller from './screens/BuyerToSeller'
 import BuyerProfile from './screens/BuyerProfile'
 import Payment from './screens/BuyerPayment'
+import BuyerContactUs from './screens/BuyerContactUs'
 
 import SellerDashboard from './screens/SellerLandingPage'
 import SellerProfile from './screens/SellerProfile'
 import YourOrdersSeller from './screens/SellerOrderList'
+import SellerContactUs from './screens/SellerContactUs'
 
 import './App.css'
 
@@ -41,7 +43,7 @@ const App = () => (
               <Route exact path='/' component={LandingPage} />
               <Route path='/login' component={LoginPage} />
               <Route path='/register' component={RegisterPage} />
-              <Route path='/contact' component={ContactUs} />
+              <Route path='/contact' component={ContactUsPage} />
               <Route path='/admin' component={AdminPage} exact />
               <Route path='/order' component={OrderPage} />
               <Route path='/sellerdashboard' component={SellerDashboard} />
@@ -57,6 +59,8 @@ const App = () => (
               <Route path='/payment' component={Payment} />
               <Route path='/sellerprofile' component={SellerProfile} />
               <Route path='/yourordersseller' component={YourOrdersSeller} />
+              <Route path='/buyercontact' component={BuyerContactUs} />
+              <Route path='/sellercontact' component={SellerContactUs} />
             </Switch>
           </section>
         </Fragment>

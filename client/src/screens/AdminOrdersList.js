@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Fragment } from 'react'
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import AddUpdateOrderPopUp from '../components/AdminOrderPopup'
@@ -32,9 +33,14 @@ AddUpdateOrderPopUp.propTypes = {
 }
 
 function AdminOrderPage() {
+  const history = useHistory()
+
   useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     refreshOrderTable()
-  }, [])
+  }, [history.location.state])
 
   const [tableData, setTableData] = useState([])
   const [order, setOrder] = useState(initialValues)

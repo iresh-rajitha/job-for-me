@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -7,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 
 import sendEmail from '../actions/Email'
-import LandingNav from '../components/LandingNav'
+import SellerNav from '../components/SellerNav'
 import Footer from '../components/Footer'
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 const ContactUs = () => {
   const classes = useStyles()
 
+  const history = useHistory()
+
   const [formData, setFromData] = useState({
     subject: '',
     email: '',
@@ -51,9 +54,15 @@ const ContactUs = () => {
     sendEmail(subject, email, body, signature)
   }
 
+  useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
+  }, [history.location.state])
+
   return (
     <Fragment>
-      <LandingNav />
+      <SellerNav />
       <section className='container'>
         <Container component='main' maxWidth='xs'>
           <CssBaseline />

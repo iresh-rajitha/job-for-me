@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import { Grid } from '@material-ui/core'
@@ -45,42 +45,69 @@ const Order = () => {
   console.log(history.location.state)
   const buyerId = history.location.state
 
+  useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
+  }, [history.location.state])
+
   const handleClickOpen = () => {
     setOpen(true)
   }
 
   const illustration = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setField(1)
     console.log(field)
     setOpen(true)
   }
 
   const albumCovers = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setOpen(true)
     setField(2)
   }
 
   const vectorArts = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setOpen(true)
     setField(3)
   }
 
   const photoEditing = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setOpen(true)
     setField(4)
   }
 
   const videoEditing = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setOpen(true)
     setField(5)
   }
 
   const uiDesigning = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setOpen(true)
     setField(6)
   }
 
   const handleClose = (value) => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     setOpen(false)
     console.log('refresh')
     // refreshOrderTable();

@@ -37,8 +37,11 @@ const AdminLandingPage = ({ classes, ...props }) => {
   const adminId = history.location.state
 
   useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     props.fetchAllUsers()
-  }, [props])
+  }, [props, history.location.state])
 
   return (
     <Fragment>
@@ -49,7 +52,12 @@ const AdminLandingPage = ({ classes, ...props }) => {
           <br />
           <br />
           <br />
-          <Link to='/buyers'>
+          <Link
+            to={{
+              pathname: '/buyers',
+              state: props.adminId,
+            }}
+          >
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -88,7 +96,12 @@ const AdminLandingPage = ({ classes, ...props }) => {
               <CardActions></CardActions>
             </Card>
           </Link>
-          <Link to='/sellers'>
+          <Link
+            to={{
+              pathname: '/sellers',
+              state: props.adminId,
+            }}
+          >
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -115,7 +128,12 @@ const AdminLandingPage = ({ classes, ...props }) => {
               <CardActions></CardActions>
             </Card>
           </Link>
-          <Link to='/admins'>
+          <Link
+            to={{
+              pathname: '/admins',
+              state: props.adminId,
+            }}
+          >
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -141,7 +159,12 @@ const AdminLandingPage = ({ classes, ...props }) => {
               <CardActions></CardActions>
             </Card>
           </Link>
-          <Link to='/adminorders'>
+          <Link
+            to={{
+              pathname: '/adminorders',
+              state: props.adminId,
+            }}
+          >
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia

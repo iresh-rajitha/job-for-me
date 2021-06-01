@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import {
   Grid,
@@ -38,13 +39,17 @@ const styles = (theme) => ({
 
 const AdminSellersList = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+  const history = useHistory()
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     props.fetchAllUsers()
-  }, [props])
+  }, [props, history.location.state])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))

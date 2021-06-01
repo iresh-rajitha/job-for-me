@@ -33,9 +33,13 @@ function SellerOrderpage() {
   let history = useHistory()
   const senderId = history.location.state
   console.log(senderId)
+
   useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     refreshOrderTable()
-  }, [])
+  }, [history.location.state])
 
   const [tableData, setTableData] = useState([])
   const [order, setOrder] = useState(initialValues)

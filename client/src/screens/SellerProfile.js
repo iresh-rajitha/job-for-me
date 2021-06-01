@@ -45,14 +45,18 @@ const SellerProfile = ({ classes, ...props }) => {
   const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     props.fetchAllUsers()
-  }, [props])
+  }, [props, history.location.state])
 
   const onDelete = (id) => {
-    if (window.confirm('Are you sure to delete this record?'))
+    if (window.confirm('Are you sure to delete your Seller Profile?'))
       props.deleteUser(id, () =>
         addToast('Deleted successfully', { appearance: 'info' })
       )
+    history.push('/login')
   }
 
   return (

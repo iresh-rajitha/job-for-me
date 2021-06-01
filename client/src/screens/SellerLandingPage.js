@@ -40,8 +40,11 @@ const SellerLandingPage = ({ classes, ...props }) => {
   const [currentId, setCurrentId] = useState(0)
 
   useEffect(() => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
     props.fetchAllUsers()
-  }, [props])
+  }, [props, history.location.state])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))
