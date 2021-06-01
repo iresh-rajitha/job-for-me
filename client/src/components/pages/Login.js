@@ -1,6 +1,8 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {User} from '../../models/user.model';
+import{LoginService} from '../../services';
 import {
   Grid,
   TextField,
@@ -92,6 +94,8 @@ const SellersForm = ({ classes, ...props }) => {
     props.setOpenPopup
   );
 
+  // const user = User;
+  // ;
   //material-ui select
   // const inputLabel = React.useRef(null);
   // const [labelWidth, setLabelWidth] = React.useState(0);
@@ -100,7 +104,15 @@ const SellersForm = ({ classes, ...props }) => {
   // }, []);
 
   const handleSubmit = (e) => {
+    // user.email='test';
+    // console.log(user);
     e.preventDefault();
+
+
+    // console.log(user);
+    // console.log(props.sellerList);
+    const orders=LoginService.getAllOrders();
+    console.log(orders);
 
     props.sellerList.find((x) => {
       if (x.email == values.email && x.userType === "Buyer") {
@@ -120,6 +132,8 @@ const SellersForm = ({ classes, ...props }) => {
         });
       }
     });
+
+    // ^~^ sbove function has never initialized ^~^
 
     // if (
     //   props.sellerList.find(
@@ -292,6 +306,7 @@ const SellersForm = ({ classes, ...props }) => {
             </Grid> */}
               <Grid item xs={12}>
                 <TextField
+                  type="password"
                   name="password"
                   variant="outlined"
                   label="Password"

@@ -10,6 +10,5 @@ export function getAllOrders(){
       .catch(err=>{
         console.log(err);
       });
-
       return '';
 }
