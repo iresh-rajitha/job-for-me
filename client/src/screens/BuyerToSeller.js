@@ -230,6 +230,7 @@ const BuyerToSeller = ({ classes, ...props }) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  type='password'
                   name='password'
                   variant='outlined'
                   label='Password'
