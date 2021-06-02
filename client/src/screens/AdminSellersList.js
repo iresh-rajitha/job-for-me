@@ -40,6 +40,7 @@ const styles = (theme) => ({
 const AdminSellersList = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   const history = useHistory()
+  const adminId = history.location.state
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
@@ -60,7 +61,7 @@ const AdminSellersList = ({ classes, ...props }) => {
 
   return (
     <Fragment>
-      <AdminNav />
+      <AdminNav {...{ adminId }} />
       <section className='container'>
         <Paper className={classes.paper} elevation={3}>
           <Grid>

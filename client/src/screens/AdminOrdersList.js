@@ -34,6 +34,7 @@ AddUpdateOrderPopUp.propTypes = {
 
 function AdminOrderPage() {
   const history = useHistory()
+  const adminId = history.location.state
 
   useEffect(() => {
     if (!history.location.state) {
@@ -93,7 +94,7 @@ function AdminOrderPage() {
 
   return (
     <Fragment>
-      <AdminNav />
+      <AdminNav {...{ adminId }} />
       <section className='container'>
         <p> Currently avalible Sellers.</p>
         <OrderSellers />

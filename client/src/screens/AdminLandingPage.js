@@ -55,7 +55,7 @@ const AdminLandingPage = ({ classes, ...props }) => {
           <Link
             to={{
               pathname: '/buyers',
-              state: props.adminId,
+              state: adminId,
             }}
           >
             <Card className={classes.card}>
@@ -99,7 +99,7 @@ const AdminLandingPage = ({ classes, ...props }) => {
           <Link
             to={{
               pathname: '/sellers',
-              state: props.adminId,
+              state: adminId,
             }}
           >
             <Card className={classes.card}>
@@ -131,7 +131,7 @@ const AdminLandingPage = ({ classes, ...props }) => {
           <Link
             to={{
               pathname: '/admins',
-              state: props.adminId,
+              state: adminId,
             }}
           >
             <Card className={classes.card}>
@@ -162,7 +162,7 @@ const AdminLandingPage = ({ classes, ...props }) => {
           <Link
             to={{
               pathname: '/adminorders',
-              state: props.adminId,
+              state: adminId,
             }}
           >
             <Card className={classes.card}>
