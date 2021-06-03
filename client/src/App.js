@@ -8,7 +8,7 @@ import LoginPage from './screens/LoginPage'
 import RegisterPage from './screens/RegisterPage'
 import ContactUsPage from './screens/ContactUsPage'
 
-import Chat from './screens/ChatScreen'
+import BuyerChat from './screens/BuyerChatScreen'
 
 import AdminPage from './screens/AdminLandingPage'
 import Buyers from './screens/AdminBuyersList'
@@ -28,6 +28,7 @@ import SellerDashboard from './screens/SellerLandingPage'
 import SellerProfile from './screens/SellerProfile'
 import YourOrdersSeller from './screens/SellerOrderList'
 import SellerContactUs from './screens/SellerContactUs'
+import SellerChat from './screens/SellerChatScreen'
 
 import './App.css'
 
@@ -55,12 +56,13 @@ const App = () => (
               <Route path='/yourorders' component={YourOrdersBuyer} />
               <Route path='/seller' component={Seller} />
               <Route path='/buyerprofile' component={BuyerProfile} />
-              <Route path='/chat' component={Chat} />
+              <Route path='/buyerchat' component={BuyerChat} />
               <Route path='/payment' component={Payment} />
               <Route path='/sellerprofile' component={SellerProfile} />
               <Route path='/yourordersseller' component={YourOrdersSeller} />
               <Route path='/buyercontact' component={BuyerContactUs} />
               <Route path='/sellercontact' component={SellerContactUs} />
+              <Route path='/sellerchat' component={SellerChat} />
             </Switch>
           </section>
         </Fragment>

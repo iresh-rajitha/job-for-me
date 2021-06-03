@@ -9,7 +9,7 @@ import { Add } from '@material-ui/icons'
 import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
 import SellerNav from '../components/SellerNav'
 import Footer from '../components/Footer'
-import OrderTable from '../components/SellerOrderTable'
+import SellerOrderTable from '../components/SellerOrderTable'
 
 const emails = ['username@gmail.com', 'user02@gmail.com']
 
@@ -61,15 +61,12 @@ function SellerOrderpage() {
     axios
       .get('https://localhost:5001/api/order')
       .then((res) => {
-        // tableData=res.data;
         setTableData((tableData) => res.data)
         console.log(tableData)
       })
       .catch((err) => {
         console.log(err)
       })
-
-    // OrderDetailService.getAllOrders();
   }
   const deleteFunction = (id) => {
     console.log(id)
@@ -82,14 +79,12 @@ function SellerOrderpage() {
       .catch((err) => {
         console.log(err)
       })
-    // refreshOrderTable();
   }
   const updateFunction = (obj) => {
     setOrder(obj)
     console.log(obj)
     console.log(order)
     handleClickOpen()
-    // refreshOrderTable();
   }
 
   return (
@@ -97,14 +92,6 @@ function SellerOrderpage() {
       <SellerNav {...{ sellerId }} />
       <section className='container'>
         <div>
-          <IconButton
-            mb={10}
-            style={{ background: '#3f51b5', color: 'white' }}
-            aria-label='delete'
-            onClick={handleClickOpen}
-          >
-            <Add />
-          </IconButton>
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}
             open={open}
@@ -112,7 +99,7 @@ function SellerOrderpage() {
             order={order}
             senderId={senderId}
           />
-          <OrderTable
+          <SellerOrderTable
             updateFunction={updateFunction}
             deleteFunction={deleteFunction}
             tableData={tableData}

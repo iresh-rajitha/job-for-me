@@ -18,10 +18,10 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useToasts } from 'react-toast-notifications'
 
-import MessagesForm from '../components/Chat'
+import MessagesForm from '../components/BuyerChat'
 import * as actions from '../actions/messages'
 import Popup from '../components/Popup'
-import AdminNav from '../components/AdminNav'
+import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
 
 const styles = (theme) => ({
@@ -41,6 +41,7 @@ const Messages = ({ classes, ...props }) => {
   let history = useHistory()
   const recieverId = history.location.recieverId
   const senderId = history.location.senderId
+  const buyerId = history.location.senderId
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
@@ -59,7 +60,7 @@ const Messages = ({ classes, ...props }) => {
 
   return (
     <Fragment>
-      <AdminNav />
+      <BuyerNav {...{ buyerId }} />
       <section className='container'>
         <Paper className={classes.paper} elevation={3}>
           <Grid item xs={12}>

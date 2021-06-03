@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import ChatIcon from '@material-ui/icons/Chat'
 import CreditCardIcon from '@material-ui/icons/CreditCard'
-import { Edit } from '@material-ui/icons'
 
 const useStyles = makeStyles({
   table: {
@@ -20,28 +19,14 @@ const useStyles = makeStyles({
   },
 })
 
-//   AddUpdateOrderPopUp.propTypes = {
-//     onClose: PropTypes.func.isRequired,
-//     open: PropTypes.bool.isRequired,
-//     selectedValue: PropTypes.string.isRequired,
-//   };
-// const handleClickOpen = () => {
-//   setOpen(true);
-// };
-// const handleClose = (value) => {
-//   setOpen(false);
-// };
-
 export default function OrderTable(props) {
   const [rows, setRows] = useState(props.tableData)
-  const [status, setStatus] = useState(false)
 
   const classes = useStyles()
   let history = useHistory()
 
   useEffect(() => {
     setRows(props.tableData)
-    // console.log(props.tableData);
   })
   const deleteOrder = (id) => {
     props.deleteFunction(id)
@@ -53,9 +38,8 @@ export default function OrderTable(props) {
   }
 
   const chatWithSeller = (sellerID) => {
-    // history.push("./chat");
     history.push({
-      pathname: '/sellerchat',
+      pathname: '/buyerchat',
       recieverId: sellerID,
       senderId: props.senderId,
     })
@@ -71,10 +55,6 @@ export default function OrderTable(props) {
         <Table className={classes.table} aria-label='simple table'>
           <TableHead>
             <TableRow>
-              {/* <TableCell align="left">Order ID</TableCell>
-            <TableCell align="left">Description</TableCell>
-            <TableCell align="left">Price($)</TableCell>
-            <TableCell align="center">Action</TableCell> */}
               <TableCell align='center'>Start Date</TableCell>
               <TableCell align='center'>Deadline</TableCell>
               <TableCell align='center'>Description</TableCell>
@@ -87,10 +67,6 @@ export default function OrderTable(props) {
               if (row.from === props.senderId) {
                 return (
                   <TableRow key={index}>
-                    {/* <TableCell align="left">{row.orderDetailID}</TableCell>
-                  <TableCell align="left">{row.description}</TableCell>
-                  <TableCell align="left">{row.price}</TableCell> */}
-
                     <TableCell align='center'>{row.startDate}</TableCell>
                     <TableCell align='center'>{row.deadline}</TableCell>
                     <TableCell align='center'>{row.description}</TableCell>
@@ -104,9 +80,6 @@ export default function OrderTable(props) {
                           onClick={() => deleteOrder(row.orderDetailID)}
                         />
                       </IconButton>
-                      {/* <IconButton aria-label='delete'>
-                        <Edit onClick={() => updateOrder(row)} />
-                      </IconButton> */}
                       <IconButton aria-label='delete'>
                         <ChatIcon onClick={() => chatWithSeller(row.to)} />
                       </IconButton>

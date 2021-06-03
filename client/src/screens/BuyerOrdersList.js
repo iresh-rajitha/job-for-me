@@ -4,11 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import { Grid, Button } from '@material-ui/core'
-import { Add } from '@material-ui/icons'
 
 import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
-import OrderTable from '../components/OrderTable'
-import OrderList from '../components/OrdersList'
+import BuyerOrderTable from '../components/BuyerOrderTable'
 import PropTypes from 'prop-types'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
@@ -102,14 +100,6 @@ function Orderpage() {
       <BuyerNav {...{ buyerId }} />
       <section className='container'>
         <div>
-          {/* <IconButton
-            mb={10}
-            style={{ background: '#3f51b5', color: 'white' }}
-            aria-label='delete'
-            onClick={handleClickOpen}
-          >
-            <Add />
-          </IconButton> */}
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}
             open={open}
@@ -117,14 +107,12 @@ function Orderpage() {
             order={order}
             senderId={senderId}
           />
-          <OrderTable
+          <BuyerOrderTable
             updateFunction={updateFunction}
             deleteFunction={deleteFunction}
             tableData={tableData}
             senderId={history.location.state}
           />
-          {/* <OrderList senderId={history.location.state} /> */}
-
           <Grid container justify='flex-end'>
             <Button onClick={handleAdd} variant='contained' color='primary'>
               Place another order!

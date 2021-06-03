@@ -231,6 +231,7 @@ const BuyerToSeller = ({ classes, ...props }) => {
               <Grid item xs={12}>
                 <TextField
                   name='password'
+                  type='password'
                   variant='outlined'
                   label='Password'
                   value={values.password}

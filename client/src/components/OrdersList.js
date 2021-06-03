@@ -59,7 +59,7 @@ const Orders = ({ classes, ...props }) => {
   const chatWithSeller = (sellerID) => {
     // history.push("./chat");
     history.push({
-      pathname: '/chat',
+      pathname: '/sellerchat',
       recieverId: sellerID,
       senderId: props.senderId,
     })

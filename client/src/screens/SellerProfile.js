@@ -64,32 +64,43 @@ const SellerProfile = ({ classes, ...props }) => {
     <Fragment>
       <SellerNav {...{ sellerId }} />
       <section className='container'>
+        <p className='lead'>Edit your Seller Profile!</p>
         <Paper className={classes.paper} elevation={3}>
           <Grid>
             <Grid item xs={12}>
               <TableContainer>
                 <Table>
-                  <TableHead className={classes.root}>
-                    <TableRow>
-                      <TableCell>First Name</TableCell>
-                      <TableCell>Last Name</TableCell>
-                      <TableCell>Address</TableCell>
-                      <TableCell>Category</TableCell>
-                      <TableCell>Email</TableCell>
-                      <TableCell></TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {props.userList.map((record, index) => {
-                      // if (record.userType === "Seller") {
-                      if (record.userId === profileId) {
-                        return (
-                          <TableRow key={index} hover>
+                  {props.userList.map((record, index) => {
+                    if (record.userId === profileId) {
+                      return (
+                        <TableHead className={classes.root}>
+                          <TableRow>
+                            <TableCell>First Name</TableCell>
                             <TableCell>{record.firstName}</TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Last Name</TableCell>
                             <TableCell>{record.lastName}</TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Address</TableCell>
                             <TableCell>{record.address}</TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Category</TableCell>
                             <TableCell>{record.category}</TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Email</TableCell>
                             <TableCell>{record.email}</TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Edit or Delete</TableCell>
                             <TableCell>
                               <ButtonGroup variant='text'>
                                 <Button>
@@ -112,15 +123,15 @@ const SellerProfile = ({ classes, ...props }) => {
                               </ButtonGroup>
                             </TableCell>
                           </TableRow>
-                        )
-                      }
-                    })}
-                  </TableBody>
+                        </TableHead>
+                      )
+                    }
+                  })}
                 </Table>
               </TableContainer>
             </Grid>
             <Popup
-              title='Employee Form'
+              title='Edit your Seller Profile!'
               openPopup={openPopup}
               setOpenPopup={setOpenPopup}
             >
