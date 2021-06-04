@@ -7,40 +7,40 @@ using System.Threading.Tasks;
 
 namespace OnlineFreelancinPlatform.Services
 {
-    public class MessageService : IMessageService
+    public class GigService : IGigService
     {
         private readonly FreelancingDBContext _freelancingDBContext;
 
-        public MessageService(FreelancingDBContext datacontext)
+        public GigService(FreelancingDBContext datacontext)
         {
             _freelancingDBContext = datacontext;
         }
 
-        public void Add(Message Message)
+        public void Add(Gig Gig)
         {
-            _freelancingDBContext.Messages.Add(Message);
+            _freelancingDBContext.Gigs.Add(Gig);
             _freelancingDBContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            _freelancingDBContext.Messages.Remove(GetOne(id));
+            _freelancingDBContext.Gigs.Remove(GetOne(id));
             _freelancingDBContext.SaveChanges();
         }
 
-        public List<Message> GetAll()
+        public List<Gig> GetAll()
         {
-            return _freelancingDBContext.Messages.ToList();
+            return _freelancingDBContext.Gigs.ToList();
         }
 
-        public Message GetOne(int id)
+        public Gig GetOne(int id)
         {
-            return _freelancingDBContext.Messages.FirstOrDefault(message => message.MessageID == id);
+            return _freelancingDBContext.Gigs.FirstOrDefault(gig => gig.GigId == id);
         }
 
-        public void Update(int id, Message Message)
+        public void Update(int id, Gig Gig)
         {
-            _freelancingDBContext.Messages.Update(Message);
+            _freelancingDBContext.Gigs.Update(Gig);
             _freelancingDBContext.SaveChanges();
         }
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineFreelancinPlatform.Data;
 
 namespace OnlineFreelancinPlatform.Migrations
 {
     [DbContext(typeof(FreelancingDBContext))]
-    partial class FreelancingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210604180654_gig model added")]
+    partial class gigmodeladded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,45 +55,6 @@ namespace OnlineFreelancinPlatform.Migrations
                     b.HasKey("EmployeeID");
 
                     b.ToTable("Employers");
-                });
-
-            modelBuilder.Entity("OnlineFreelancinPlatform.Model.Gig", b =>
-                {
-                    b.Property<int>("GigId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("BuyerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuyerRating")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Deadline")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Delivered")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SellerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SellerRating")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("GigId");
-
-                    b.ToTable("Gigs");
                 });
 
             modelBuilder.Entity("OnlineFreelancinPlatform.Model.Message", b =>
