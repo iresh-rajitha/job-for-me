@@ -14,11 +14,12 @@ import {
   ButtonGroup,
   Button,
 } from '@material-ui/core'
-import GigForm from './GigForm'
+import AssignSellerForm from './AssignSellerForm'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import NotInterestedIcon from '@material-ui/icons/NotInterested'
+import IconButton from '@material-ui/core/IconButton'
 
 import { useToasts } from 'react-toast-notifications'
 
@@ -41,6 +42,7 @@ const GigsList = ({ classes, ...props }) => {
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
+  const [gigId, setSetGigId] = useState(0)
 
   useEffect(() => {
     props.fetchAllGigs()
@@ -69,7 +71,7 @@ const GigsList = ({ classes, ...props }) => {
                   <TableCell>Buyer Id</TableCell>
                   <TableCell>Seller Id</TableCell>
                   <TableCell>Delivered</TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>Assign a Seller</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -77,8 +79,8 @@ const GigsList = ({ classes, ...props }) => {
                   return (
                     <TableRow key={index} hover>
                       <TableCell>{record.gigId}</TableCell>
-                      <TableCell>{record.startDate.split('T')[0]}</TableCell>
-                      <TableCell>{record.deadline.split('T')[0]}</TableCell>
+                      <TableCell>{record.startDate}</TableCell>
+                      <TableCell>{record.deadline}</TableCell>
                       <TableCell>{record.category}</TableCell>
                       <TableCell>{record.description}</TableCell>
                       <TableCell>{record.buyerId}</TableCell>
@@ -91,25 +93,20 @@ const GigsList = ({ classes, ...props }) => {
                         )}
                       </TableCell>
                       <TableCell>
-                        <ButtonGroup variant='text'>
-                          <Button>
-                            <EditIcon
-                              color='primary'
-                              onClick={() => {
-                                setCurrentId(record.gigId)
-                                setOpenPopup(true)
-                              }}
-                            />
-                          </Button>
-                          <Button>
-                            <DeleteIcon
-                              color='secondary'
-                              onClick={() => {
-                                onDelete(record.gigId)
-                              }}
-                            />
-                          </Button>
-                        </ButtonGroup>
+                        <IconButton
+                          style={{ marginRight: '10px' }}
+                          aria-label='delete'
+                          onClick={() => {
+                            setCurrentId(record.gigId)
+                            setOpenPopup(true)
+                          }}
+                        >
+                          {record.sellerId === 0 ? (
+                            <NotInterestedIcon />
+                          ) : (
+                            <CheckCircleOutlineIcon />
+                          )}
+                        </IconButton>
                       </TableCell>
                     </TableRow>
                   )
@@ -119,11 +116,11 @@ const GigsList = ({ classes, ...props }) => {
           </TableContainer>
         </Grid>
         <Popup
-          title='Gig Edit Form'
+          title='Seller Assign Form'
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
-          <GigForm {...{ currentId, setCurrentId, setOpenPopup }} />
+          <AssignSellerForm {...{ currentId, setCurrentId, setOpenPopup }} />
         </Popup>
       </Grid>
     </Paper>

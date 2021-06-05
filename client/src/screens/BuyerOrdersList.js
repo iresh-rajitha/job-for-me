@@ -7,9 +7,12 @@ import { Grid, Button } from '@material-ui/core'
 
 import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
 import BuyerOrderTable from '../components/BuyerOrderTable'
+import BuyerGigForm from '../components/BuyerGigForm'
+import BuyerGigList from '../components/BuyerGigList'
 import PropTypes from 'prop-types'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
+import Popup from '../components/Popup'
 
 const emails = ['username@gmail.com', 'user02@gmail.com']
 
@@ -33,6 +36,9 @@ function Orderpage() {
   let history = useHistory()
   const senderId = history.location.state
   const buyerId = history.location.state
+  const [currentId, setCurrentId] = useState(0)
+  const [openPopup, setOpenPopup] = useState(false)
+  const [userId, setUserId] = useState(false)
   console.log(senderId)
 
   useEffect(() => {
@@ -95,6 +101,13 @@ function Orderpage() {
     setOpen(true)
   }
 
+  const openGigForm = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
+    setUserId(history.location.state)
+    setOpenPopup(true)
+  }
   return (
     <Fragment>
       <BuyerNav {...{ buyerId }} />
@@ -113,8 +126,18 @@ function Orderpage() {
             tableData={tableData}
             senderId={history.location.state}
           />
+          <Popup
+            title='Add an Order'
+            openPopup={openPopup}
+            setOpenPopup={setOpenPopup}
+          >
+            <BuyerGigForm
+              {...{ userId, currentId, setCurrentId, setOpenPopup }}
+            />
+          </Popup>
+          <BuyerGigList buyerId={buyerId} senderId={history.location.state} />
           <Grid container justify='flex-end'>
-            <Button onClick={handleAdd} variant='contained' color='primary'>
+            <Button onClick={openGigForm} variant='contained' color='primary'>
               Place another order!
             </Button>
           </Grid>

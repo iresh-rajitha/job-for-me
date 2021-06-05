@@ -9,7 +9,7 @@ import OrderTable from '../components/AdminOrderTable'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
 import OrderSellers from '../components/SellersList'
-import GigsList from '../components/GigsList'
+import AdminGigsList from '../components/AdminGigsList'
 
 const emails = ['username@gmail.com', 'user02@gmail.com']
 
@@ -99,7 +99,7 @@ function AdminOrderPage() {
       <section className='container'>
         <p> Currently avalible Sellers.</p>
         {/* <OrderSellers /> */}
-        <GigsList />
+        <AdminGigsList />
         {/* <div>
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}

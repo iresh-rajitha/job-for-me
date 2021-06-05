@@ -70,6 +70,7 @@ const AdminSellersList = ({ classes, ...props }) => {
                 <Table>
                   <TableHead className={classes.root}>
                     <TableRow>
+                      <TableCell>Seller Id</TableCell>
                       <TableCell>First Name</TableCell>
                       <TableCell>Last Name</TableCell>
                       <TableCell>Address</TableCell>
@@ -83,6 +84,7 @@ const AdminSellersList = ({ classes, ...props }) => {
                       if (record.userType === 'Seller') {
                         return (
                           <TableRow key={index} hover>
+                            <TableCell>{record.userId}</TableCell>
                             <TableCell>{record.firstName}</TableCell>
                             <TableCell>{record.lastName}</TableCell>
                             <TableCell>{record.address}</TableCell>

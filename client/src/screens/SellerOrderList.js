@@ -10,6 +10,7 @@ import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
 import SellerNav from '../components/SellerNav'
 import Footer from '../components/Footer'
 import SellerOrderTable from '../components/SellerOrderTable'
+import SellerGigList from '../components/SellerGigList'
 
 const emails = ['username@gmail.com', 'user02@gmail.com']
 
@@ -103,6 +104,10 @@ function SellerOrderpage() {
             updateFunction={updateFunction}
             deleteFunction={deleteFunction}
             tableData={tableData}
+            senderId={history.location.state}
+          />
+          <SellerGigList
+            sellerId={sellerId}
             senderId={history.location.state}
           />
         </div>

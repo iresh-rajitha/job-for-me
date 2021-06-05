@@ -49,8 +49,8 @@ const SellersForm = ({ classes, ...props }) => {
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
-    if ('buyerId' in fieldValues)
-      temp.buyerId = fieldValues.buyerId ? '' : 'This field is required.'
+    if ('sellerId' in fieldValues)
+      temp.sellerId = fieldValues.sellerId ? '' : 'This field is required.'
     setErrors({
       ...temp,
     })
@@ -68,11 +68,11 @@ const SellersForm = ({ classes, ...props }) => {
     )
 
   //material-ui select
-  const inputLabel = React.useRef(null)
-  const [labelWidth, setLabelWidth] = React.useState(0)
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth)
-  }, [])
+  //   const inputLabel = React.useRef(null)
+  //   const [labelWidth, setLabelWidth] = React.useState(0)
+  //   React.useEffect(() => {
+  //     setLabelWidth(inputLabel.current.offsetWidth)
+  //   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -106,12 +106,12 @@ const SellersForm = ({ classes, ...props }) => {
     >
       <Grid container>
         <TextField
-          name='buyerId'
+          name='sellerId'
           variant='outlined'
-          label='Enter a buyer Id'
-          value={values.buyerId}
+          label='Enter the Seller Id'
+          value={values.sellerId}
           onChange={handleInputChange}
-          {...(errors.buyerId && { error: true, helperText: errors.buyerId })}
+          {...(errors.sellerId && { error: true, helperText: errors.sellerId })}
         />
         <Grid container justify='flex-end'>
           <Button

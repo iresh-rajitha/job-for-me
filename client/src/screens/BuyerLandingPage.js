@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
 import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
+import Popup from '../components/Popup'
+import BuyerGigForm from '../components/BuyerGigForm'
 
 const useStyles = makeStyles({
   root: {
@@ -35,6 +37,10 @@ const initialValues = {
 }
 
 const Order = () => {
+  const [currentId, setCurrentId] = useState(0)
+  const [openPopup, setOpenPopup] = useState(false)
+  const [userId, setUserId] = useState(false)
+
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const [order, setOrder] = useState(initialValues)
@@ -104,6 +110,14 @@ const Order = () => {
     setField(6)
   }
 
+  const openGigForm = () => {
+    if (!history.location.state) {
+      history.push('/login')
+    }
+    setUserId(history.location.state)
+    setOpenPopup(true)
+  }
+
   const handleClose = (value) => {
     if (!history.location.state) {
       history.push('/login')
@@ -144,7 +158,7 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size='small' color='primary' onClick={illustration}>
+              <Button size='small' color='primary' onClick={openGigForm}>
                 Place Order
               </Button>
             </CardActions>
@@ -173,7 +187,7 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size='small' color='primary' onClick={albumCovers}>
+              <Button size='small' color='primary' onClick={openGigForm}>
                 Place Order
               </Button>
             </CardActions>
@@ -201,7 +215,7 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size='small' color='primary' onClick={vectorArts}>
+              <Button size='small' color='primary' onClick={openGigForm}>
                 Place Order
               </Button>
             </CardActions>
@@ -229,7 +243,7 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size='small' color='primary' onClick={photoEditing}>
+              <Button size='small' color='primary' onClick={openGigForm}>
                 Place Order
               </Button>
             </CardActions>
@@ -257,7 +271,7 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size='small' color='primary' onClick={videoEditing}>
+              <Button size='small' color='primary' onClick={openGigForm}>
                 Place Order
               </Button>
             </CardActions>
@@ -286,20 +300,29 @@ const Order = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size='small' color='primary' onClick={uiDesigning}>
+              <Button size='small' color='primary' onClick={openGigForm}>
                 Place Order
               </Button>
             </CardActions>
           </Card>
         </Grid>
-        <AddUpdateOrderPopUp
+        {/* <AddUpdateOrderPopUp
           selectedValue={selectedValue}
           open={open}
           onClose={handleClose}
           order={order}
           senderId={buyerId}
           field={field}
-        />
+        /> */}
+        <Popup
+          title='Add an Order'
+          openPopup={openPopup}
+          setOpenPopup={setOpenPopup}
+        >
+          <BuyerGigForm
+            {...{ userId, currentId, setCurrentId, setOpenPopup }}
+          />
+        </Popup>
       </section>
       <Footer />
     </Fragment>

@@ -76,14 +76,19 @@ const SellersForm = ({ classes, ...props }) => {
     )
 
   //material-ui select
-  const inputLabel = React.useRef(null)
-  const [labelWidth, setLabelWidth] = React.useState(0)
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth)
-  }, [])
+  //   const inputLabel = React.useRef(null)
+  //   const [labelWidth, setLabelWidth] = React.useState(0)
+  //   React.useEffect(() => {
+  //     setLabelWidth(inputLabel.current.offsetWidth)
+  //   }, [])
+
+  const setDelivered = (fieldValues = values) => {
+    fieldValues.delivered = true
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setDelivered()
     if (validate()) {
       const onSuccess = () => {
         resetForm()
@@ -113,63 +118,8 @@ const SellersForm = ({ classes, ...props }) => {
       onSubmit={handleSubmit}
     >
       <Grid container>
-        <TextField
-          name='description'
-          variant='outlined'
-          label='Description'
-          value={values.description}
-          onChange={handleInputChange}
-          {...(errors.description && {
-            error: true,
-            helperText: errors.description,
-          })}
-        />
-        <FormControl
-          variant='outlined'
-          className={classes.formControl}
-          {...(errors.category && { error: true })}
-        >
-          <InputLabel ref={inputLabel}>Category</InputLabel>
-          <Select
-            name='category'
-            value={values.category}
-            onChange={handleInputChange}
-            labelWidth={labelWidth}
-          >
-            <MenuItem value=''>Select a Category</MenuItem>
-            <MenuItem value='illustration'>Illustration</MenuItem>
-            <MenuItem value='albumCovers'>Album Covers</MenuItem>
-            <MenuItem value='vectorArts'>Vector Arts</MenuItem>
-            <MenuItem value='photoEditing'>Photo Editing</MenuItem>
-            <MenuItem value='videoEditing'>Video Editing</MenuItem>
-            <MenuItem value='uiDesigning'>UI Designing</MenuItem>
-          </Select>
-          {errors.category && (
-            <FormHelperText>{errors.category}</FormHelperText>
-          )}
-        </FormControl>
-
-        <TextField
-          name='deadline'
-          variant='outlined'
-          type='date'
-          defaultValue={new Date()}
-          value={values.deadline}
-          onChange={handleInputChange}
-          {...(errors.deadline && {
-            error: true,
-            helperText: errors.deadline,
-          })}
-        />
-
-        <TextField
-          name='price'
-          variant='outlined'
-          label='price'
-          value={values.price}
-          onChange={handleInputChange}
-          {...(errors.price && { error: true, helperText: errors.price })}
-        />
+        If the Gig has been delivered, click on submit and if not, click the
+        upper red cross.
         <Grid container justify='flex-end'>
           <Button
             variant='contained'

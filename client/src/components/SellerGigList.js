@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
 import {
@@ -14,11 +15,13 @@ import {
   ButtonGroup,
   Button,
 } from '@material-ui/core'
-import GigForm from './GigForm'
+import SellerGigForm from './SellerGigForm'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
+import ChatIcon from '@material-ui/icons/Chat'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import NotInterestedIcon from '@material-ui/icons/NotInterested'
+import IconButton from '@material-ui/core/IconButton'
 
 import { useToasts } from 'react-toast-notifications'
 
@@ -38,6 +41,7 @@ const styles = (theme) => ({
 
 const GigsList = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+  const history = useHistory()
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
@@ -53,6 +57,15 @@ const GigsList = ({ classes, ...props }) => {
       )
   }
 
+  const chatWithSeller = (sellerID) => {
+    // history.push("./chat");
+    history.push({
+      pathname: '/sellerchat',
+      recieverId: sellerID,
+      senderId: props.senderId,
+    })
+  }
+
   return (
     <Paper className={classes.paper} elevation={3}>
       <Grid>
@@ -61,58 +74,50 @@ const GigsList = ({ classes, ...props }) => {
             <Table>
               <TableHead className={classes.root}>
                 <TableRow>
-                  <TableCell>Gig Id</TableCell>
                   <TableCell>Start Date</TableCell>
                   <TableCell>Deadline</TableCell>
                   <TableCell>Category</TableCell>
                   <TableCell>Description</TableCell>
-                  <TableCell>Buyer Id</TableCell>
-                  <TableCell>Seller Id</TableCell>
                   <TableCell>Delivered</TableCell>
-                  <TableCell></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {props.gigList.map((record, index) => {
-                  return (
-                    <TableRow key={index} hover>
-                      <TableCell>{record.gigId}</TableCell>
-                      <TableCell>{record.startDate.split('T')[0]}</TableCell>
-                      <TableCell>{record.deadline.split('T')[0]}</TableCell>
-                      <TableCell>{record.category}</TableCell>
-                      <TableCell>{record.description}</TableCell>
-                      <TableCell>{record.buyerId}</TableCell>
-                      <TableCell>{record.sellerId}</TableCell>
-                      <TableCell>
-                        {record.delivered ? (
-                          <CheckCircleOutlineIcon />
-                        ) : (
-                          <NotInterestedIcon></NotInterestedIcon>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        <ButtonGroup variant='text'>
-                          <Button>
-                            <EditIcon
-                              color='primary'
-                              onClick={() => {
-                                setCurrentId(record.gigId)
-                                setOpenPopup(true)
-                              }}
-                            />
-                          </Button>
-                          <Button>
-                            <DeleteIcon
-                              color='secondary'
-                              onClick={() => {
-                                onDelete(record.gigId)
-                              }}
-                            />
-                          </Button>
-                        </ButtonGroup>
-                      </TableCell>
-                    </TableRow>
-                  )
+                  if (record.sellerId === props.sellerId) {
+                    return (
+                      <TableRow key={index} hover>
+                        <TableCell>{record.startDate}</TableCell>
+                        <TableCell>{record.deadline}</TableCell>
+                        <TableCell>{record.category}</TableCell>
+                        <TableCell>{record.description}</TableCell>
+                        <TableCell>
+                          <IconButton
+                            style={{ marginRight: '10px' }}
+                            aria-label='delete'
+                            onClick={() => {
+                              setCurrentId(record.gigId)
+                              setOpenPopup(true)
+                            }}
+                          >
+                            {record.delivered ? (
+                              <CheckCircleOutlineIcon />
+                            ) : (
+                              <NotInterestedIcon></NotInterestedIcon>
+                            )}
+                          </IconButton>
+                        </TableCell>
+                        <TableCell>
+                          <ButtonGroup variant='text'>
+                            <Button>
+                              <ChatIcon
+                                onClick={() => chatWithSeller(record.sellerId)}
+                              />
+                            </Button>
+                          </ButtonGroup>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  }
                 })}
               </TableBody>
             </Table>
@@ -123,7 +128,7 @@ const GigsList = ({ classes, ...props }) => {
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
-          <GigForm {...{ currentId, setCurrentId, setOpenPopup }} />
+          <SellerGigForm {...{ currentId, setCurrentId, setOpenPopup }} />
         </Popup>
       </Grid>
     </Paper>

@@ -82,8 +82,13 @@ const SellersForm = ({ classes, ...props }) => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
 
+  const setBuyer = (fieldValues = values) => {
+    fieldValues.buyerId = props.userId
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    setBuyer()
     if (validate()) {
       const onSuccess = () => {
         resetForm()
