@@ -17,5 +17,6 @@ namespace OnlineFreelancinPlatform.Model
         public int BuyerId { get; set; }
         public int SellerId { get; set; }
         public bool Delivered { get; set; }
+        public int price { get; set; }
     }
 }

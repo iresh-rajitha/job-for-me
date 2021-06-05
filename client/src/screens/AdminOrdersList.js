@@ -9,6 +9,7 @@ import OrderTable from '../components/AdminOrderTable'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
 import OrderSellers from '../components/SellersList'
+import GigsList from '../components/GigsList'
 
 const emails = ['username@gmail.com', 'user02@gmail.com']
 
@@ -97,8 +98,9 @@ function AdminOrderPage() {
       <AdminNav {...{ adminId }} />
       <section className='container'>
         <p> Currently avalible Sellers.</p>
-        <OrderSellers />
-        <div>
+        {/* <OrderSellers /> */}
+        <GigsList />
+        {/* <div>
           <AddUpdateOrderPopUp
             selectedValue={selectedValue}
             refreshOrderTable={refreshOrderTable}
@@ -112,7 +114,7 @@ function AdminOrderPage() {
             refreshOrderTable={refreshOrderTable}
             tableData={tableData}
           />
-        </div>
+        </div> */}
       </section>
       <Footer />
     </Fragment>

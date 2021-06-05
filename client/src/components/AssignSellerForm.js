@@ -49,16 +49,8 @@ const SellersForm = ({ classes, ...props }) => {
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
-    if ('deadline' in fieldValues)
-      temp.deadline = fieldValues.deadline ? '' : 'This field is required.'
-    if ('description' in fieldValues)
-      temp.description = fieldValues.description
-        ? ''
-        : 'This field is required.'
-    if ('price' in fieldValues)
-      temp.price = fieldValues.price ? '' : 'This field is required.'
-    if ('category' in fieldValues)
-      temp.category = fieldValues.category ? '' : 'This field is required.'
+    if ('buyerId' in fieldValues)
+      temp.buyerId = fieldValues.buyerId ? '' : 'This field is required.'
     setErrors({
       ...temp,
     })
@@ -87,7 +79,7 @@ const SellersForm = ({ classes, ...props }) => {
     if (validate()) {
       const onSuccess = () => {
         resetForm()
-        addToast('Submitted successfully', { appearance: 'success' })
+        addToast('Seller assigned successfully!', { appearance: 'success' })
       }
       if (props.currentId === 0) {
         props.createGig(values, onSuccess)
@@ -114,62 +106,12 @@ const SellersForm = ({ classes, ...props }) => {
     >
       <Grid container>
         <TextField
-          name='description'
+          name='buyerId'
           variant='outlined'
-          label='Description'
-          value={values.description}
+          label='Enter a buyer Id'
+          value={values.buyerId}
           onChange={handleInputChange}
-          {...(errors.description && {
-            error: true,
-            helperText: errors.description,
-          })}
-        />
-        <FormControl
-          variant='outlined'
-          className={classes.formControl}
-          {...(errors.category && { error: true })}
-        >
-          <InputLabel ref={inputLabel}>Category</InputLabel>
-          <Select
-            name='category'
-            value={values.category}
-            onChange={handleInputChange}
-            labelWidth={labelWidth}
-          >
-            <MenuItem value=''>Select a Category</MenuItem>
-            <MenuItem value='illustration'>Illustration</MenuItem>
-            <MenuItem value='albumCovers'>Album Covers</MenuItem>
-            <MenuItem value='vectorArts'>Vector Arts</MenuItem>
-            <MenuItem value='photoEditing'>Photo Editing</MenuItem>
-            <MenuItem value='videoEditing'>Video Editing</MenuItem>
-            <MenuItem value='uiDesigning'>UI Designing</MenuItem>
-          </Select>
-          {errors.category && (
-            <FormHelperText>{errors.category}</FormHelperText>
-          )}
-        </FormControl>
-
-        <TextField
-          name='deadline'
-          variant='outlined'
-          type='date'
-          defaultValue={new Date()}
-          label='Deadline'
-          value={values.deadline}
-          onChange={handleInputChange}
-          {...(errors.deadline && {
-            error: true,
-            helperText: errors.deadline,
-          })}
-        />
-
-        <TextField
-          name='price'
-          variant='outlined'
-          label='price'
-          value={values.price}
-          onChange={handleInputChange}
-          {...(errors.price && { error: true, helperText: errors.price })}
+          {...(errors.buyerId && { error: true, helperText: errors.buyerId })}
         />
         <Grid container justify='flex-end'>
           <Button

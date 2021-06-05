@@ -41,7 +41,7 @@ const AdminLandingPage = ({ classes, ...props }) => {
       history.push('/login')
     }
     props.fetchAllUsers()
-  }, [props, history.location.state])
+  }, [])
 
   return (
     <Fragment>

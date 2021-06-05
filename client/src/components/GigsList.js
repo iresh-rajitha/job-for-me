@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/users'
+import * as actions from '../actions/gigs'
 import {
   Grid,
   Paper,
@@ -17,6 +17,9 @@ import {
 import GigForm from './GigForm'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
+import NotInterestedIcon from '@material-ui/icons/NotInterested'
+
 import { useToasts } from 'react-toast-notifications'
 
 import Popup from './Popup'
@@ -80,7 +83,13 @@ const GigsList = ({ classes, ...props }) => {
                       <TableCell>{record.description}</TableCell>
                       <TableCell>{record.buyerId}</TableCell>
                       <TableCell>{record.sellerId}</TableCell>
-                      <TableCell>{record.delivered}</TableCell>
+                      <TableCell>
+                        {record.delivered ? (
+                          <CheckCircleOutlineIcon />
+                        ) : (
+                          <NotInterestedIcon></NotInterestedIcon>
+                        )}
+                      </TableCell>
                       <TableCell>
                         <ButtonGroup variant='text'>
                           <Button>

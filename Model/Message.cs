@@ -11,6 +11,7 @@ namespace OnlineFreelancinPlatform.Model
         public int To { get; set; }
         public int From { get; set; }
         public string Text { get; set; }
+        public DateTime SentAt { get; set; }
         //public bool IsRead { get; set; }
 
         //public int AdminID { get; set; }
