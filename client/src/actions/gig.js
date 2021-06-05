@@ -3,7 +3,7 @@ import axios from 'axios'
 const baseUrl = 'https://localhost:5001/api/'
 
 export default {
-  orders(url = baseUrl + 'order/') {
+  gigs(url = baseUrl + 'gig/') {
     return {
       fetchAll: () => axios.get(url),
       fetchById: (id) => axios.get(url + id),

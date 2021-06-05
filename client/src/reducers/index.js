@@ -4,12 +4,12 @@ import alert from './alert'
 import auth from './auth'
 import { users } from './users'
 import { messages } from './messages'
-import { orders } from './orders'
+import { gigs } from './gigs'
 
 export default combineReducers({
   alert,
   auth,
   users,
   messages,
-  orders,
+  gigs,
 })

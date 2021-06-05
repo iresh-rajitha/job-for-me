@@ -1,4 +1,4 @@
-import api from './order'
+import api from './gig'
 
 export const ACTION_TYPES = {
   CREATE: 'CREATE',
@@ -14,7 +14,7 @@ const formateData = (data) => ({
 
 export const fetchAll = () => (dispatch) => {
   api
-    .orders()
+    .gigs()
     .fetchAll()
     .then((response) => {
       console.log(response)
@@ -29,7 +29,7 @@ export const fetchAll = () => (dispatch) => {
 export const create = (data, onSuccess) => (dispatch) => {
   data = formateData(data)
   api
-    .orders()
+    .gigs()
     .create(data)
     .then((res) => {
       dispatch({
@@ -44,7 +44,7 @@ export const create = (data, onSuccess) => (dispatch) => {
 export const update = (id, data, onSuccess) => (dispatch) => {
   data = formateData(data)
   api
-    .orders()
+    .gigs()
     .update(id, data)
     .then((res) => {
       dispatch({
@@ -58,7 +58,7 @@ export const update = (id, data, onSuccess) => (dispatch) => {
 
 export const Delete = (id, onSuccess) => (dispatch) => {
   api
-    .orders()
+    .gigs()
     .delete(id)
     .then((res) => {
       dispatch({
