@@ -60,7 +60,7 @@ const GigsList = ({ classes, ...props }) => {
   const chatWithSeller = (sellerID) => {
     // history.push("./chat");
     history.push({
-      pathname: '/sellerchat',
+      pathname: '/buyerchat',
       recieverId: sellerID,
       senderId: props.senderId,
     })

@@ -110,7 +110,7 @@ const GigsList = ({ classes, ...props }) => {
                           <ButtonGroup variant='text'>
                             <Button>
                               <ChatIcon
-                                onClick={() => chatWithSeller(record.sellerId)}
+                                onClick={() => chatWithSeller(record.buyerId)}
                               />
                             </Button>
                           </ButtonGroup>

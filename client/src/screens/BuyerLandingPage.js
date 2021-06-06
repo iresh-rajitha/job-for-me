@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography'
 
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
-import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
+// import AddUpdateOrderPopUp from '../components/AddUpdateOrderPopUp'
 import Popup from '../components/Popup'
 import BuyerGigForm from '../components/BuyerGigForm'
 
@@ -25,16 +25,16 @@ const useStyles = makeStyles({
   },
 })
 
-const emails = ['username@gmail.com', 'user02@gmail.com']
+// const emails = ['username@gmail.com', 'user02@gmail.com']
 
-const initialValues = {
-  orderDetailID: 0,
-  description: '',
-  file: null,
-  field: '',
-  price: '',
-  fileName: '',
-}
+// const initialValues = {
+//   orderDetailID: 0,
+//   description: '',
+//   file: null,
+//   field: '',
+//   price: '',
+//   fileName: '',
+// }
 
 const Order = () => {
   const [currentId, setCurrentId] = useState(0)
@@ -42,10 +42,10 @@ const Order = () => {
   const [userId, setUserId] = useState(false)
 
   const classes = useStyles()
-  const [open, setOpen] = React.useState(false)
-  const [order, setOrder] = useState(initialValues)
-  const [selectedValue, setSelectedValue] = React.useState(emails[1])
-  const [field, setField] = useState(0)
+  // const [open, setOpen] = React.useState(false)
+  // const [order, setOrder] = useState(initialValues)
+  // const [selectedValue, setSelectedValue] = React.useState(emails[1])
+  // const [field, setField] = useState(0)
 
   const history = useHistory()
   console.log(history.location.state)
@@ -57,58 +57,58 @@ const Order = () => {
     }
   }, [history.location.state])
 
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
+  // const handleClickOpen = () => {
+  //   setOpen(true)
+  // }
 
-  const illustration = () => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setField(1)
-    console.log(field)
-    setOpen(true)
-  }
+  // const illustration = () => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setField(1)
+  //   console.log(field)
+  //   setOpen(true)
+  // }
 
-  const albumCovers = () => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setOpen(true)
-    setField(2)
-  }
+  // const albumCovers = () => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setOpen(true)
+  //   setField(2)
+  // }
 
-  const vectorArts = () => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setOpen(true)
-    setField(3)
-  }
+  // const vectorArts = () => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setOpen(true)
+  //   setField(3)
+  // }
 
-  const photoEditing = () => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setOpen(true)
-    setField(4)
-  }
+  // const photoEditing = () => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setOpen(true)
+  //   setField(4)
+  // }
 
-  const videoEditing = () => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setOpen(true)
-    setField(5)
-  }
+  // const videoEditing = () => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setOpen(true)
+  //   setField(5)
+  // }
 
-  const uiDesigning = () => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setOpen(true)
-    setField(6)
-  }
+  // const uiDesigning = () => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setOpen(true)
+  //   setField(6)
+  // }
 
   const openGigForm = () => {
     if (!history.location.state) {
@@ -118,14 +118,14 @@ const Order = () => {
     setOpenPopup(true)
   }
 
-  const handleClose = (value) => {
-    if (!history.location.state) {
-      history.push('/login')
-    }
-    setOpen(false)
-    console.log('refresh')
-    // refreshOrderTable();
-  }
+  // const handleClose = (value) => {
+  //   if (!history.location.state) {
+  //     history.push('/login')
+  //   }
+  //   setOpen(false)
+  //   console.log('refresh')
+  //   // refreshOrderTable();
+  // }
 
   return (
     <Fragment>
