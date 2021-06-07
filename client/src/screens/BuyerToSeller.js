@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { useToasts } from 'react-toast-notifications'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -20,6 +20,7 @@ import useForm from '../useForm'
 import * as actions from '../actions/users'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
+import Message from '../components/Message'
 
 const styles = (theme) => ({
   root: {
@@ -51,6 +52,8 @@ const BuyerToSeller = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   let history = useHistory()
   const buyerId = history.location.state
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -119,6 +122,8 @@ const BuyerToSeller = ({ classes, ...props }) => {
           })
         }
       })
+    } else {
+      setError(true)
     }
   }
 
@@ -143,6 +148,11 @@ const BuyerToSeller = ({ classes, ...props }) => {
             </p>
             <p>* This will delete your customer profile!.</p>
           </div>
+          {error && (
+            <Message variant='danger'>
+              Something went wrong! Please try again!
+            </Message>
+          )}
           <form
             autoComplete='off'
             noValidate

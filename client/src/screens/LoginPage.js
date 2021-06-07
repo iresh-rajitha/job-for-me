@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container'
 
 import LandngNav from '../components/LandingNav'
 import Footer from '../components/Footer'
+import Message from '../components/Message'
 import useForm from '../useForm'
 import * as actions from '../actions/users'
 
@@ -69,6 +70,8 @@ const LoginPage = ({ classes, ...props }) => {
     fieldValues.userType = 'Buyer'
   }
 
+  const [error, setError] = useState(false)
+
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(
       initialFieldValues,
@@ -121,6 +124,8 @@ const LoginPage = ({ classes, ...props }) => {
         })
       }
     })
+
+    setError(true)
   }
 
   useEffect(() => {
@@ -143,6 +148,9 @@ const LoginPage = ({ classes, ...props }) => {
               <i className='fas fa-user'></i> Log into your Customer profile
             </p>
           </div>
+          {error && (
+            <Message variant='danger'>Email or Password is incorrect!</Message>
+          )}
           <form
             autoComplete='off'
             noValidate

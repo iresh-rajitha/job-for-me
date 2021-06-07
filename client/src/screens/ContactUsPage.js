@@ -46,7 +46,7 @@ const ContactUs = () => {
     setFromData({ ...formData, [e.target.name]: e.target.value })
 
   const onSubmit = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
 
     sendEmail(subject, email, body, signature)
   }

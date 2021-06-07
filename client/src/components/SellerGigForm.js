@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
 import { useToasts } from 'react-toast-notifications'
+
+import Message from './Message'
 
 const styles = (theme) => ({
   root: {
@@ -36,6 +38,8 @@ const initialFieldValues = {
 
 const SellersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -82,6 +86,8 @@ const SellersForm = ({ classes, ...props }) => {
       } else {
         props.updateGig(props.currentId, values, onSuccess)
       }
+    } else {
+      setError(true)
     }
   }
 
@@ -94,27 +100,34 @@ const SellersForm = ({ classes, ...props }) => {
     }
   }, [props.currentId, props.gigList, setErrors, setValues])
   return (
-    <form
-      autoComplete='off'
-      noValidate
-      className={classes.root}
-      onSubmit={handleSubmit}
-    >
-      <Grid container>
-        If the Gig has been delivered, click on submit and if not, click the
-        upper red cross.
-        <Grid container justify='flex-end'>
-          <Button
-            variant='contained'
-            style={{ color: 'green' }}
-            type='submit'
-            className={classes.smMargin}
-          >
-            Submit
-          </Button>
+    <>
+      {error && (
+        <Message variant='danger'>
+          Something went wrong! Please try again!
+        </Message>
+      )}
+      <form
+        autoComplete='off'
+        noValidate
+        className={classes.root}
+        onSubmit={handleSubmit}
+      >
+        <Grid container>
+          If the Gig has been delivered, click on submit and if not, click the
+          upper red cross.
+          <Grid container justify='flex-end'>
+            <Button
+              variant='contained'
+              style={{ color: 'green' }}
+              type='submit'
+              className={classes.smMargin}
+            >
+              Submit
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+    </>
   )
 }
 

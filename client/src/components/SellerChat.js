@@ -5,6 +5,8 @@ import { useToasts } from 'react-toast-notifications'
 import { Grid, TextField, withStyles, Button } from '@material-ui/core'
 import * as actions from '../actions/messages'
 
+import Message from './Message'
+
 const styles = (theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -32,6 +34,7 @@ const initialFieldValues = {
 const MessagesForm = ({ classes, ...props }) => {
   const [values, setValues] = useState(initialFieldValues)
   const [errors, setErrors] = useState({})
+  const [error, setError] = useState(false)
   const { addToast } = useToasts()
   console.log('from ' + props.senderId)
   console.log('to ' + props.recieverId)
@@ -90,6 +93,8 @@ const MessagesForm = ({ classes, ...props }) => {
         props.updateMessage(props.currentId, values, onSuccess())
         props.fetchAllMessages()
       }
+    } else {
+      setError(true)
     }
   }
 
@@ -106,12 +111,11 @@ const MessagesForm = ({ classes, ...props }) => {
   return (
     <Fragment>
       <section className='container'>
-        {/* <div>
-          <h1 className='large text-primary'>Chat with your Buyer!</h1>
-          <p className='lead'>
-            <i className='fas fa-user'></i> Add you message in the below box
-          </p>
-        </div> */}
+        {error && (
+          <Message variant='danger'>
+            Something went wrong! Please try again!
+          </Message>
+        )}
         <form
           autoComplete='off'
           noValidate

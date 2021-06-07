@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useToasts } from 'react-toast-notifications'
 import { connect } from 'react-redux'
@@ -10,6 +10,7 @@ import * as actions from '../actions/users'
 import useForm from '../useForm'
 import LandngNav from '../components/LandingNav'
 import Footer from '../components/Footer'
+import Message from '../components/Message'
 
 const styles = (theme) => ({
   root: {
@@ -40,6 +41,8 @@ const initialFieldValues = {
 const RegisterPage = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   let history = useHistory()
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -90,6 +93,8 @@ const RegisterPage = ({ classes, ...props }) => {
         addToast('Submitted successfully', { appearance: 'success' })
       }
       props.createUser(values, onSuccess)
+    } else {
+      setError(true)
     }
   }
 
@@ -112,6 +117,11 @@ const RegisterPage = ({ classes, ...props }) => {
               <i className='fas fa-user'></i> Create Your Customer Profile
             </p>
           </div>
+          {error && (
+            <Message variant='danger'>
+              Something went wrong! Please try again!
+            </Message>
+          )}
           <form
             autoComplete='off'
             noValidate

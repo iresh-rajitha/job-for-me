@@ -1,10 +1,12 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { Grid, TextField, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/users'
 import { useToasts } from 'react-toast-notifications'
 import { useHistory } from 'react-router-dom'
+
+import Message from '../components/Message'
 
 const styles = (theme) => ({
   root: {
@@ -35,6 +37,8 @@ const initialFieldValues = {
 const AdminRegister = ({ classes, ...props }) => {
   const { addToast } = useToasts()
   let history = useHistory()
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -86,6 +90,8 @@ const AdminRegister = ({ classes, ...props }) => {
       }
 
       props.createUser(values, onSuccess)
+    } else {
+      setError(true)
     }
   }
 
@@ -111,6 +117,11 @@ const AdminRegister = ({ classes, ...props }) => {
             <i className='fas fa-user'></i> Create the Profile of the new Admin
           </p>
         </div>
+        {error && (
+          <Message variant='danger'>
+            Something went wrong! Please try again!
+          </Message>
+        )}
         <form
           autoComplete='off'
           noValidate

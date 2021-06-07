@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Grid,
   withStyles,
@@ -13,6 +13,8 @@ import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
 import { useToasts } from 'react-toast-notifications'
+
+import Message from './Message'
 
 const styles = (theme) => ({
   root: {
@@ -45,6 +47,8 @@ const initialFieldValues = {
 
 const SellersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -87,6 +91,8 @@ const SellersForm = ({ classes, ...props }) => {
       } else {
         props.updateGig(props.currentId, values, onSuccess)
       }
+    } else {
+      setError(true)
     }
   }
 
@@ -99,48 +105,55 @@ const SellersForm = ({ classes, ...props }) => {
     }
   }, [])
   return (
-    <form
-      autoComplete='off'
-      noValidate
-      className={classes.root}
-      onSubmit={handleSubmit}
-    >
-      <Grid container>
-        <FormControl
-          variant='outlined'
-          className={classes.formControl}
-          {...(errors.category && { error: true })}
-        >
-          <InputLabel ref={inputLabel}>Rate the Seller!</InputLabel>
-          <Select
-            name='sellerRating'
-            value={values.sellerRating}
-            onChange={handleInputChange}
-            labelWidth={labelWidth}
+    <>
+      {error && (
+        <Message variant='danger'>
+          Something went wrong! Please try again!
+        </Message>
+      )}
+      <form
+        autoComplete='off'
+        noValidate
+        className={classes.root}
+        onSubmit={handleSubmit}
+      >
+        <Grid container>
+          <FormControl
+            variant='outlined'
+            className={classes.formControl}
+            {...(errors.category && { error: true })}
           >
-            <MenuItem value='1'>Poor</MenuItem>
-            <MenuItem value='2'>Ok</MenuItem>
-            <MenuItem value='3'>Good</MenuItem>
-            <MenuItem value='4'>Great</MenuItem>
-            <MenuItem value='5'>Excellent</MenuItem>
-          </Select>
-          {errors.sellerRating && (
-            <FormHelperText>{errors.sellerRating}</FormHelperText>
-          )}
-        </FormControl>
+            <InputLabel ref={inputLabel}>Rate the Seller!</InputLabel>
+            <Select
+              name='sellerRating'
+              value={values.sellerRating}
+              onChange={handleInputChange}
+              labelWidth={labelWidth}
+            >
+              <MenuItem value='1'>Poor</MenuItem>
+              <MenuItem value='2'>Ok</MenuItem>
+              <MenuItem value='3'>Good</MenuItem>
+              <MenuItem value='4'>Great</MenuItem>
+              <MenuItem value='5'>Excellent</MenuItem>
+            </Select>
+            {errors.sellerRating && (
+              <FormHelperText>{errors.sellerRating}</FormHelperText>
+            )}
+          </FormControl>
 
-        <Grid container justify='flex-end'>
-          <Button
-            variant='contained'
-            style={{ color: 'green' }}
-            type='submit'
-            className={classes.smMargin}
-          >
-            Submit
-          </Button>
+          <Grid container justify='flex-end'>
+            <Button
+              variant='contained'
+              style={{ color: 'green' }}
+              type='submit'
+              className={classes.smMargin}
+            >
+              Submit
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+    </>
   )
 }
 

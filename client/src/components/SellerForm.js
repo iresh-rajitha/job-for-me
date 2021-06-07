@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Grid,
   TextField,
@@ -14,6 +14,8 @@ import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/users'
 import { useToasts } from 'react-toast-notifications'
+
+import Message from './Message'
 
 const styles = (theme) => ({
   root: {
@@ -43,6 +45,8 @@ const initialFieldValues = {
 
 const SellersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -95,6 +99,8 @@ const SellersForm = ({ classes, ...props }) => {
       } else {
         props.updateUser(props.currentId, values, onSuccess)
       }
+    } else {
+      setError(true)
     }
   }
 
@@ -107,88 +113,95 @@ const SellersForm = ({ classes, ...props }) => {
     }
   }, [])
   return (
-    <form
-      autoComplete='off'
-      noValidate
-      className={classes.root}
-      onSubmit={handleSubmit}
-    >
-      <Grid container>
-        <TextField
-          name='firstName'
-          variant='outlined'
-          label='First Name'
-          value={values.firstName}
-          onChange={handleInputChange}
-          {...(errors.firstName && {
-            error: true,
-            helperText: errors.firstName,
-          })}
-        />
-        <TextField
-          name='lastName'
-          variant='outlined'
-          label='Last Name'
-          value={values.lastName}
-          onChange={handleInputChange}
-          {...(errors.lastName && {
-            error: true,
-            helperText: errors.lastName,
-          })}
-        />
-        <FormControl
-          variant='outlined'
-          className={classes.formControl}
-          {...(errors.category && { error: true })}
-        >
-          <InputLabel ref={inputLabel}>Category</InputLabel>
-          <Select
-            name='category'
-            value={values.category}
+    <>
+      {error && (
+        <Message variant='danger'>
+          Something went wrong! Please try again!
+        </Message>
+      )}
+      <form
+        autoComplete='off'
+        noValidate
+        className={classes.root}
+        onSubmit={handleSubmit}
+      >
+        <Grid container>
+          <TextField
+            name='firstName'
+            variant='outlined'
+            label='First Name'
+            value={values.firstName}
             onChange={handleInputChange}
-            labelWidth={labelWidth}
+            {...(errors.firstName && {
+              error: true,
+              helperText: errors.firstName,
+            })}
+          />
+          <TextField
+            name='lastName'
+            variant='outlined'
+            label='Last Name'
+            value={values.lastName}
+            onChange={handleInputChange}
+            {...(errors.lastName && {
+              error: true,
+              helperText: errors.lastName,
+            })}
+          />
+          <FormControl
+            variant='outlined'
+            className={classes.formControl}
+            {...(errors.category && { error: true })}
           >
-            <MenuItem value=''>Select a Category</MenuItem>
-            <MenuItem value='illustration'>Illustration</MenuItem>
-            <MenuItem value='albumCovers'>Album Covers</MenuItem>
-            <MenuItem value='vectorArts'>Vector Arts</MenuItem>
-            <MenuItem value='photoEditing'>Photo Editing</MenuItem>
-            <MenuItem value='videoEditing'>Video Editing</MenuItem>
-            <MenuItem value='uiDesigning'>UI Designing</MenuItem>
-          </Select>
-          {errors.category && (
-            <FormHelperText>{errors.category}</FormHelperText>
-          )}
-        </FormControl>
+            <InputLabel ref={inputLabel}>Category</InputLabel>
+            <Select
+              name='category'
+              value={values.category}
+              onChange={handleInputChange}
+              labelWidth={labelWidth}
+            >
+              <MenuItem value=''>Select a Category</MenuItem>
+              <MenuItem value='illustration'>Illustration</MenuItem>
+              <MenuItem value='albumCovers'>Album Covers</MenuItem>
+              <MenuItem value='vectorArts'>Vector Arts</MenuItem>
+              <MenuItem value='photoEditing'>Photo Editing</MenuItem>
+              <MenuItem value='videoEditing'>Video Editing</MenuItem>
+              <MenuItem value='uiDesigning'>UI Designing</MenuItem>
+            </Select>
+            {errors.category && (
+              <FormHelperText>{errors.category}</FormHelperText>
+            )}
+          </FormControl>
 
-        <TextField
-          name='email'
-          variant='outlined'
-          label='Email'
-          value={values.email}
-          onChange={handleInputChange}
-          {...(errors.email && { error: true, helperText: errors.email })}
-        />
-        <TextField
-          name='address'
-          variant='outlined'
-          label='Address'
-          value={values.address}
-          onChange={handleInputChange}
-          {...(errors.address && { error: true, helperText: errors.address })}
-        />
-        <Grid container justify='flex-end'>
-          <Button
-            variant='contained'
-            style={{ color: 'green' }}
-            type='submit'
-            className={classes.smMargin}
-          >
-            Submit
-          </Button>
+          <TextField
+            name='email'
+            variant='outlined'
+            label='Email'
+            value={values.email}
+            onChange={handleInputChange}
+            {...(errors.email && { error: true, helperText: errors.email })}
+          />
+          <TextField
+            name='address'
+            variant='outlined'
+            label='Address'
+            value={values.address}
+            onChange={handleInputChange}
+            {...(errors.address && { error: true, helperText: errors.address })}
+          />
+          <Grid container justify='flex-end'>
+            <Button
+              variant='contained'
+              style={{ color: 'green' }}
+              type='submit'
+              className={classes.smMargin}
+            >
+              Submit
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+    </>
   )
 }
 

@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, TextField, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/users'
 import { useToasts } from 'react-toast-notifications'
+
+import Message from './Message'
 
 const styles = (theme) => ({
   root: {
@@ -33,6 +35,8 @@ const initialFieldValues = {
 
 const BuyersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
+
+  const [error, setError] = useState(false)
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
@@ -72,6 +76,8 @@ const BuyersForm = ({ classes, ...props }) => {
       } else {
         props.updateUser(props.currentId, values, onSuccess)
       }
+    } else {
+      setError(true)
     }
   }
 
@@ -84,56 +90,63 @@ const BuyersForm = ({ classes, ...props }) => {
     }
   }, [])
   return (
-    <form
-      autoComplete='off'
-      noValidate
-      className={classes.root}
-      onSubmit={handleSubmit}
-    >
-      <Grid container>
-        <TextField
-          name='firstName'
-          variant='outlined'
-          label='First Name'
-          value={values.firstName}
-          onChange={handleInputChange}
-          {...(errors.firstName && {
-            error: true,
-            helperText: errors.firstName,
-          })}
-        />
-        <TextField
-          name='lastName'
-          variant='outlined'
-          label='Last Name'
-          value={values.lastName}
-          onChange={handleInputChange}
-          {...(errors.lastName && {
-            error: true,
-            helperText: errors.lastName,
-          })}
-        />
+    <>
+      {error && (
+        <Message variant='danger'>
+          Something went wrong! Please try again!
+        </Message>
+      )}
+      <form
+        autoComplete='off'
+        noValidate
+        className={classes.root}
+        onSubmit={handleSubmit}
+      >
+        <Grid container>
+          <TextField
+            name='firstName'
+            variant='outlined'
+            label='First Name'
+            value={values.firstName}
+            onChange={handleInputChange}
+            {...(errors.firstName && {
+              error: true,
+              helperText: errors.firstName,
+            })}
+          />
+          <TextField
+            name='lastName'
+            variant='outlined'
+            label='Last Name'
+            value={values.lastName}
+            onChange={handleInputChange}
+            {...(errors.lastName && {
+              error: true,
+              helperText: errors.lastName,
+            })}
+          />
 
-        <TextField
-          name='email'
-          variant='outlined'
-          label='Email'
-          value={values.email}
-          onChange={handleInputChange}
-          {...(errors.email && { error: true, helperText: errors.email })}
-        />
-        <Grid container justify='flex-end'>
-          <Button
-            variant='contained'
-            style={{ color: 'green' }}
-            type='submit'
-            className={classes.smMargin}
-          >
-            Submit
-          </Button>
+          <TextField
+            name='email'
+            variant='outlined'
+            label='Email'
+            value={values.email}
+            onChange={handleInputChange}
+            {...(errors.email && { error: true, helperText: errors.email })}
+          />
+          <Grid container justify='flex-end'>
+            <Button
+              variant='contained'
+              style={{ color: 'green' }}
+              type='submit'
+              className={classes.smMargin}
+            >
+              Submit
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+    </>
   )
 }
 

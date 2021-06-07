@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react'
-import {
-  Grid,
-  TextField,
-  withStyles,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
-  FormHelperText,
-} from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { Grid, TextField, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
 import { useToasts } from 'react-toast-notifications'
+
+import Message from './Message'
 
 const styles = (theme) => ({
   root: {
@@ -47,6 +39,8 @@ const initialFieldValues = {
 const SellersForm = ({ classes, ...props }) => {
   const { addToast } = useToasts()
 
+  const [error, setError] = useState(false)
+
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
     if ('sellerId' in fieldValues)
@@ -67,13 +61,6 @@ const SellersForm = ({ classes, ...props }) => {
       props.setOpenPopup
     )
 
-  //material-ui select
-  //   const inputLabel = React.useRef(null)
-  //   const [labelWidth, setLabelWidth] = React.useState(0)
-  //   React.useEffect(() => {
-  //     setLabelWidth(inputLabel.current.offsetWidth)
-  //   }, [])
-
   const handleSubmit = (e) => {
     e.preventDefault()
     if (validate()) {
@@ -86,6 +73,8 @@ const SellersForm = ({ classes, ...props }) => {
       } else {
         props.updateGig(props.currentId, values, onSuccess)
       }
+    } else {
+      setError(true)
     }
   }
 
@@ -98,33 +87,43 @@ const SellersForm = ({ classes, ...props }) => {
     }
   }, [])
   return (
-    <form
-      autoComplete='off'
-      noValidate
-      className={classes.root}
-      onSubmit={handleSubmit}
-    >
-      <Grid container>
-        <TextField
-          name='sellerId'
-          variant='outlined'
-          label='Enter the Seller Id'
-          value={values.sellerId}
-          onChange={handleInputChange}
-          {...(errors.sellerId && { error: true, helperText: errors.sellerId })}
-        />
-        <Grid container justify='flex-end'>
-          <Button
-            variant='contained'
-            style={{ color: 'green' }}
-            type='submit'
-            className={classes.smMargin}
-          >
-            Submit
-          </Button>
+    <>
+      {error && (
+        <Message variant='danger'>
+          Something went wrong! Please try again!
+        </Message>
+      )}
+      <form
+        autoComplete='off'
+        noValidate
+        className={classes.root}
+        onSubmit={handleSubmit}
+      >
+        <Grid container>
+          <TextField
+            name='sellerId'
+            variant='outlined'
+            label='Enter the Seller Id'
+            value={values.sellerId}
+            onChange={handleInputChange}
+            {...(errors.sellerId && {
+              error: true,
+              helperText: errors.sellerId,
+            })}
+          />
+          <Grid container justify='flex-end'>
+            <Button
+              variant='contained'
+              style={{ color: 'green' }}
+              type='submit'
+              className={classes.smMargin}
+            >
+              Submit
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+    </>
   )
 }
 
