@@ -106,7 +106,7 @@ const SellersForm = ({ classes, ...props }) => {
         <Grid container justify='flex-end'>
           <Button
             variant='contained'
-            color='primary'
+            style={{ color: 'green' }}
             type='submit'
             className={classes.smMargin}
           >

@@ -105,7 +105,7 @@ const SellerProfile = ({ classes, ...props }) => {
                               <ButtonGroup variant='text'>
                                 <Button>
                                   <EditIcon
-                                    color='primary'
+                                    color='action'
                                     onClick={() => {
                                       setCurrentId(record.userId)
                                       setOpenPopup(true)
@@ -114,7 +114,7 @@ const SellerProfile = ({ classes, ...props }) => {
                                 </Button>
                                 <Button>
                                   <DeleteIcon
-                                    color='secondary'
+                                    color='action'
                                     onClick={() => {
                                       onDelete(record.userId)
                                     }}

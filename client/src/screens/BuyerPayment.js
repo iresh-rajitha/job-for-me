@@ -131,7 +131,7 @@ export default function SignUp() {
                 type='submit'
                 fullWidth
                 variant='contained'
-                color='primary'
+                style={{ color: 'green' }}
                 className={classes.submit}
               >
                 Submit

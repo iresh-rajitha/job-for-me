@@ -100,7 +100,7 @@ const Messages = ({ classes, ...props }) => {
                                 <ButtonGroup variant='text'>
                                   <Button>
                                     <DeleteIcon
-                                      color='secondary'
+                                      color='action'
                                       onClick={() => {
                                         onDelete(record.messageID)
                                       }}

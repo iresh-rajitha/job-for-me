@@ -185,7 +185,7 @@ const AdminRegister = ({ classes, ...props }) => {
               <div>
                 <Button
                   variant='contained'
-                  color='primary'
+                  style={{ color: 'green' }}
                   type='submit'
                   className={classes.smMargin}
                 >

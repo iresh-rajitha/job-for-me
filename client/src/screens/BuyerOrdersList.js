@@ -48,7 +48,11 @@ function Orderpage() {
           </Popup>
           <BuyerGigList buyerId={buyerId} senderId={history.location.state} />
           <Grid container justify='flex-end'>
-            <Button onClick={openGigForm} variant='contained' color='primary'>
+            <Button
+              onClick={openGigForm}
+              variant='contained'
+              style={{ color: 'green' }}
+            >
               Place another order!
             </Button>
           </Grid>

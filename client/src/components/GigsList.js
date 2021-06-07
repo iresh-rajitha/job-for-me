@@ -85,16 +85,16 @@ const GigsList = ({ classes, ...props }) => {
                       <TableCell>{record.sellerId}</TableCell>
                       <TableCell>
                         {record.delivered ? (
-                          <CheckCircleOutlineIcon />
+                          <CheckCircleOutlineIcon style={{ color: 'green' }} />
                         ) : (
-                          <NotInterestedIcon></NotInterestedIcon>
+                          <NotInterestedIcon style={{ color: 'red' }} />
                         )}
                       </TableCell>
                       <TableCell>
                         <ButtonGroup variant='text'>
                           <Button>
                             <EditIcon
-                              color='primary'
+                              color='action'
                               onClick={() => {
                                 setCurrentId(record.gigId)
                                 setOpenPopup(true)
@@ -103,7 +103,7 @@ const GigsList = ({ classes, ...props }) => {
                           </Button>
                           <Button>
                             <DeleteIcon
-                              color='secondary'
+                              color='action'
                               onClick={() => {
                                 onDelete(record.gigId)
                               }}

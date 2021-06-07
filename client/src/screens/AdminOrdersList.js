@@ -89,9 +89,11 @@ const GigsList = ({ classes, ...props }) => {
                             <TableCell>{record.sellerId}</TableCell>
                             <TableCell>
                               {record.delivered ? (
-                                <CheckCircleOutlineIcon />
+                                <CheckCircleOutlineIcon
+                                  style={{ color: 'green' }}
+                                />
                               ) : (
-                                <NotInterestedIcon></NotInterestedIcon>
+                                <NotInterestedIcon style={{ color: 'red' }} />
                               )}
                             </TableCell>
                             <TableCell>
@@ -104,9 +106,11 @@ const GigsList = ({ classes, ...props }) => {
                                 }}
                               >
                                 {record.sellerId === 0 ? (
-                                  <NotInterestedIcon />
+                                  <NotInterestedIcon style={{ color: 'red' }} />
                                 ) : (
-                                  <CheckCircleOutlineIcon />
+                                  <CheckCircleOutlineIcon
+                                    style={{ color: 'green' }}
+                                  />
                                 )}
                               </IconButton>
                             </TableCell>

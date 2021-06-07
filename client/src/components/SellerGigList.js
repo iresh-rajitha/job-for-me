@@ -105,9 +105,11 @@ const GigsList = ({ classes, ...props }) => {
                               }}
                             >
                               {record.delivered ? (
-                                <CheckCircleOutlineIcon />
+                                <CheckCircleOutlineIcon
+                                  style={{ color: 'green' }}
+                                />
                               ) : (
-                                <NotInterestedIcon></NotInterestedIcon>
+                                <NotInterestedIcon style={{ color: 'red' }} />
                               )}
                             </IconButton>
                           </TableCell>
@@ -122,6 +124,7 @@ const GigsList = ({ classes, ...props }) => {
                             <ButtonGroup variant='text'>
                               <Button>
                                 <ChatIcon
+                                  color='action'
                                   onClick={() => chatWithSeller(record.buyerId)}
                                 />
                               </Button>

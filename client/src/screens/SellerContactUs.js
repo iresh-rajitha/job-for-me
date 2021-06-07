@@ -136,7 +136,7 @@ const ContactUs = () => {
                 type='submit'
                 fullWidth
                 variant='contained'
-                color='primary'
+                style={{ color: 'green' }}
                 className={classes.submit}
               >
                 Send

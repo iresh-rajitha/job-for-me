@@ -34,7 +34,7 @@ const styles = (theme) => ({
 const initialFieldValues = {
   startDate: new Date().toISOString(),
   deadline: '0001-01-01T00:00:00',
-  category: 'None',
+  category: '',
   buyerRating: 0,
   sellerRating: 0,
   description: 'I need ...',
@@ -50,10 +50,12 @@ const SellersForm = ({ classes, ...props }) => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
     if ('deadline' in fieldValues)
-      temp.deadline = fieldValues.deadline ? '' : 'This field is required.'
+      temp.deadline = fieldValues.deadline
+        ? '0001-01-01T00:00:00'
+        : 'This field is required.'
     if ('description' in fieldValues)
       temp.description = fieldValues.description
-        ? ''
+        ? 'I need ...'
         : 'This field is required.'
     if ('price' in fieldValues)
       temp.price = fieldValues.price ? '' : 'This field is required.'

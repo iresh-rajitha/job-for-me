@@ -107,22 +107,27 @@ const GigsList = ({ classes, ...props }) => {
                           <TableCell>{record.description}</TableCell>
                           <TableCell>
                             {record.sellerId === 0 ? (
-                              <NotInterestedIcon />
+                              <NotInterestedIcon style={{ color: 'red' }} />
                             ) : (
-                              <CheckCircleOutlineIcon />
+                              <CheckCircleOutlineIcon
+                                style={{ color: 'green' }}
+                              />
                             )}
                           </TableCell>
                           <TableCell>
                             {record.delivered ? (
-                              <CheckCircleOutlineIcon />
+                              <CheckCircleOutlineIcon
+                                style={{ color: 'green' }}
+                              />
                             ) : (
-                              <NotInterestedIcon></NotInterestedIcon>
+                              <NotInterestedIcon style={{ color: 'red' }} />
                             )}
                           </TableCell>
                           <TableCell>
                             <ButtonGroup variant='text'>
                               <Button>
                                 <EditIcon
+                                  color='action'
                                   onClick={() => {
                                     setCurrentId(record.gigId)
                                     setOpenPopup(true)
@@ -131,6 +136,7 @@ const GigsList = ({ classes, ...props }) => {
                               </Button>
                               <Button>
                                 <DeleteIcon
+                                  color='action'
                                   onClick={() => {
                                     onDelete(record.gigId)
                                   }}
@@ -138,6 +144,7 @@ const GigsList = ({ classes, ...props }) => {
                               </Button>
                               <Button>
                                 <ChatIcon
+                                  color='action'
                                   onClick={() =>
                                     chatWithSeller(record.sellerId)
                                   }
@@ -145,6 +152,7 @@ const GigsList = ({ classes, ...props }) => {
                               </Button>
                               <Button>
                                 <CreditCardIcon
+                                  color='action'
                                   onClick={() => {
                                     payment()
                                   }}
@@ -159,7 +167,7 @@ const GigsList = ({ classes, ...props }) => {
                                 {record.sellerRating === 0 ? (
                                   <StarOutlineIcon />
                                 ) : (
-                                  <StarIcon />
+                                  <StarIcon color='action' />
                                 )}
                               </Button>
                             </ButtonGroup>
