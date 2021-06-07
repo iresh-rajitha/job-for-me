@@ -25,6 +25,7 @@ import Popup from '../components/Popup'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
 import AddanAdmin from '../components/AdminRegister'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 const styles = (theme) => ({
   root: {
@@ -67,54 +68,56 @@ const AdminAdminsList = ({ classes, ...props }) => {
         <Paper className={classes.paper} elevation={3}>
           <Grid>
             <Grid item xs={12}>
-              <TableContainer>
-                <Table>
-                  <TableHead className={classes.root}>
-                    <TableRow>
-                      <TableCell>First Name</TableCell>
-                      <TableCell>Last Name</TableCell>
-                      <TableCell>Address</TableCell>
-                      <TableCell>Email</TableCell>
-                      <TableCell></TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {props.userList.map((record, index) => {
-                      if (record.userType === 'Admin') {
-                        return (
-                          <TableRow key={index} hover>
-                            <TableCell>{record.firstName}</TableCell>
-                            <TableCell>{record.lastName}</TableCell>
-                            <TableCell>{record.address}</TableCell>
-                            <TableCell>{record.email}</TableCell>
-                            <TableCell>
-                              <ButtonGroup variant='text'>
-                                <Button>
-                                  <EditIcon
-                                    color='primary'
-                                    onClick={() => {
-                                      setCurrentId(record.userId)
-                                      setOpenPopup(true)
-                                    }}
-                                  />
-                                </Button>
-                                <Button>
-                                  <DeleteIcon
-                                    color='secondary'
-                                    onClick={() => {
-                                      onDelete(record.userId)
-                                    }}
-                                  />
-                                </Button>
-                              </ButtonGroup>
-                            </TableCell>
-                          </TableRow>
-                        )
-                      }
-                    })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+              <InfiniteScroll dataLength={6} height={350}>
+                <TableContainer>
+                  <Table>
+                    <TableHead className={classes.root}>
+                      <TableRow>
+                        <TableCell>First Name</TableCell>
+                        <TableCell>Last Name</TableCell>
+                        <TableCell>Address</TableCell>
+                        <TableCell>Email</TableCell>
+                        <TableCell></TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {props.userList.map((record, index) => {
+                        if (record.userType === 'Admin') {
+                          return (
+                            <TableRow key={index} hover>
+                              <TableCell>{record.firstName}</TableCell>
+                              <TableCell>{record.lastName}</TableCell>
+                              <TableCell>{record.address}</TableCell>
+                              <TableCell>{record.email}</TableCell>
+                              <TableCell>
+                                <ButtonGroup variant='text'>
+                                  <Button>
+                                    <EditIcon
+                                      color='primary'
+                                      onClick={() => {
+                                        setCurrentId(record.userId)
+                                        setOpenPopup(true)
+                                      }}
+                                    />
+                                  </Button>
+                                  <Button>
+                                    <DeleteIcon
+                                      color='secondary'
+                                      onClick={() => {
+                                        onDelete(record.userId)
+                                      }}
+                                    />
+                                  </Button>
+                                </ButtonGroup>
+                              </TableCell>
+                            </TableRow>
+                          )
+                        }
+                      })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </InfiniteScroll>
             </Grid>
             <Popup
               title='Edit Admin Details'

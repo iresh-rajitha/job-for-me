@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import InfiniteScroll from 'react-infinite-scroll-component'
+
 import * as actions from '../actions/gigs'
 import {
   Grid,
@@ -78,94 +80,98 @@ const GigsList = ({ classes, ...props }) => {
     <Paper className={classes.paper} elevation={3}>
       <Grid>
         <Grid item xs={12}>
-          <TableContainer>
-            <Table>
-              <TableHead className={classes.root}>
-                <TableRow>
-                  <TableCell>Gig Id</TableCell>
-                  <TableCell>Start Date</TableCell>
-                  <TableCell>Deadline</TableCell>
-                  <TableCell>Category</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell>Is Seller Assigned?</TableCell>
-                  <TableCell>Delivered</TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {props.gigList.map((record, index) => {
-                  if (record.buyerId === props.buyerId) {
-                    return (
-                      <TableRow key={index} hover>
-                        <TableCell>{record.gigId}</TableCell>
-                        <TableCell>{record.startDate}</TableCell>
-                        <TableCell>{record.deadline}</TableCell>
-                        <TableCell>{record.category}</TableCell>
-                        <TableCell>{record.description}</TableCell>
-                        <TableCell>
-                          {record.sellerId === 0 ? (
-                            <NotInterestedIcon />
-                          ) : (
-                            <CheckCircleOutlineIcon />
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {record.delivered ? (
-                            <CheckCircleOutlineIcon />
-                          ) : (
-                            <NotInterestedIcon></NotInterestedIcon>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <ButtonGroup variant='text'>
-                            <Button>
-                              <EditIcon
+          <InfiniteScroll dataLength={6} height={350}>
+            <TableContainer>
+              <Table>
+                <TableHead className={classes.root}>
+                  <TableRow>
+                    <TableCell>Gig Id</TableCell>
+                    <TableCell>Start Date</TableCell>
+                    <TableCell>Deadline</TableCell>
+                    <TableCell>Category</TableCell>
+                    <TableCell>Description</TableCell>
+                    <TableCell>Is Seller Assigned?</TableCell>
+                    <TableCell>Delivered</TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {props.gigList.map((record, index) => {
+                    if (record.buyerId === props.buyerId) {
+                      return (
+                        <TableRow key={index} hover>
+                          <TableCell>{record.gigId}</TableCell>
+                          <TableCell>{record.startDate}</TableCell>
+                          <TableCell>{record.deadline}</TableCell>
+                          <TableCell>{record.category}</TableCell>
+                          <TableCell>{record.description}</TableCell>
+                          <TableCell>
+                            {record.sellerId === 0 ? (
+                              <NotInterestedIcon />
+                            ) : (
+                              <CheckCircleOutlineIcon />
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {record.delivered ? (
+                              <CheckCircleOutlineIcon />
+                            ) : (
+                              <NotInterestedIcon></NotInterestedIcon>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <ButtonGroup variant='text'>
+                              <Button>
+                                <EditIcon
+                                  onClick={() => {
+                                    setCurrentId(record.gigId)
+                                    setOpenPopup(true)
+                                  }}
+                                />
+                              </Button>
+                              <Button>
+                                <DeleteIcon
+                                  onClick={() => {
+                                    onDelete(record.gigId)
+                                  }}
+                                />
+                              </Button>
+                              <Button>
+                                <ChatIcon
+                                  onClick={() =>
+                                    chatWithSeller(record.sellerId)
+                                  }
+                                />
+                              </Button>
+                              <Button>
+                                <CreditCardIcon
+                                  onClick={() => {
+                                    payment()
+                                  }}
+                                />
+                              </Button>
+                              <Button
                                 onClick={() => {
                                   setCurrentId(record.gigId)
-                                  setOpenPopup(true)
+                                  setOpenRating(true)
                                 }}
-                              />
-                            </Button>
-                            <Button>
-                              <DeleteIcon
-                                onClick={() => {
-                                  onDelete(record.gigId)
-                                }}
-                              />
-                            </Button>
-                            <Button>
-                              <ChatIcon
-                                onClick={() => chatWithSeller(record.sellerId)}
-                              />
-                            </Button>
-                            <Button>
-                              <CreditCardIcon
-                                onClick={() => {
-                                  payment()
-                                }}
-                              />
-                            </Button>
-                            <Button
-                              onClick={() => {
-                                setCurrentId(record.gigId)
-                                setOpenRating(true)
-                              }}
-                            >
-                              {record.sellerRating === 0 ? (
-                                <StarOutlineIcon />
-                              ) : (
-                                <StarIcon />
-                              )}
-                            </Button>
-                          </ButtonGroup>
-                        </TableCell>
-                      </TableRow>
-                    )
-                  }
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                              >
+                                {record.sellerRating === 0 ? (
+                                  <StarOutlineIcon />
+                                ) : (
+                                  <StarIcon />
+                                )}
+                              </Button>
+                            </ButtonGroup>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    }
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </InfiniteScroll>
         </Grid>
         <Popup
           title='Gig Edit Form'

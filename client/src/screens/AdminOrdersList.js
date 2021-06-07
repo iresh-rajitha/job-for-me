@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import * as actions from '../actions/gigs'
 import {
   Grid,
@@ -59,61 +60,63 @@ const GigsList = ({ classes, ...props }) => {
         <Paper className={classes.paper} elevation={3}>
           <Grid>
             <Grid item xs={12}>
-              <TableContainer>
-                <Table>
-                  <TableHead className={classes.root}>
-                    <TableRow>
-                      <TableCell>Gig Id</TableCell>
-                      <TableCell>Start Date</TableCell>
-                      <TableCell>Deadline</TableCell>
-                      <TableCell>Category</TableCell>
-                      <TableCell>Description</TableCell>
-                      <TableCell>Buyer Id</TableCell>
-                      <TableCell>Seller Id</TableCell>
-                      <TableCell>Delivered</TableCell>
-                      <TableCell>Assign a Seller</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {props.gigList.map((record, index) => {
-                      return (
-                        <TableRow key={index} hover>
-                          <TableCell>{record.gigId}</TableCell>
-                          <TableCell>{record.startDate}</TableCell>
-                          <TableCell>{record.deadline}</TableCell>
-                          <TableCell>{record.category}</TableCell>
-                          <TableCell>{record.description}</TableCell>
-                          <TableCell>{record.buyerId}</TableCell>
-                          <TableCell>{record.sellerId}</TableCell>
-                          <TableCell>
-                            {record.delivered ? (
-                              <CheckCircleOutlineIcon />
-                            ) : (
-                              <NotInterestedIcon></NotInterestedIcon>
-                            )}
-                          </TableCell>
-                          <TableCell>
-                            <IconButton
-                              style={{ marginRight: '10px' }}
-                              aria-label='delete'
-                              onClick={() => {
-                                setCurrentId(record.gigId)
-                                setOpenPopup(true)
-                              }}
-                            >
-                              {record.sellerId === 0 ? (
-                                <NotInterestedIcon />
-                              ) : (
+              <InfiniteScroll dataLength={6} height={350}>
+                <TableContainer>
+                  <Table>
+                    <TableHead className={classes.root}>
+                      <TableRow>
+                        <TableCell>Gig Id</TableCell>
+                        <TableCell>Start Date</TableCell>
+                        <TableCell>Deadline</TableCell>
+                        <TableCell>Category</TableCell>
+                        <TableCell>Description</TableCell>
+                        <TableCell>Buyer Id</TableCell>
+                        <TableCell>Seller Id</TableCell>
+                        <TableCell>Delivered</TableCell>
+                        <TableCell>Assign a Seller</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {props.gigList.map((record, index) => {
+                        return (
+                          <TableRow key={index} hover>
+                            <TableCell>{record.gigId}</TableCell>
+                            <TableCell>{record.startDate}</TableCell>
+                            <TableCell>{record.deadline}</TableCell>
+                            <TableCell>{record.category}</TableCell>
+                            <TableCell>{record.description}</TableCell>
+                            <TableCell>{record.buyerId}</TableCell>
+                            <TableCell>{record.sellerId}</TableCell>
+                            <TableCell>
+                              {record.delivered ? (
                                 <CheckCircleOutlineIcon />
+                              ) : (
+                                <NotInterestedIcon></NotInterestedIcon>
                               )}
-                            </IconButton>
-                          </TableCell>
-                        </TableRow>
-                      )
-                    })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                            </TableCell>
+                            <TableCell>
+                              <IconButton
+                                style={{ marginRight: '10px' }}
+                                aria-label='delete'
+                                onClick={() => {
+                                  setCurrentId(record.gigId)
+                                  setOpenPopup(true)
+                                }}
+                              >
+                                {record.sellerId === 0 ? (
+                                  <NotInterestedIcon />
+                                ) : (
+                                  <CheckCircleOutlineIcon />
+                                )}
+                              </IconButton>
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </InfiniteScroll>
             </Grid>
             <Popup
               title='Seller Assign Form'

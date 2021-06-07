@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import InfiniteScroll from 'react-infinite-scroll-component'
+
 import * as actions from '../actions/gigs'
 import {
   Grid,
@@ -70,67 +72,69 @@ const GigsList = ({ classes, ...props }) => {
     <Paper className={classes.paper} elevation={3}>
       <Grid>
         <Grid item xs={12}>
-          <TableContainer>
-            <Table>
-              <TableHead className={classes.root}>
-                <TableRow>
-                  <TableCell>Start Date</TableCell>
-                  <TableCell>Deadline</TableCell>
-                  <TableCell>Category</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell>Delivered</TableCell>
-                  <TableCell>Gig Rating</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {props.gigList.map((record, index) => {
-                  if (record.sellerId === props.sellerId) {
-                    return (
-                      <TableRow key={index} hover>
-                        <TableCell>{record.startDate}</TableCell>
-                        <TableCell>{record.deadline}</TableCell>
-                        <TableCell>{record.category}</TableCell>
-                        <TableCell>{record.description}</TableCell>
+          <InfiniteScroll dataLength={6} height={350}>
+            <TableContainer>
+              <Table>
+                <TableHead className={classes.root}>
+                  <TableRow>
+                    <TableCell>Start Date</TableCell>
+                    <TableCell>Deadline</TableCell>
+                    <TableCell>Category</TableCell>
+                    <TableCell>Description</TableCell>
+                    <TableCell>Delivered</TableCell>
+                    <TableCell>Gig Rating</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {props.gigList.map((record, index) => {
+                    if (record.sellerId === props.sellerId) {
+                      return (
+                        <TableRow key={index} hover>
+                          <TableCell>{record.startDate}</TableCell>
+                          <TableCell>{record.deadline}</TableCell>
+                          <TableCell>{record.category}</TableCell>
+                          <TableCell>{record.description}</TableCell>
 
-                        <TableCell>
-                          <IconButton
-                            style={{ marginRight: '10px' }}
-                            aria-label='delete'
-                            onClick={() => {
-                              setCurrentId(record.gigId)
-                              setOpenPopup(true)
-                            }}
-                          >
-                            {record.delivered ? (
-                              <CheckCircleOutlineIcon />
+                          <TableCell>
+                            <IconButton
+                              style={{ marginRight: '10px' }}
+                              aria-label='delete'
+                              onClick={() => {
+                                setCurrentId(record.gigId)
+                                setOpenPopup(true)
+                              }}
+                            >
+                              {record.delivered ? (
+                                <CheckCircleOutlineIcon />
+                              ) : (
+                                <NotInterestedIcon></NotInterestedIcon>
+                              )}
+                            </IconButton>
+                          </TableCell>
+                          <TableCell>
+                            {record.sellerRating === 0 ? (
+                              <MoreHorizIcon />
                             ) : (
-                              <NotInterestedIcon></NotInterestedIcon>
+                              <Rating value={record.sellerRating} />
                             )}
-                          </IconButton>
-                        </TableCell>
-                        <TableCell>
-                          {record.sellerRating === 0 ? (
-                            <MoreHorizIcon />
-                          ) : (
-                            <Rating value={record.sellerRating} />
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <ButtonGroup variant='text'>
-                            <Button>
-                              <ChatIcon
-                                onClick={() => chatWithSeller(record.buyerId)}
-                              />
-                            </Button>
-                          </ButtonGroup>
-                        </TableCell>
-                      </TableRow>
-                    )
-                  }
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                          </TableCell>
+                          <TableCell>
+                            <ButtonGroup variant='text'>
+                              <Button>
+                                <ChatIcon
+                                  onClick={() => chatWithSeller(record.buyerId)}
+                                />
+                              </Button>
+                            </ButtonGroup>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    }
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </InfiniteScroll>
         </Grid>
         <Popup
           title='Gig Edit Form'
