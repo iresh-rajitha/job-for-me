@@ -16,10 +16,12 @@ import {
   Button,
 } from '@material-ui/core'
 import SellerGigForm from './SellerGigForm'
+import Rating from './Rating'
 import ChatIcon from '@material-ui/icons/Chat'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import NotInterestedIcon from '@material-ui/icons/NotInterested'
 import IconButton from '@material-ui/core/IconButton'
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 
 import { useToasts } from 'react-toast-notifications'
 
@@ -77,6 +79,7 @@ const GigsList = ({ classes, ...props }) => {
                   <TableCell>Category</TableCell>
                   <TableCell>Description</TableCell>
                   <TableCell>Delivered</TableCell>
+                  <TableCell>Gig Rating</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -88,6 +91,7 @@ const GigsList = ({ classes, ...props }) => {
                         <TableCell>{record.deadline}</TableCell>
                         <TableCell>{record.category}</TableCell>
                         <TableCell>{record.description}</TableCell>
+
                         <TableCell>
                           <IconButton
                             style={{ marginRight: '10px' }}
@@ -103,6 +107,13 @@ const GigsList = ({ classes, ...props }) => {
                               <NotInterestedIcon></NotInterestedIcon>
                             )}
                           </IconButton>
+                        </TableCell>
+                        <TableCell>
+                          {record.sellerRating === 0 ? (
+                            <MoreHorizIcon />
+                          ) : (
+                            <Rating value={record.sellerRating} />
+                          )}
                         </TableCell>
                         <TableCell>
                           <ButtonGroup variant='text'>

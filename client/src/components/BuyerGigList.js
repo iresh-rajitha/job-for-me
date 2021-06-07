@@ -16,12 +16,15 @@ import {
   Button,
 } from '@material-ui/core'
 import GigForm from './GigForm'
+import BuyerRating from './BuyerRating'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import ChatIcon from '@material-ui/icons/Chat'
 import CreditCardIcon from '@material-ui/icons/CreditCard'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import NotInterestedIcon from '@material-ui/icons/NotInterested'
+import StarOutlineIcon from '@material-ui/icons/StarOutline'
+import StarIcon from '@material-ui/icons/Star'
 
 import { useToasts } from 'react-toast-notifications'
 
@@ -45,6 +48,7 @@ const GigsList = ({ classes, ...props }) => {
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
+  const [openRating, setOpenRating] = useState(false)
 
   useEffect(() => {
     props.fetchAllGigs()
@@ -141,6 +145,18 @@ const GigsList = ({ classes, ...props }) => {
                                 }}
                               />
                             </Button>
+                            <Button
+                              onClick={() => {
+                                setCurrentId(record.gigId)
+                                setOpenRating(true)
+                              }}
+                            >
+                              {record.sellerRating === 0 ? (
+                                <StarOutlineIcon />
+                              ) : (
+                                <StarIcon />
+                              )}
+                            </Button>
                           </ButtonGroup>
                         </TableCell>
                       </TableRow>
@@ -157,6 +173,13 @@ const GigsList = ({ classes, ...props }) => {
           setOpenPopup={setOpenPopup}
         >
           <GigForm {...{ currentId, setCurrentId, setOpenPopup }} />
+        </Popup>
+        <Popup
+          title='Rate the Seller!'
+          openPopup={openRating}
+          setOpenPopup={setOpenRating}
+        >
+          <BuyerRating {...{ currentId, setCurrentId, setOpenRating }} />
         </Popup>
       </Grid>
     </Paper>
