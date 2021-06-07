@@ -29,6 +29,11 @@ const styles = (theme) => ({
     maxWidth: 345,
     margin: 0,
     padding: 10,
+    display: 'block',
+    width: '1000px',
+    transitionDuration: '0.3s',
+    height: '18vw',
+    raised: true,
   },
 })
 
@@ -61,112 +66,142 @@ const SellerLandingPage = ({ classes, ...props }) => {
           <br />
           <br />
           <br />
-          <Link
-            to={{
-              pathname: '/order',
-              state: sellerId,
-            }}
+          <Grid
+            container
+            item
+            xs={4}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1594835494259-43c6e66ad369?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Browse as a Buyer
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    Go and have the customer experience!
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
+            <Link
+              to={{
+                pathname: '/order',
+                state: sellerId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1594835494259-43c6e66ad369?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Browse as a Buyer
+                    </Typography>
                     <Typography
                       variant='body2'
                       color='textSecondary'
                       component='p'
                     >
-                      Click on the edit button to make changes
+                      Go and have the customer experience!
                     </Typography>
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
-          <Link
-            to={{
-              pathname: '/sellerprofile',
-              state: sellerId,
-            }}
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      <Typography
+                        variant='body2'
+                        color='textSecondary'
+                        component='p'
+                      >
+                        Click on the edit button to make changes
+                      </Typography>
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
+          <Grid
+            container
+            item
+            xs={4}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1534683251650-3fd64cd1561a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1020&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Your seller profile
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    Add account changes.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
-          <Link
-            to={{
-              pathname: '/yourordersseller',
-              state: sellerId,
-            }}
+            <Link
+              to={{
+                pathname: '/sellerprofile',
+                state: sellerId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1534683251650-3fd64cd1561a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1020&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Your seller profile
+                    </Typography>
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      Add account changes.
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
+          <Grid
+            container
+            item
+            xs={4}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Your Orders
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    View orders that you are currently working on.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
+            <Link
+              to={{
+                pathname: '/yourordersseller',
+                state: sellerId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1564424555153-04228f0aa7ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Your Gigs
+                    </Typography>
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      View gigs that you are currently working on.
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
         </Grid>
       </section>
       <Footer />

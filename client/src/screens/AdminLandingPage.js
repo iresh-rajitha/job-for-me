@@ -28,6 +28,11 @@ const styles = (theme) => ({
     maxWidth: 345,
     margin: 0,
     padding: 10,
+    display: 'block',
+    width: '1000px',
+    transitionDuration: '0.3s',
+    height: '20vw',
+    raised: true,
   },
 })
 
@@ -52,144 +57,184 @@ const AdminLandingPage = ({ classes, ...props }) => {
           <br />
           <br />
           <br />
-          <Link
-            to={{
-              pathname: '/buyers',
-              state: adminId,
-            }}
+          <Grid
+            container
+            item
+            xs={4}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1594835494259-43c6e66ad369?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Buyers
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    View add or Delete Buyers!
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
+            <Link
+              to={{
+                pathname: '/buyers',
+                state: adminId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1594835494259-43c6e66ad369?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Buyers
+                    </Typography>
                     <Typography
                       variant='body2'
                       color='textSecondary'
                       component='p'
                     >
-                      Click on the edit button to make changes
+                      View add or Delete Buyers!
                     </Typography>
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
-          <Link
-            to={{
-              pathname: '/sellers',
-              state: adminId,
-            }}
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      <Typography
+                        variant='body2'
+                        color='textSecondary'
+                        component='p'
+                      >
+                        Click on the edit button to make changes
+                      </Typography>
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
+          <Grid
+            container
+            item
+            xs={4}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1534683251650-3fd64cd1561a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1020&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Sellers
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    Click on the Add New button to add or click on the profiles
-                    to make changes.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
-          <Link
-            to={{
-              pathname: '/admins',
-              state: adminId,
-            }}
+            <Link
+              to={{
+                pathname: '/sellers',
+                state: adminId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1534683251650-3fd64cd1561a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1020&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Sellers
+                    </Typography>
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      Click on the Add New button to add or click on the
+                      profiles to make changes.
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
+          <Grid
+            container
+            item
+            xs={4}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Admins
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    View add or Edit Admins!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
-          <Link
-            to={{
-              pathname: '/adminorders',
-              state: adminId,
-            }}
+            <Link
+              to={{
+                pathname: '/admins',
+                state: adminId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Admins
+                    </Typography>
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      View add or Edit Admins!
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
+          <Grid
+            container
+            item
+            xs={12}
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justify='center'
           >
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
-                  image='https://images.unsplash.com/photo-1509315703195-529879416a7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
-                  title='Contemplative Reptile'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='h2'>
-                    Orders
-                  </Typography>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'
-                  >
-                    Manage the current orders!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions></CardActions>
-            </Card>
-          </Link>
+            <Link
+              to={{
+                pathname: '/adminorders',
+                state: adminId,
+              }}
+            >
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component='img'
+                    alt='Contemplative Reptile'
+                    height='140'
+                    image='https://images.unsplash.com/photo-1564424555153-04228f0aa7ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+                    title='Contemplative Reptile'
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                      Gigs
+                    </Typography>
+                    <Typography
+                      variant='body2'
+                      color='textSecondary'
+                      component='p'
+                    >
+                      Manage the current gigs!
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions></CardActions>
+              </Card>
+            </Link>
+          </Grid>
         </Grid>
       </section>
       <Footer />
