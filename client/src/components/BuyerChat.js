@@ -100,7 +100,7 @@ const MessagesForm = ({ classes, ...props }) => {
       setErrors({})
       props.fetchAllMessages()
     }
-  }, [props.currentId])
+  }, [props])
 
   return (
     <Fragment>

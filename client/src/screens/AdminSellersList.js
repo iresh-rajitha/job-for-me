@@ -50,7 +50,7 @@ const AdminSellersList = ({ classes, ...props }) => {
       history.push('/login')
     }
     props.fetchAllUsers()
-  }, [props, history.location.state])
+  }, [props, history])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))

@@ -1,15 +1,5 @@
 import React, { useEffect } from 'react'
-import {
-  Grid,
-  TextField,
-  withStyles,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
-  FormHelperText,
-} from '@material-ui/core'
+import { Grid, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
@@ -75,13 +65,6 @@ const SellersForm = ({ classes, ...props }) => {
       props.setOpenPopup
     )
 
-  //material-ui select
-  //   const inputLabel = React.useRef(null)
-  //   const [labelWidth, setLabelWidth] = React.useState(0)
-  //   React.useEffect(() => {
-  //     setLabelWidth(inputLabel.current.offsetWidth)
-  //   }, [])
-
   const setDelivered = (fieldValues = values) => {
     fieldValues.delivered = true
   }
@@ -109,7 +92,7 @@ const SellersForm = ({ classes, ...props }) => {
       })
       setErrors({})
     }
-  }, [])
+  }, [props.currentId, props.gigList, setErrors, setValues])
   return (
     <form
       autoComplete='off'

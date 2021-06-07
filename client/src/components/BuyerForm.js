@@ -1,15 +1,5 @@
 import React, { useEffect } from 'react'
-import {
-  Grid,
-  TextField,
-  withStyles,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
-  FormHelperText,
-} from '@material-ui/core'
+import { Grid, TextField, withStyles, Button } from '@material-ui/core'
 import useForm from '../useForm'
 import { connect } from 'react-redux'
 import * as actions from '../actions/users'
@@ -69,13 +59,6 @@ const BuyersForm = ({ classes, ...props }) => {
       props.setCurrentId,
       props.setOpenPopup
     )
-
-  //material-ui select
-  //   const inputLabel = React.useRef(null)
-  //   const [labelWidth, setLabelWidth] = React.useState(0)
-  //   React.useEffect(() => {
-  //     setLabelWidth(inputLabel.current.offsetWidth)
-  //   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()

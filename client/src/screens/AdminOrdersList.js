@@ -1,120 +1,147 @@
-import { Fragment } from 'react'
-import React, { useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-// import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../actions/gigs'
+import {
+  Grid,
+  Paper,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  withStyles,
+} from '@material-ui/core'
 
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
+import NotInterestedIcon from '@material-ui/icons/NotInterested'
+import IconButton from '@material-ui/core/IconButton'
+
+import { useToasts } from 'react-toast-notifications'
+
+import Popup from '../components/Popup'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
-import AdminGigsList from '../components/AdminGigsList'
+import AssignSellerForm from '../components/AssignSellerForm'
 
-// const emails = ['username@gmail.com', 'user02@gmail.com']
+const styles = (theme) => ({
+  root: {
+    '& .MuiTableCell-head': {
+      fontSize: '1.25rem',
+    },
+  },
+  paper: {
+    margin: theme.spacing(2),
+    padding: theme.spacing(2),
+  },
+})
 
-// const initialValues = {
-//   orderID: 1,
-//   startDate: '2021-03-22T12:58:12.166',
-//   deadline: '2021-01-06T17:16:40',
-//   comment: '',
-//   rating: 0,
-//   description: 'Hello there',
-//   seller: null,
-//   buyer: null,
-//   orderDetailID: 5,
-//   orderDetail: null,
-// }
-
-// AddUpdateOrderPopUp.propTypes = {
-//   onClose: PropTypes.func.isRequired,
-//   open: PropTypes.bool.isRequired,
-//   selectedValue: PropTypes.string.isRequired,
-//   order: PropTypes.object,
-// }
-
-function AdminOrderPage() {
+const GigsList = ({ classes, ...props }) => {
+  const { addToast } = useToasts()
   const history = useHistory()
   const adminId = history.location.state
+
+  const [currentId, setCurrentId] = useState(0)
+  const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
     if (!history.location.state) {
       history.push('/login')
     }
-    // refreshOrderTable()
-  }, [history.location.state])
-
-  // const [tableData, setTableData] = useState([])
-  // const [order, setOrder] = useState(initialValues)
-  // const [open, setOpen] = React.useState(false)
-  // const [selectedValue, setSelectedValue] = React.useState(emails[1])
-
-  // const handleClickOpen = () => {
-  //   setOpen(true)
-  // }
-
-  // const handleClose = (value) => {
-  //   setOpen(false)
-  //   console.log('refresh')
-  //   refreshOrderTable()
-  // }
-  // const refreshOrderTable = () => {
-  //   axios
-  //     .get('https://localhost:5001/api/order')
-  //     .then((res) => {
-  //       // tableData=res.data;
-  //       setTableData((tableData) => res.data)
-  //       console.log(tableData)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-
-  //   // OrderDetailService.getAllOrders();
-  // }
-  // const deleteFunction = (id) => {
-  //   console.log(id)
-  //   axios
-  //     .delete('https://localhost:5001/api/order/' + id)
-  //     .then((res) => {
-  //       refreshOrderTable()
-  //       console.log(tableData)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //   // refreshOrderTable();
-  // }
-  // const updateFunction = (obj) => {
-  //   setOrder(obj)
-  //   console.log(obj)
-  //   console.log(order)
-  //   handleClickOpen()
-  //   // refreshOrderTable();
-  // }
+    props.fetchAllGigs()
+  }, [props, history])
 
   return (
     <Fragment>
       <AdminNav {...{ adminId }} />
       <section className='container'>
-        <AdminGigsList />
-        {/* <p> Currently avalible Sellers.</p>  */}
-        {/* <OrderSellers />
-      <AdminGigsList />
-      {/* <div>
-          <AddUpdateOrderPopUp
-            selectedValue={selectedValue}
-            refreshOrderTable={refreshOrderTable}
-            open={open}
-            onClose={handleClose}
-            order={order}
-          />
-          <OrderTable
-            updateFunction={updateFunction}
-            deleteFunction={deleteFunction}
-            refreshOrderTable={refreshOrderTable}
-            tableData={tableData}
-          />
-        </div> */}
+        <Paper className={classes.paper} elevation={3}>
+          <Grid>
+            <Grid item xs={12}>
+              <TableContainer>
+                <Table>
+                  <TableHead className={classes.root}>
+                    <TableRow>
+                      <TableCell>Gig Id</TableCell>
+                      <TableCell>Start Date</TableCell>
+                      <TableCell>Deadline</TableCell>
+                      <TableCell>Category</TableCell>
+                      <TableCell>Description</TableCell>
+                      <TableCell>Buyer Id</TableCell>
+                      <TableCell>Seller Id</TableCell>
+                      <TableCell>Delivered</TableCell>
+                      <TableCell>Assign a Seller</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {props.gigList.map((record, index) => {
+                      return (
+                        <TableRow key={index} hover>
+                          <TableCell>{record.gigId}</TableCell>
+                          <TableCell>{record.startDate}</TableCell>
+                          <TableCell>{record.deadline}</TableCell>
+                          <TableCell>{record.category}</TableCell>
+                          <TableCell>{record.description}</TableCell>
+                          <TableCell>{record.buyerId}</TableCell>
+                          <TableCell>{record.sellerId}</TableCell>
+                          <TableCell>
+                            {record.delivered ? (
+                              <CheckCircleOutlineIcon />
+                            ) : (
+                              <NotInterestedIcon></NotInterestedIcon>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <IconButton
+                              style={{ marginRight: '10px' }}
+                              aria-label='delete'
+                              onClick={() => {
+                                setCurrentId(record.gigId)
+                                setOpenPopup(true)
+                              }}
+                            >
+                              {record.sellerId === 0 ? (
+                                <NotInterestedIcon />
+                              ) : (
+                                <CheckCircleOutlineIcon />
+                              )}
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
+            <Popup
+              title='Seller Assign Form'
+              openPopup={openPopup}
+              setOpenPopup={setOpenPopup}
+            >
+              <AssignSellerForm
+                {...{ currentId, setCurrentId, setOpenPopup }}
+              />
+            </Popup>
+          </Grid>
+        </Paper>
       </section>
       <Footer />
     </Fragment>
   )
 }
-export default AdminOrderPage
+
+const mapStateToProps = (state) => ({
+  gigList: state.gigs.list,
+})
+
+const mapActionToProps = {
+  fetchAllGigs: actions.fetchAll,
+  deleteGig: actions.Delete,
+}
+
+export default connect(
+  mapStateToProps,
+  mapActionToProps
+)(withStyles(styles)(GigsList))

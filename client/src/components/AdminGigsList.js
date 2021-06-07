@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
 import {
@@ -11,12 +11,8 @@ import {
   TableCell,
   TableBody,
   withStyles,
-  ButtonGroup,
-  Button,
 } from '@material-ui/core'
 import AssignSellerForm from './AssignSellerForm'
-import EditIcon from '@material-ui/icons/Edit'
-import DeleteIcon from '@material-ui/icons/Delete'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import NotInterestedIcon from '@material-ui/icons/NotInterested'
 import IconButton from '@material-ui/core/IconButton'
@@ -42,18 +38,10 @@ const GigsList = ({ classes, ...props }) => {
 
   const [currentId, setCurrentId] = useState(0)
   const [openPopup, setOpenPopup] = useState(false)
-  const [gigId, setSetGigId] = useState(0)
 
   useEffect(() => {
     props.fetchAllGigs()
   }, [props])
-
-  const onDelete = (id) => {
-    if (window.confirm('Are you sure to delete this record?'))
-      props.deleteGig(id, () =>
-        addToast('Deleted successfully', { appearance: 'info' })
-      )
-  }
 
   return (
     <Paper className={classes.paper} elevation={3}>

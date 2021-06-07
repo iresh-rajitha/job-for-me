@@ -12,9 +12,9 @@ function Footer() {
           You can contact our admin panel at any time of your preference!
         </p>
       </section>
-      <section class='social-media'>
-        <div class='social-media-wrap'>
-          <div class='footer-logo'>
+      <section className='social-media'>
+        <div className='social-media-wrap'>
+          <div className='footer-logo'>
             <Link to='/' className='social-logo'>
               {/* JobForMe
               <i class="fas fa-paper-plane" /> */}
@@ -25,8 +25,8 @@ function Footer() {
               />
             </Link>
           </div>
-          <small class='website-rights'>JobForMe © 2021</small>
-          <div class='social-icons'>
+          <small className='website-rights'>JobForMe © 2021</small>
+          <div className='social-icons'>
             <a
               href='https://www.facebook.com/'
               className='social-icon-link '
@@ -34,17 +34,17 @@ function Footer() {
               aria-label='Facebook'
               rel='nonreferrer'
             >
-              <i class='fab fa-facebook-f' />
+              <i className='fab fa-facebook-f' />
             </a>
             <a
               href=' https://www.instagram.com/accounts/login/'
-              class='social-icon-link instagram'
+              className='social-icon-link instagram'
               to='/'
               target='_blank'
               aria-label='Instagram'
               rel='nonreferrer'
             >
-              <i class='fab fa-instagram' />
+              <i className='fab fa-instagram' />
             </a>
             <a
               href='https://www.youtube.com/'
@@ -53,17 +53,17 @@ function Footer() {
               aria-label='Youtube'
               rel='nonreferrer'
             >
-              <i class='fab fa-youtube' />
+              <i className='fab fa-youtube' />
             </a>
             <a
               href='https://twitter.com/login?lang=en/'
-              class='social-icon-link twitter'
+              className='social-icon-link twitter'
               to='/'
               target='_blank'
               aria-label='Twitter'
               rel='nonreferrer'
             >
-              <i class='fab fa-twitter' />
+              <i className='fab fa-twitter' />
             </a>
           </div>
         </div>

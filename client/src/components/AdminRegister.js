@@ -89,14 +89,19 @@ const AdminRegister = ({ classes, ...props }) => {
     }
   }
 
-  useEffect(() => {
-    if (props.currentId !== 0) {
-      setValues({
-        ...props.userList.find((x) => x.userId === props.currentId),
-      })
-      setErrors({})
-    }
-  }, [props.currentId])
+  useEffect(
+    () => {
+      if (props.currentId !== 0) {
+        setValues({
+          ...props.userList.find((x) => x.userId === props.currentId),
+        })
+        setErrors({})
+      }
+    },
+    [props.currentId, props.userList],
+    setErrors,
+    setValues
+  )
   return (
     <Fragment>
       <section className='container'>

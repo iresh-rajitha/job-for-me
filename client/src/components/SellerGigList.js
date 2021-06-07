@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../actions/gigs'
@@ -16,8 +16,6 @@ import {
   Button,
 } from '@material-ui/core'
 import SellerGigForm from './SellerGigForm'
-import EditIcon from '@material-ui/icons/Edit'
-import DeleteIcon from '@material-ui/icons/Delete'
 import ChatIcon from '@material-ui/icons/Chat'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import NotInterestedIcon from '@material-ui/icons/NotInterested'
