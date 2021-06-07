@@ -20,7 +20,7 @@ import { useToasts } from 'react-toast-notifications'
 
 import MessagesForm from '../components/BuyerChat'
 import * as actions from '../actions/messages'
-import Popup from '../components/Popup'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
 
@@ -44,7 +44,6 @@ const Messages = ({ classes, ...props }) => {
   const buyerId = history.location.senderId
 
   const [currentId, setCurrentId] = useState(0)
-  const [openPopup, setOpenPopup] = useState(false)
 
   useEffect(() => {
     props.fetchAllMessages()
@@ -64,15 +63,23 @@ const Messages = ({ classes, ...props }) => {
       <section className='container'>
         <Paper className={classes.paper} elevation={3}>
           <Grid item xs={12}>
-            <Grid item xs={12}>
-              <MessagesForm
-                {...{ currentId, recieverId, senderId, setCurrentId }}
-              />
-            </Grid>
+            <Grid
+              item
+              xs={12}
+              spacing={0}
+              direction='column'
+              alignItems='center'
+              justify='center'
+            >
+              <div>
+                <h1 className='large text-primary'>Chat with your Seller!</h1>
+                <p className='lead'>
+                  <i className='fas fa-user'></i> Add you message in the below
+                  box
+                </p>
+              </div>
 
-            <Grid container item xs={12} spacing={3}>
-              <Grid item xs={6}>
-                <p className='lead'> Sent </p>
+              <InfiniteScroll dataLength={6} height={200}>
                 <TableContainer>
                   <Table>
                     <TableHead className={classes.root}>
@@ -86,7 +93,9 @@ const Messages = ({ classes, ...props }) => {
                         ) {
                           return (
                             <TableRow key={index} hover>
+                              <TableCell>Me:</TableCell>
                               <TableCell>{record.text}</TableCell>
+                              <TableCell>{record.sentAt}</TableCell>
                               <TableCell>
                                 <ButtonGroup variant='text'>
                                   <Button>
@@ -101,29 +110,15 @@ const Messages = ({ classes, ...props }) => {
                               </TableCell>
                             </TableRow>
                           )
-                        }
-                      })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Grid>
-
-              <Grid item xs={6}>
-                <p className='lead'> Replies </p>
-                <TableContainer>
-                  <Table>
-                    <TableHead className={classes.root}>
-                      <TableRow></TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {props.messageList.map((record, index) => {
-                        if (
+                        } else if (
                           record.from === recieverId &&
                           record.to === senderId
                         ) {
                           return (
                             <TableRow key={index} hover>
+                              <TableCell>Customer:</TableCell>
                               <TableCell>{record.text}</TableCell>
+                              <TableCell>{record.sentAt}</TableCell>
                               <TableCell>
                                 <ButtonGroup variant='text'>
                                   <Button></Button>
@@ -136,23 +131,12 @@ const Messages = ({ classes, ...props }) => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-              </Grid>
-            </Grid>
-            <Popup
-              title='Message Form'
-              openPopup={openPopup}
-              setOpenPopup={setOpenPopup}
-            >
+              </InfiniteScroll>
+
               <MessagesForm
-                {...{
-                  currentId,
-                  recieverId,
-                  senderId,
-                  setCurrentId,
-                  setOpenPopup,
-                }}
+                {...{ currentId, recieverId, senderId, setCurrentId }}
               />
-            </Popup>
+            </Grid>
           </Grid>
         </Paper>
       </section>

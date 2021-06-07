@@ -26,6 +26,7 @@ const initialFieldValues = {
   to: 0,
   from: 0,
   text: '',
+  sentAt: new Date(),
 }
 
 const MessagesForm = ({ classes, ...props }) => {
@@ -105,12 +106,12 @@ const MessagesForm = ({ classes, ...props }) => {
   return (
     <Fragment>
       <section className='container'>
-        <div>
+        {/* <div>
           <h1 className='large text-primary'>Chat with your Buyer!</h1>
           <p className='lead'>
             <i className='fas fa-user'></i> Add you message in the below box
           </p>
-        </div>
+        </div> */}
         <form
           autoComplete='off'
           noValidate
