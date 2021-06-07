@@ -51,7 +51,7 @@ const Messages = ({ classes, ...props }) => {
       history.push('/login')
     }
     props.fetchAllMessages()
-  }, [history.location.senderId])
+  }, [props, history.location.senderId])
 
   const onDelete = (id) => {
     if (window.confirm('Are you sure to delete this record?'))
