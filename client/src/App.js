@@ -16,6 +16,7 @@ import Sellers from './screens/AdminSellersList'
 import Admins from './screens/AdminAdminsList'
 import AdminOrders from './screens/AdminOrdersList'
 import AdminProfile from './screens/AdminProfile'
+import AdminRegister from './screens/AdminRegister'
 
 import OrderPage from './screens/BuyerLandingPage'
 import YourOrdersBuyer from './screens/BuyerOrdersList'
@@ -63,6 +64,7 @@ const App = () => (
               <Route path='/buyercontact' component={BuyerContactUs} />
               <Route path='/sellercontact' component={SellerContactUs} />
               <Route path='/sellerchat' component={SellerChat} />
+              <Route path='/adminregister' component={AdminRegister} />
             </Switch>
           </section>
         </Fragment>

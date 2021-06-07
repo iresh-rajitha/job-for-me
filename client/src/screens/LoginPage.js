@@ -77,6 +77,8 @@ const LoginPage = ({ classes, ...props }) => {
       props.setOpenPopup
     )
 
+  const admin = () => {}
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
