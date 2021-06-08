@@ -39,16 +39,16 @@ namespace OnlineFreelancinPlatform
         {
             // services.AddCors();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("ClientPermission", policy =>
-                {
-                    policy.AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .WithOrigins("http://localhost:3000")
-                        .AllowCredentials();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("ClientPermission", policy =>
+            //    {
+            //        policy.AllowAnyHeader()
+            //            .AllowAnyMethod()
+            //            .WithOrigins("http://localhost:3000")
+            //            .AllowCredentials();
+            //    });
+            //});
 
             services.AddMvc();
             services.AddControllers();
@@ -91,7 +91,7 @@ namespace OnlineFreelancinPlatform
             services.AddScoped<IGigService, GigService>();
 
             services.AddDbContext<FreelancingDBContext>(
-                options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
+                options => options.UseSqlServer(Configuration.GetConnectionString("FreelancingDatabse"))
                 ); ;
 
             var jwtSection = Configuration.GetSection("JWTSettings");
@@ -108,22 +108,26 @@ namespace OnlineFreelancinPlatform
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("ClientPermission");
+            //app.UseCors("ClientPermission");
 
             //app.UseCors(x => x
             //    .AllowAnyOrigin()
             //    .AllowAnyMethod()
             //    .AllowAnyHeader());
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
-                RequestPath = "/Images"
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+            //    RequestPath = "/Images"
+            //});
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseDefaultFiles();
+
+            app.UseStaticFiles();
 
             app.UseAuthentication();
 
@@ -133,6 +137,7 @@ namespace OnlineFreelancinPlatform
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/hubs/chat");
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

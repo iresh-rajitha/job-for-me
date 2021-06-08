@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const baseUrl = 'https://localhost:5001/api/'
+const baseUrl = process.env.REACT_APP_API_URL
 
 export default {
-  users(url = baseUrl + 'user/') {
+  users(url = baseUrl + '/user/') {
     return {
       fetchAll: () => axios.get(url),
       fetchById: (id) => axios.get(url + id),

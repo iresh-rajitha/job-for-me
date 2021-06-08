@@ -18,19 +18,6 @@ import Container from '@material-ui/core/Container'
 import BuyerNav from '../components/BuyerNav'
 import Footer from '../components/Footer'
 
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href='http://localhost:3000/'>
-        JobForMe
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -145,9 +132,6 @@ export default function SignUp() {
               </Grid>
             </form>
           </div>
-          <Box mt={5}>
-            <Copyright />
-          </Box>
         </Container>
       </section>
       <Footer />

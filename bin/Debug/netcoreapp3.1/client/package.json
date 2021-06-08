@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "dotenv": "^10.0.0",
     "emailjs-com": "^2.6.4",
     "moment": "^2.29.1",
     "nodemailer": "^6.4.18",
@@ -33,6 +34,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "mv build ../wwwroot",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -53,5 +55,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "http://."
 }
