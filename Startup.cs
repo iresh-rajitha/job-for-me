@@ -91,7 +91,8 @@ namespace OnlineFreelancinPlatform
             services.AddScoped<IGigService, GigService>();
 
             services.AddDbContext<FreelancingDBContext>(
-                options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
+                //options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Test1;Trusted_Connection=True;")
+                options => options.UseSqlServer(Configuration.GetConnectionString("FreelancingDatabse"))
                 ); ;
 
             var jwtSection = Configuration.GetSection("JWTSettings");

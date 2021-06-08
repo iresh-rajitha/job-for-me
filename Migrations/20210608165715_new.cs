@@ -2,7 +2,7 @@
 
 namespace OnlineFreelancinPlatform.Migrations
 {
-    public partial class First : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
