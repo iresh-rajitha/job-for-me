@@ -59,13 +59,29 @@ const GigsList = ({ classes, ...props }) => {
       )
   }
 
-  const chatWithSeller = (sellerID) => {
-    // history.push("./chat");
-    history.push({
-      pathname: '/sellerchat',
-      recieverId: sellerID,
-      senderId: props.senderId,
-    })
+  const handleDelivered = (gigId, delivered) => {
+    if (!delivered) {
+      setCurrentId(gigId)
+      setOpenPopup(true)
+    } else {
+      addToast('Cannot change the status of a delivered gig!', {
+        appearance: 'info',
+      })
+    }
+  }
+
+  const chatWithBuyer = (sellerID, delivered) => {
+    if (!delivered) {
+      history.push({
+        pathname: '/sellerchat',
+        recieverId: sellerID,
+        senderId: props.senderId,
+      })
+    } else {
+      addToast('Chat option is disabled for delivered gigs!', {
+        appearance: 'info',
+      })
+    }
   }
 
   return (
@@ -100,8 +116,7 @@ const GigsList = ({ classes, ...props }) => {
                               style={{ marginRight: '10px' }}
                               aria-label='delete'
                               onClick={() => {
-                                setCurrentId(record.gigId)
-                                setOpenPopup(true)
+                                handleDelivered(record.gigId, record.delivered)
                               }}
                             >
                               {record.delivered ? (
@@ -124,8 +139,15 @@ const GigsList = ({ classes, ...props }) => {
                             <ButtonGroup variant='text'>
                               <Button>
                                 <ChatIcon
-                                  color='action'
-                                  onClick={() => chatWithSeller(record.buyerId)}
+                                  color={
+                                    record.delivered ? 'disabled' : 'action'
+                                  }
+                                  onClick={() =>
+                                    chatWithBuyer(
+                                      record.buyerId,
+                                      record.delivered
+                                    )
+                                  }
                                 />
                               </Button>
                             </ButtonGroup>

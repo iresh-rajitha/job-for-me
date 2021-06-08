@@ -56,24 +56,63 @@ const GigsList = ({ classes, ...props }) => {
     props.fetchAllGigs()
   }, [props])
 
-  const onDelete = (id) => {
-    if (window.confirm('Are you sure to delete this record?'))
-      props.deleteGig(id, () =>
-        addToast('Deleted successfully', { appearance: 'info' })
-      )
+  const onDelete = (id, sellerId) => {
+    if (sellerId === 0) {
+      if (window.confirm('Are you sure to delete this record?'))
+        props.deleteGig(id, () =>
+          addToast('Deleted successfully', { appearance: 'info' })
+        )
+    } else {
+      addToast('Delete feature is disabled after the seller is assigned!', {
+        appearance: 'info',
+      })
+    }
   }
 
-  const chatWithSeller = (sellerID) => {
-    // history.push("./chat");
-    history.push({
-      pathname: '/buyerchat',
-      recieverId: sellerID,
-      senderId: props.senderId,
-    })
+  const handleEdit = (gigId, delivered) => {
+    if (!delivered) {
+      setCurrentId(gigId)
+      setOpenPopup(true)
+    } else {
+      addToast('Edit feature is disabled for delivered gigs!', {
+        appearance: 'info',
+      })
+    }
   }
 
-  const payment = () => {
-    history.push('./payment')
+  const handleRating = (gigId, delivered) => {
+    if (!delivered) {
+      setCurrentId(gigId)
+      setOpenRating(true)
+    } else {
+      addToast('Rating feature is disabled for delivered gigs!', {
+        appearance: 'info',
+      })
+    }
+  }
+
+  const chatWithSeller = (sellerID, delivered) => {
+    if (!delivered) {
+      history.push({
+        pathname: '/buyerchat',
+        recieverId: sellerID,
+        senderId: props.senderId,
+      })
+    } else {
+      addToast('Chat option is disabled for delivered gigs!', {
+        appearance: 'info',
+      })
+    }
+  }
+
+  const payment = (delivered) => {
+    if (!delivered) {
+      history.push('./payment')
+    } else {
+      addToast('Payment feature is disabled for delivered gigs!', {
+        appearance: 'info',
+      })
+    }
   }
 
   return (
@@ -127,47 +166,66 @@ const GigsList = ({ classes, ...props }) => {
                             <ButtonGroup variant='text'>
                               <Button>
                                 <EditIcon
-                                  color='action'
+                                  color={
+                                    record.delivered ? 'disabled' : 'action'
+                                  }
                                   onClick={() => {
-                                    setCurrentId(record.gigId)
-                                    setOpenPopup(true)
+                                    handleEdit(record.gigId, record.delivered)
                                   }}
                                 />
                               </Button>
                               <Button>
                                 <DeleteIcon
-                                  color='action'
+                                  color={
+                                    record.sellerId === 0
+                                      ? 'action'
+                                      : 'disabled'
+                                  }
                                   onClick={() => {
-                                    onDelete(record.gigId)
+                                    onDelete(record.gigId, record.sellerId)
                                   }}
                                 />
                               </Button>
                               <Button>
                                 <ChatIcon
-                                  color='action'
+                                  color={
+                                    record.delivered ? 'disabled' : 'action'
+                                  }
                                   onClick={() =>
-                                    chatWithSeller(record.sellerId)
+                                    chatWithSeller(
+                                      record.sellerId,
+                                      record.delivered
+                                    )
                                   }
                                 />
                               </Button>
                               <Button>
                                 <CreditCardIcon
-                                  color='action'
+                                  color={
+                                    record.delivered ? 'disabled' : 'action'
+                                  }
                                   onClick={() => {
-                                    payment()
+                                    payment(record.delivered)
                                   }}
                                 />
                               </Button>
                               <Button
                                 onClick={() => {
-                                  setCurrentId(record.gigId)
-                                  setOpenRating(true)
+                                  handleRating(record.gigId, record.delivered)
                                 }}
                               >
                                 {record.sellerRating === 0 ? (
-                                  <StarOutlineIcon />
+                                  <StarOutlineIcon
+                                    color={
+                                      record.delivered ? 'disabled' : 'action'
+                                    }
+                                  />
                                 ) : (
-                                  <StarIcon color='action' />
+                                  <StarIcon
+                                    color={
+                                      record.delivered ? 'disabled' : 'action'
+                                    }
+                                  />
                                 )}
                               </Button>
                             </ButtonGroup>
