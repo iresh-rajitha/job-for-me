@@ -20,7 +20,7 @@ namespace OnlineFreelancinPlatform.Services
         public void Add(User User)
         {
             //Console.WriteLine(User.Password + ":" + GetHashString(User.Password));
-            User.Password = GetHashString(User.Password);
+            //User.Password = GetHashString(User.Password);
             _freelancingDBContext.Users.Add(User);
             _freelancingDBContext.SaveChanges();
         }

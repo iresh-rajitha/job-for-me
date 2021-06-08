@@ -41,7 +41,9 @@ namespace OnlineFreelancinPlatform.Controllers
         public void Post([FromBody] User User)
         {
              _userService.Add(User);
-        }
+
+          
+}
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]

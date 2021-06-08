@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineFreelancinPlatform.Model;
+using OnlineFreelancinPlatform.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +14,45 @@ namespace OnlineFreelancinPlatform.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        private readonly IOrderService _orderService;
+        public OrderController(IOrderService orderService)
+        {
+            _orderService = orderService;
+        }
+
         // GET: api/<OrderController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Order> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _orderService.GetAll();
         }
 
         // GET api/<OrderController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Order Get(int id)
         {
-            return "value";
+            return _orderService.GetOne(id);
         }
 
         // POST api/<OrderController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Order order)
         {
+            _orderService.Add(order);
         }
 
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Order order)
         {
+            _orderService.Update(id, order);
         }
 
         // DELETE api/<OrderController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _orderService.Delete(id);
         }
     }
 }

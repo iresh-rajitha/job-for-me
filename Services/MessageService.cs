@@ -15,6 +15,7 @@ namespace OnlineFreelancinPlatform.Services
         {
             _freelancingDBContext = datacontext;
         }
+
         public void Add(Message Message)
         {
             _freelancingDBContext.Messages.Add(Message);

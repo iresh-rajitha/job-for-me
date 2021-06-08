@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineFreelancinPlatform.Model;
+using OnlineFreelancinPlatform.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +14,56 @@ namespace OnlineFreelancinPlatform.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        // GET: api/<MessageController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private IMessageService _messageService;
+
+        public MessageController(IMessageService messageService)
         {
-            return new string[] { "value1", "value2" };
+            _messageService = messageService;
+        }
+
+        // GET: api/<MessageController>
+        //public IEnumerable<string> Get()
+        [HttpGet]
+        public List<Message> Get()
+        {
+            //return new string[] { "value1", "value2" };
+            return _messageService.GetAll();
         }
 
         // GET api/<MessageController>/5
+        //public string Get(int id)
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Message Get(int id)
         {
-            return "value";
+            //return "value";
+            return _messageService.GetOne(id);
         }
 
         // POST api/<MessageController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Message Message)
         {
+            _messageService.Add(Message);
         }
 
         // PUT api/<MessageController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Message Message)
         {
+            _messageService.Update(id, Message);
         }
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // DELETE api/<MessageController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _messageService.Delete(id);
         }
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
