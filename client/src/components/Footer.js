@@ -9,7 +9,7 @@ function Footer() {
           JobForMe! For free! Earn Free!
         </p>
         <p className='footer-subscription-text'>
-          You can contact our admin panel at any time of your preference!
+          Reliable delivery while protecting your privacy!
         </p>
       </section>
       <section className='social-media'>
