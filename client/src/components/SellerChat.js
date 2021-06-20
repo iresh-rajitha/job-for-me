@@ -137,6 +137,7 @@ const MessagesForm = ({ classes, ...props }) => {
               />
             </Grid>
             <Grid item xs={12}>
+              <input type="file">
               <div>
                 <Button
                   variant='contained'

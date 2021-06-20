@@ -37,18 +37,18 @@ namespace OnlineFreelancinPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddCors();
+            services.AddCors();
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("ClientPermission", policy =>
-            //    {
-            //        policy.AllowAnyHeader()
-            //            .AllowAnyMethod()
-            //            .WithOrigins("http://localhost:3000")
-            //            .AllowCredentials();
-            //    });
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ClientPermission", policy =>
+                {
+                    policy.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("http://localhost:3000")
+                        .AllowCredentials();
+                });
+            });
 
             services.AddMvc();
             services.AddControllers();
@@ -108,12 +108,12 @@ namespace OnlineFreelancinPlatform
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseCors("ClientPermission");
+            app.UseCors("ClientPermission");
 
-            //app.UseCors(x => x
-            //    .AllowAnyOrigin()
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader());
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             //app.UseStaticFiles(new StaticFileOptions
             //{

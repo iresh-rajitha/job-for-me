@@ -2,27 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfea530f-c859-4f6d-a94e-7552a461168d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/services/login.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210113184730_initialization.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210113184730_initialization.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210212052219_First.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210212052219_First.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210309045252_Employee added.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210309045252_Employee added.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210320171301_Models Changed.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210320171301_Models Changed.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210321142029_message.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210321142029_message.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210323102728_Order Changes.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Migrations/20210323102728_Order Changes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/OnlineFreelancinPlatform.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/OnlineFreelancinPlatform.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/OnlineFreelancinPlatform.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/OnlineFreelancinPlatform.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Buyer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Buyer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/orderDetail.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/orderDetail.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SellerChat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SellerChat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/OnlineFreelancinPlatform.pdb" afterDir="false" />
@@ -68,6 +54,11 @@
       <updated>1621360727953</updated>
       <workItem from="1621360731571" duration="9155000" />
       <workItem from="1621605150112" duration="33000" />
+      <workItem from="1623933969229" duration="377000" />
+      <workItem from="1623934347956" duration="28000" />
+      <workItem from="1623934377666" duration="365000" />
+      <workItem from="1623934763092" duration="3525000" />
+      <workItem from="1624100039555" duration="604000" />
     </task>
     <servers />
   </component>
